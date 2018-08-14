@@ -1,15 +1,5 @@
-<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.css' rel='stylesheet' />
 <p>
   map works!
 </p>
+
 <div id='map' style='width: 400px; height: 300px;'></div>
-<script>
-import mapboxgl from 'mapbox-gl';
-mapboxgl.accessToken = 'pk.eyJ1IjoiZXNib2FyZHMiLCJhIjoiY2prdHB4OTZuMDdtYjNrbGtvOGN1NGtqbyJ9.E8XQXS19fMbyyJY8PtiXaQ';
-var map = new mapboxgl.Map({
-  container: 'map', // container id
-  style: 'mapbox://styles/mapbox/streets-v9', // stylesheet location
-  center: [-74.50, 40], // starting position [lng, lat]
-  zoom: 9 // starting zoom
-});
-</script>
