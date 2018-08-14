@@ -27,7 +27,7 @@ export class AppComponent implements OnInit {
     });
   }
 
-  logout($event) {
+  logout() {
     this.authService.logout()
       .then(() => this.router.navigate(['/']));
   }

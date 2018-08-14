@@ -1,5 +1,4 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
-import { EventEmitter } from '../../../../node_modules/protractor';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
@@ -8,11 +7,8 @@ import { EventEmitter } from '../../../../node_modules/protractor';
 })
 export class NavbarComponent implements OnInit {
 
-  // @Input() isUser: any;
-  // @Output() whenLogout = new EventEmitter();
-
-
-  name: '';
+  @Input() isUser: any;
+  @Output() whenLogout = new EventEmitter();
 
   constructor() { }
 
@@ -20,6 +16,6 @@ export class NavbarComponent implements OnInit {
   }
 
   handleLogout() {
-    this.whenLogout.emit(this.name);
+    this.whenLogout.emit();
   }
 }
