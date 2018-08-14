@@ -129,5 +129,5 @@ Travelist is a web application where users can save in a map the places they hav
   - POST /favorite
 
 ## Links
-Backend of the project: https://github.com/balpaula/project-m3-backend
-Trello: https://trello.com/b/9ahCkyVh/travelist
+- Backend of the project: https://github.com/balpaula/project-m3-backend
+- Trello: https://trello.com/b/9ahCkyVh/travelist
