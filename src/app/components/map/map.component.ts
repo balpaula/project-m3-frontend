@@ -25,8 +25,13 @@ export class MapComponent implements OnInit {
         .catch((error) => {
           console.log(error);
         });
-      // this.mapService.getPosition(this.drawMap);
-      // this.mapService.drawMarker(this.mapService.getPosition(), this.map);
+      this.mapService.getPosition()
+        .then(coordinates => {
+          this.mapService.drawMarker(coordinates, this.map);
+        })
+        .catch(error => {
+          console.log(error);
+        });
   }
 
   drawMap(coordinates) {
@@ -35,7 +40,7 @@ export class MapComponent implements OnInit {
       container: 'map', // container id
       style: 'mapbox://styles/mapbox/streets-v10', // stylesheet location
       center: coordinates , // starting position [lng, lat]
-      zoom: 15 // starting zoom
+      zoom: 13 // starting zoom
     });
   }
 }

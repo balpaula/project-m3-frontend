@@ -9,26 +9,17 @@ export class SetMapService {
 
   constructor( private httpClient: HttpClient ) { }
 
-  const getPosition = new Promise(function(resolve, reject) {
-    const coordinates = navigator.geolocation.getCurrentPosition((position) => {
-      return [position.coords.longitude, position.coords.latitude];
+  getPosition() {
+    return new Promise(function(resolve, reject) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        if (position) {
+          resolve([position.coords.longitude, position.coords.latitude]);
+        } else {
+          reject(new Error('no hemos podido obtener la localizacion'));
+        }
+      });
     });
-    if (coordinates) {
-      resolve({coordinates});
-    } else {
-      reject(Error);
-    }
-  });
-
-  // getPosition(cb?) {
-  //   navigator.geolocation.getCurrentPosition((position) => {
-  //     const coordinates = [position.coords.longitude, position.coords.latitude];
-  //     if (cb) {
-  //       cb(coordinates);
-  //     }
-  //     return coordinates;
-  //   });
-  // }
+  }
 
   drawMarker(coordinates, map) {
     new mapboxgl.Marker()
