@@ -1,0 +1,14 @@
+<p>
+  navbar works!
+</p>
+
+<div *ngIf="!isUser">
+    <app-signup></app-signup>  
+    <app-login></app-login>
+</div>
+
+<div *ngIf="isUser">
+  <a (click)="handleLogout()">Logout</a>
+</div>
+
+
