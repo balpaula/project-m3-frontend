@@ -9,7 +9,6 @@ import { resolve } from 'dns';
 })
 export class MapComponent implements OnInit {
 
-  isLoading = true;
   map: any;
   lat = 0;
   lng = 0;
@@ -22,7 +21,6 @@ export class MapComponent implements OnInit {
 
   getPosition() {
     navigator.geolocation.getCurrentPosition((position) => {
-      this.isLoading = false;
       this.lng = position.coords.longitude;
       this.lat = position.coords.latitude;
       // console.log([position.coords.longitude, position.coords.latitude]);
@@ -39,6 +37,8 @@ export class MapComponent implements OnInit {
       center: [this.lng, this.lat] , // starting position [lng, lat]
       zoom: 15 // starting zoom
     });
+    new mapboxgl.Marker()
+      .setLngLat([this.lng, this.lat])
+      .addTo(this.map);
   }
-
 }
