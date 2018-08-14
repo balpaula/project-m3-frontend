@@ -7,7 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { AuthService } from './services/auth.service';
 
 import { AppComponent } from './app.component';
-import { PrivatePageComponent } from './pages/private-page/private-page.component';
+import { TripsPageComponent } from './pages/trips-page/trips-page.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { LoginComponent } from './components/login/login.component';
 
@@ -22,13 +22,13 @@ import { MapComponent } from './components/map/map.component';
 
 const routes: Routes = [
   { path: '',  component: HomePageComponent, canActivate: [ InitAuthGuard ]},
-  { path: 'private',  component: PrivatePageComponent, canActivate: [ RequireUserGuard ] },
+  { path: 'trips',  component: TripsPageComponent, canActivate: [ RequireUserGuard ] },
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    PrivatePageComponent,
+    TripsPageComponent,
     HomePageComponent,
     LoginComponent,
     SignupComponent,

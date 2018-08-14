@@ -29,7 +29,7 @@ export class SignupComponent implements OnInit {
         password: this.password,
     })
     .then(() => {
-        this.router.navigate(['/private']);
+        this.router.navigate(['/trips']);
     })
     .catch(error => {
         console.log(error);

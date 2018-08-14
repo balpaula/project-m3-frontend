@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
         password: this.password
     })
     .then(() => {
-        this.router.navigate(['/private']);
+        this.router.navigate(['/trips']);
     })
     .catch(error => {
         console.log(error);

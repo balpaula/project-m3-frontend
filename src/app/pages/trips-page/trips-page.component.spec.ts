@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PrivatePageComponent } from './private-page.component';
+import { TripsPageComponent } from './trips-page.component';
 
-describe('PrivatePageComponent', () => {
-  let component: PrivatePageComponent;
-  let fixture: ComponentFixture<PrivatePageComponent>;
+describe('TripsPageComponent', () => {
+  let component: TripsPageComponent;
+  let fixture: ComponentFixture<TripsPageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PrivatePageComponent ]
+      declarations: [ TripsPageComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PrivatePageComponent);
+    fixture = TestBed.createComponent(TripsPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
