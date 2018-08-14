@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import mapboxgl from 'mapbox-gl';
-import { resolve } from 'dns';
+import { SelectMultipleControlValueAccessor } from '../../../../node_modules/@angular/forms';
+import { SetMapService } from '../../services/set-map.service';
+
 
 @Component({
   selector: 'app-map',
@@ -13,32 +15,27 @@ export class MapComponent implements OnInit {
   lat = 0;
   lng = 0;
 
-  constructor() { }
+  constructor( private mapService: SetMapService ) { }
 
   ngOnInit() {
-      this.getPosition();
+      this.mapService.getPosition()
+        .then(coordinates => {
+          this.drawMap(coordinates);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      // this.mapService.getPosition(this.drawMap);
+      // this.mapService.drawMarker(this.mapService.getPosition(), this.map);
   }
 
-  getPosition() {
-    navigator.geolocation.getCurrentPosition((position) => {
-      this.lng = position.coords.longitude;
-      this.lat = position.coords.latitude;
-      // console.log([position.coords.longitude, position.coords.latitude]);
-      // return [position.coords.longitude, position.coords.latitude];
-      this.drawMap();
-    });
-  }
-
-  drawMap() {
+  drawMap(coordinates) {
     mapboxgl.accessToken = 'pk.eyJ1IjoiZXNib2FyZHMiLCJhIjoiY2prdHB4OTZuMDdtYjNrbGtvOGN1NGtqbyJ9.E8XQXS19fMbyyJY8PtiXaQ';
     this.map = new mapboxgl.Map({
       container: 'map', // container id
       style: 'mapbox://styles/mapbox/streets-v10', // stylesheet location
-      center: [this.lng, this.lat] , // starting position [lng, lat]
+      center: coordinates , // starting position [lng, lat]
       zoom: 15 // starting zoom
     });
-    new mapboxgl.Marker()
-      .setLngLat([this.lng, this.lat])
-      .addTo(this.map);
   }
 }
