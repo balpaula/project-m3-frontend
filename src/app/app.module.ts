@@ -5,6 +5,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { AuthService } from './services/auth.service';
+import { LocationService } from './services/location.service';
+import { TripsService } from './services/trips.service';
 
 import { AppComponent } from './app.component';
 import { TripsPageComponent } from './pages/trips-page/trips-page.component';
@@ -19,6 +21,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { MapComponent } from './components/map/map.component';
+import { NewtripComponent } from './components/newtrip/newtrip.component';
+import { AddplaceComponent } from './components/addplace/addplace.component';
 
 const routes: Routes = [
   { path: '',  component: HomePageComponent, canActivate: [ InitAuthGuard ]},
@@ -35,7 +39,9 @@ const routes: Routes = [
     NavbarComponent,
     FooterComponent,
     SidebarComponent,
-    MapComponent
+    MapComponent,
+    NewtripComponent,
+    AddplaceComponent
   ],
   imports: [
     BrowserModule,
@@ -45,6 +51,8 @@ const routes: Routes = [
   ],
   providers: [
     AuthService,
+    LocationService,
+    TripsService,
     InitAuthGuard,
     RequireAnonGuard,
     RequireUserGuard,

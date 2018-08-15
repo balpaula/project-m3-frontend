@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TripsService } from '../../services/trips.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor() { }
+  trips = []
+
+  constructor( private tripsService: TripsService) { }
 
   ngOnInit() {
+    this.setTrips();
+  }
+
+  setTrips() {
+    this.tripsService.getTrips()
+      .then(trips => {
+        this.trips = trips;
+      })
   }
 
 }

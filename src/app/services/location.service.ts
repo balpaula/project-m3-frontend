@@ -5,7 +5,7 @@ import mapboxgl from 'mapbox-gl';
 @Injectable({
   providedIn: 'root'
 })
-export class SetMapService {
+export class LocationService {
 
   constructor( private httpClient: HttpClient ) { }
 
