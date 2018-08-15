@@ -17,7 +17,7 @@ export class TripsService {
 
   constructor( private httpClient: HttpClient ) { }
 
-  private setTrips(trips: []) {
+  private setTrips(trips: Array<any>) {
     this.trips = trips;
     this.tripsChange.next(trips);
     return trips;
@@ -29,7 +29,7 @@ export class TripsService {
     };
     return this.httpClient.get(`${this.API_URL}/trips/list`, options)
       .toPromise()
-      .then((trips: []) => {
+      .then((trips: Array<any>) => {
         this.setTrips(trips);
       });
   }
