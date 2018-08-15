@@ -55,7 +55,7 @@ export class TripsService {
       })
       .then((newTrip) => {
         this.changeTrip(newTrip);
-      })
+      });
   }
 
   setDefaultTrip() {
