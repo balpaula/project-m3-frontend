@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { Subject, Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -9,8 +9,19 @@ import { environment } from '../../environments/environment';
 export class TripsService {
 
   private API_URL = environment.API_URL;
+  private trips = [];
+  private tripsChange: Subject<any> = new Subject();
+
+
+  tripsChange$: Observable<any> = this.tripsChange.asObservable();
 
   constructor( private httpClient: HttpClient ) { }
+
+  private setTrips(trips: []) {
+    this.trips = trips;
+    this.tripsChange.next(trips);
+    return trips;
+  }
 
   getTrips(): Promise<any> {
     const options = {
@@ -18,6 +29,9 @@ export class TripsService {
     };
     return this.httpClient.get(`${this.API_URL}/trips/list`, options)
       .toPromise()
+      .then((trips: []) => {
+        this.setTrips(trips);
+      });
   }
 
   createTrip(trip: any): Promise<any> {
@@ -26,6 +40,9 @@ export class TripsService {
     };
     return this.httpClient.post(`${this.API_URL}/trips/new`, trip, options)
       .toPromise()
+      .then(() => {
+        this.getTrips();
+      });
   }
 
 }

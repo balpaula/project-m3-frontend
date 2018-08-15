@@ -8,19 +8,16 @@ import { TripsService } from '../../services/trips.service';
 })
 export class SidebarComponent implements OnInit {
 
-  trips = []
+  trips = [];
 
   constructor( private tripsService: TripsService) { }
 
   ngOnInit() {
-    this.setTrips();
-  }
-
-  setTrips() {
-    this.tripsService.getTrips()
-      .then(trips => {
-        this.trips = trips;
-      })
+    this.tripsService.tripsChange$.subscribe((trips) => {
+      // this.loading = false;
+      this.trips = trips;
+    });
+    this.tripsService.getTrips();
   }
 
 }

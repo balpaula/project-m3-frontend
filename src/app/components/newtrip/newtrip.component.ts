@@ -20,7 +20,7 @@ export class NewtripComponent implements OnInit {
     this.tripsService.createTrip({
       name: this.name,
       description: this.description
-    })
+    });
   }
 
 }
