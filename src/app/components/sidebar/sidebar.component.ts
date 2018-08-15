@@ -9,15 +9,26 @@ import { TripsService } from '../../services/trips.service';
 export class SidebarComponent implements OnInit {
 
   trips = [];
+  currentTrip = {};
 
   constructor( private tripsService: TripsService) { }
 
   ngOnInit() {
     this.tripsService.tripsChange$.subscribe((trips) => {
-      // this.loading = false;
       this.trips = trips;
     });
-    this.tripsService.getTrips();
+    this.tripsService.currentTripChange$.subscribe((currentTrip) => {
+      this.currentTrip = currentTrip;
+    })
+    this.tripsService.getTrips()
+      .then(() => {
+        this.tripsService.changeTrip(this.tripsService.setDefaultTrip());
+      })
+    
+  }
+
+  handleChangeOfTrip(trip) {
+    this.tripsService.changeTrip(trip);
   }
 
 }

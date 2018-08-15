@@ -1,6 +1,6 @@
 <div>
   <h3>My trips</h3>
-  <div *ngFor="let trip of trips">
+  <div *ngFor="let trip of trips" (click)="handleChangeOfTrip(trip)">
     <h4>{{trip.name}}</h4>
   </div>
 </div>

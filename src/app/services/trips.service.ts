@@ -11,9 +11,12 @@ export class TripsService {
   private API_URL = environment.API_URL;
   private trips = [];
   private tripsChange: Subject<any> = new Subject();
+  public currentTrip: any;
+  private currentTripChange: Subject<any> = new Subject();
 
 
   tripsChange$: Observable<any> = this.tripsChange.asObservable();
+  currentTripChange$: Observable<any> = this.currentTripChange.asObservable();
 
   constructor( private httpClient: HttpClient ) { }
 
@@ -21,6 +24,12 @@ export class TripsService {
     this.trips = trips;
     this.tripsChange.next(trips);
     return trips;
+  }
+
+  private setCurrentTrip(trip: any) {
+    this.currentTrip = trip;
+    this.currentTripChange.next(trip);
+    return trip;
   }
 
   getTrips(): Promise<any> {
@@ -40,9 +49,23 @@ export class TripsService {
     };
     return this.httpClient.post(`${this.API_URL}/trips/new`, trip, options)
       .toPromise()
-      .then(() => {
+      .then((newTrip) => {
         this.getTrips();
-      });
+        return newTrip;
+      })
+      .then((newTrip) => {
+        this.changeTrip(newTrip);
+      })
+  }
+
+  setDefaultTrip() {
+    if (this.trips.length) {
+      this.setCurrentTrip(this.trips[this.trips.length - 1]);
+    }
+  }
+
+  changeTrip(trip) {
+    this.setCurrentTrip(trip);
   }
 
 }
