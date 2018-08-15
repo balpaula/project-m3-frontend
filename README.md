@@ -58,6 +58,10 @@ Travelist is a web application where users can save in a map the places they hav
 - Trips Service
   - trips.list() (get the name of the trips)
   - trips.detail(id) (get markers)
+  
+- SetMap Service
+  - set-map.getposition()
+  - set-map.drawMarker(coordinates, map)
 
 ## Pages
 
@@ -93,25 +97,53 @@ Travelist is a web application where users can save in a map the places they hav
   User model
 
   ```
-  username - String // required & unique
-  email - String // required & unique
-  password - // required
-  trips - Array<Object> (Array<any>)
+  username: {
+    type: String,
+    required: true
+  },
+  email: {
+    type: String,
+    required: true
+  },
+  password: {
+    type: String,
+    required: true
+  }
   ```
 
   Trip model
 
   ```
-  name - String // required
-  places - Array<Object> (Array<any>)
-  [{
-    name: String,
-    geolocation,
-    description: String,
-    date: Date
-  }]
+  name: {
+    type: String,
+    required: true
+  },
+  places: [{
+    type: ObjectId,
+    ref: 'Place'
+  }],
+  owner: {
+    type: ObjectId,
+    ref: 'User'
+  }
   
 ```
+  
+  Place model
+ 
+ ```
+   name: {
+      type: String,
+      required: true
+    },
+    coordinates: {
+      type: Array,
+      required: true
+    },
+    description: String,
+    date: Date,
+  }
+ ```
 
 ## API Endpoints/Backend Routes
 
@@ -120,10 +152,10 @@ Travelist is a web application where users can save in a map the places they hav
   - POST /auth/login
   - POST /auth/me
   - GET /profile/me
-  - GET /tripslist
-  - GET /trip/:id
-  - POST /trip/new
-  - POST /trip/:id/addplace
+  - GET /trips/list
+  - GET /trips/:id
+  - POST /trips/new
+  - POST /trips/:id/addplace
   
   **Backlog:**
   - POST /favorite
