@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import mapboxgl from 'mapbox-gl';
 import { SelectMultipleControlValueAccessor } from '../../../../node_modules/@angular/forms';
 import { LocationService } from '../../services/location.service';
+import { DrawService } from '../../services/draw.service';
 
 
 @Component({
@@ -15,16 +16,16 @@ export class MapComponent implements OnInit {
   lat = 0;
   lng = 0;
 
-  constructor( private mapService: LocationService ) { }
+  constructor( private locationService: LocationService, private drawService: DrawService ) { }
 
   ngOnInit() {
-      this.mapService.getPosition()
+      this.locationService.getPosition()
         .then(coordinates => {
           this.drawMap(coordinates);
           return coordinates;
         })
         .then(coordinates => {
-          this.mapService.drawMarker(coordinates, this.map);
+          this.drawService.drawMarker(coordinates, this.map);
         })
         .catch(error => {
           console.log(error);

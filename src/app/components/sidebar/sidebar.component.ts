@@ -17,19 +17,12 @@ export class SidebarComponent implements OnInit {
     this.tripsService.tripsChange$.subscribe((trips) => {
       this.trips = trips;
     });
+    this.tripsService.currentTripChange$.subscribe((currentTrip) => {
+      this.currentTrip = currentTrip;
+    });
     this.tripsService.getTrips()
       .then(() => {
-        console.log('i got the trips!');
-        return this.tripsService.setDefaultTrip();
-      })
-      .then(() => {
-        console.log('2nd promise!');
-        return this.tripsService.currentTripChange$.subscribe((currentTrip) => {
-          this.currentTrip = currentTrip;
-        })
-      })
-      .then(() => {
-        console.log('3rd promise!');
+        this.tripsService.setDefaultTrip();
       })
   }
 

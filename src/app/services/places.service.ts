@@ -15,7 +15,8 @@ export class PlacesService {
     const options = {
       withCredentials: true
     };
-    return this.httpClient.post(`${this.API_URL}/${trip._id}/addplace`, place, options)
+    console.log('trip id from service', trip._id)
+    return this.httpClient.post(`${this.API_URL}/trips/${trip._id}/addplace`, place, options)
       .toPromise()
   }
 }

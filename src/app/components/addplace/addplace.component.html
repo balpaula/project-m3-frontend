@@ -1,23 +1,21 @@
 <h4>Add new place</h4>
 
 <div class="overlay">
-    <div class="new-trip-form">
-        <form (ngSubmit)="submitForm(form)" #form="ngForm">
-  
-            <div class="field">
-              <label>Name</label>
-              <input type="text" name="name" [(ngModel)]="name" #nameField="ngModel" required/>
-          
-              <label>Description</label>
-              <input type="text" name="description" [(ngModel)]="description" #descriptionField="ngModel"/>
-          
-            </div>
-          
-            <div class="field submit">
-              <button type="submit">Add</button>
-            </div>
-          </form>
-    </div>
-  </div>
+  <div class="new-trip-form">
+      <form (ngSubmit)="submitForm(form)" #form="ngForm">
 
-  <button (click)="showTrip()">Show trip</button>
+          <div class="field">
+            <label>Name</label>
+            <input type="text" name="name" [(ngModel)]="name" #nameField="ngModel" required/>
+        
+            <label>Description</label>
+            <input type="text" name="description" [(ngModel)]="description" #descriptionField="ngModel"/>
+        
+          </div>
+        
+          <div class="field submit">
+            <button type="submit">Add</button>
+          </div>
+        </form>
+  </div>
+</div>

@@ -21,10 +21,4 @@ export class LocationService {
     });
   }
 
-  drawMarker(coordinates, map) {
-    new mapboxgl.Marker()
-      .setLngLat(coordinates)
-      .addTo(map);
-  }
-
 }
