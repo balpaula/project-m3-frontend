@@ -13,7 +13,6 @@ export class InitAuthGuard implements CanActivate {
   canActivate(): Promise<any> {
     return this.authService.me()
       .then((user) => {
-        this.router.navigate(['/trips']);
         return true;
       })
       .catch((error) => {

@@ -30,14 +30,13 @@ export class MapComponent implements OnInit {
       });
       this.tripsService.currentTripChange$.subscribe((currentTrip) => {
         this.currentTrip = currentTrip;
-        if (this.map) {
-          if (this.places.length){
-            this.drawService.drawMap(this.currentTrip.places[this.currentTrip.places.length-1].coordinates);
-          }
-          this.drawService.drawAllMarkers(this.currentTrip.places, this.map);
-        }
+        this.handleCurrentTripChange();
       });
-      this.locationService.getPosition()
+      this.initMap();
+  }
+
+  initMap() {
+    this.locationService.getPosition()
         .then(coordinates => {
           this.drawService.drawMap(coordinates);
         })
@@ -52,6 +51,17 @@ export class MapComponent implements OnInit {
         .catch(error => {
           console.log(error);
         });
+  }
+
+  handleCurrentTripChange() {
+    if (this.map) {
+      if (this.currentTrip.places.length){
+        this.drawService.drawMap(this.currentTrip.places[this.currentTrip.places.length-1].coordinates);
+      } else {
+        this.initMap();
+      }
+      this.drawService.drawAllMarkers(this.currentTrip.places, this.map);
+    }
   }
 
 }
