@@ -43,6 +43,17 @@ export class TripsService {
       });
   }
 
+  getOneTrip(tripId): Promise<any> {
+    const options = {
+      withCredentials: true
+    };
+    return this.httpClient.get(`${this.API_URL}/trips/${tripId}`, options)
+      .toPromise()
+      .then((trip: any) => {
+        this.setCurrentTrip(trip);
+      })
+  }
+
   createTrip(trip: any): Promise<any> {
     const options = {
       withCredentials: true
@@ -60,12 +71,12 @@ export class TripsService {
 
   setDefaultTrip() {
     if (this.trips.length) {
-      this.setCurrentTrip(this.trips[this.trips.length - 1]);
+      this.getOneTrip(this.trips[this.trips.length - 1]._id);
     }
   }
 
   changeTrip(trip) {
-    this.setCurrentTrip(trip);
+    this.getOneTrip(trip._id);
   }
 
 }

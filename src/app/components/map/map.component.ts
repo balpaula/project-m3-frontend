@@ -3,6 +3,7 @@ import mapboxgl from 'mapbox-gl';
 import { SelectMultipleControlValueAccessor } from '../../../../node_modules/@angular/forms';
 import { LocationService } from '../../services/location.service';
 import { DrawService } from '../../services/draw.service';
+import { TripsService } from '../../services/trips.service';
 
 
 @Component({
@@ -13,32 +14,36 @@ import { DrawService } from '../../services/draw.service';
 export class MapComponent implements OnInit {
 
   map: any;
-  lat = 0;
-  lng = 0;
+  markers: any;
+  currentTrip: any;
 
-  constructor( private locationService: LocationService, private drawService: DrawService ) { }
+  constructor( private locationService: LocationService, private drawService: DrawService, private tripsService: TripsService ) { }
 
   ngOnInit() {
+      this.drawService.mapChange$.subscribe((map) => {
+        this.map = map;
+      });
+      this.drawService.markersChange$.subscribe((markers) => {
+        this.markers = markers;
+      });
+      this.tripsService.currentTripChange$.subscribe((currentTrip) => {
+        this.currentTrip = currentTrip;
+      });
       this.locationService.getPosition()
         .then(coordinates => {
-          this.drawMap(coordinates);
-          return coordinates;
+          this.drawService.drawMap(coordinates);
         })
-        .then(coordinates => {
-          this.drawService.drawMarker(coordinates, this.map);
+        .then(() => {
+          this.map = this.drawService.map;
+          this.getTripMarkers();
         })
         .catch(error => {
           console.log(error);
         });
   }
 
-  drawMap(coordinates) {
-    mapboxgl.accessToken = 'pk.eyJ1IjoiZXNib2FyZHMiLCJhIjoiY2prdHB4OTZuMDdtYjNrbGtvOGN1NGtqbyJ9.E8XQXS19fMbyyJY8PtiXaQ';
-    this.map = new mapboxgl.Map({
-      container: 'map', // container id
-      style: 'mapbox://styles/mapbox/streets-v10', // stylesheet location
-      center: coordinates , // starting position [lng, lat]
-      zoom: 13 // starting zoom
-    });
+  getTripMarkers() {
+    this.drawService.drawAllMarkers(this.currentTrip, this.map);
   }
 }
+
