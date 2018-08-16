@@ -31,7 +31,9 @@ export class MapComponent implements OnInit {
       this.tripsService.currentTripChange$.subscribe((currentTrip) => {
         this.currentTrip = currentTrip;
         if (this.map) {
-          this.drawService.drawMap(this.currentTrip.places[this.currentTrip.places.length-1].coordinates);
+          if (this.places.length){
+            this.drawService.drawMap(this.currentTrip.places[this.currentTrip.places.length-1].coordinates);
+          }
           this.drawService.drawAllMarkers(this.currentTrip.places, this.map);
         }
       });
@@ -43,7 +45,9 @@ export class MapComponent implements OnInit {
           this.map = this.drawService.map;
         })
         .then(() => {
-          this.drawService.drawAllMarkers(this.currentTrip.places, this.map);
+          if (this.places.length) {
+            this.drawService.drawAllMarkers(this.currentTrip.places, this.map);
+          }
         })
         .catch(error => {
           console.log(error);
