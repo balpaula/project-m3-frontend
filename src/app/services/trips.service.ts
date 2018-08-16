@@ -69,13 +69,13 @@ export class TripsService {
       });
   }
 
-  setDefaultTrip() {
+  public setDefaultTrip() {
     if (this.trips.length) {
       this.getOneTrip(this.trips[this.trips.length - 1]._id);
     }
   }
 
-  changeTrip(trip) {
+  public changeTrip(trip) {
     this.getOneTrip(trip._id);
   }
 

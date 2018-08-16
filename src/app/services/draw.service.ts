@@ -31,19 +31,28 @@ export class DrawService {
     return map;
   }
 
-  drawMarker(coordinates, map) {
+  drawMarker(place, map) {
+    const popup = new mapboxgl.Popup({ offset: 40 })
+      .setText(place.description);
+
     const marker = new mapboxgl.Marker()
-      .setLngLat(coordinates)
+      .setLngLat(place.coordinates)
+      .setPopup(popup)
       .addTo(map);
     this.markers.push(marker);
   }
 
   drawAllMarkers(trip, map, options?) {
-    console.log(trip);
-    this.markers = [];
+    this.eraseAllMarkers();
     trip.places.forEach(place => {
-      this.drawMarker(place.coordinates, map);
+      this.drawMarker(place, map);
     });
+  }
+
+  private eraseAllMarkers() {
+    this.markers.forEach(marker => {
+      marker.remove();
+    })
   }
 
 }

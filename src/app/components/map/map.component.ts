@@ -28,6 +28,9 @@ export class MapComponent implements OnInit {
       });
       this.tripsService.currentTripChange$.subscribe((currentTrip) => {
         this.currentTrip = currentTrip;
+        if (this.map) {
+          this.drawService.drawAllMarkers(this.currentTrip, this.map);
+        }
       });
       this.locationService.getPosition()
         .then(coordinates => {
@@ -35,15 +38,14 @@ export class MapComponent implements OnInit {
         })
         .then(() => {
           this.map = this.drawService.map;
-          this.getTripMarkers();
+        })
+        .then(() => {
+          this.drawService.drawAllMarkers(this.currentTrip, this.map);
         })
         .catch(error => {
           console.log(error);
         });
   }
 
-  getTripMarkers() {
-    this.drawService.drawAllMarkers(this.currentTrip, this.map);
-  }
 }
 
