@@ -13,13 +13,14 @@ export class AddplaceComponent implements OnInit {
   name: string;
   description: string;
 
-  currentTrip: any;
+  currentTrip = {};
 
   constructor( private locationService: LocationService, private tripsService: TripsService, private placesService: PlacesService ) { }
 
   ngOnInit() {
     this.tripsService.currentTripChange$.subscribe((currentTrip) => {
       this.currentTrip = currentTrip;
+      console.log(currentTrip);
     })
   }
 
@@ -27,12 +28,14 @@ export class AddplaceComponent implements OnInit {
     this.locationService.getPosition()
       .then(coordinates => {
         this.placesService.addPlace({
-          id: this.currentTrip._id,
           name: this.name,
-          coordinates,
+          coordinates: coordinates,
           description: this.description
         }, this.currentTrip)
       })
+      .then(() => {
+        console.log('added')
+      })   
   }
 
 }
