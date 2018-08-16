@@ -20,7 +20,7 @@ export class DrawService {
 
   drawMap(coordinates) {
     mapboxgl.accessToken = 'pk.eyJ1IjoiZXNib2FyZHMiLCJhIjoiY2prdHB4OTZuMDdtYjNrbGtvOGN1NGtqbyJ9.E8XQXS19fMbyyJY8PtiXaQ';
-    let map = new mapboxgl.Map({
+    const map = new mapboxgl.Map({
       container: 'map', // container id
       style: 'mapbox://styles/mapbox/streets-v10', // stylesheet location
       center: coordinates , // starting position [lng, lat]
@@ -32,8 +32,10 @@ export class DrawService {
   }
 
   drawMarker(place, map) {
+    const description = `<h3>${place.name}</h3><p>${place.description}</p>`;
     const popup = new mapboxgl.Popup({ offset: 40 })
-      .setText(place.description);
+      //.setText(place.description);
+      .setHTML(description);
 
     const marker = new mapboxgl.Marker()
       .setLngLat(place.coordinates)
@@ -53,6 +55,10 @@ export class DrawService {
     this.markers.forEach(marker => {
       marker.remove();
     })
+  }
+
+  centerMap(coordinates) {
+    this.map.center = coordinates;
   }
 
 }

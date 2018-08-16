@@ -29,6 +29,7 @@ export class MapComponent implements OnInit {
       this.tripsService.currentTripChange$.subscribe((currentTrip) => {
         this.currentTrip = currentTrip;
         if (this.map) {
+          this.drawService.drawMap(this.currentTrip.places[this.currentTrip.places.length-1].coordinates);
           this.drawService.drawAllMarkers(this.currentTrip, this.map);
         }
       });
