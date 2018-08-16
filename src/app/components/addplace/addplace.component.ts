@@ -14,17 +14,12 @@ export class AddplaceComponent implements OnInit {
   description: string;
 
   currentTrip = {};
-  places = [];
 
   constructor( private locationService: LocationService, private tripsService: TripsService, private placesService: PlacesService ) { }
 
   ngOnInit() {
     this.tripsService.currentTripChange$.subscribe((currentTrip) => {
       this.currentTrip = currentTrip;
-    })
-    this.placesService.placesChange$.subscribe((places) => {
-      this.places = places;
-      this.tripsService.changeTrip(this.currentTrip);
     })
     
   }

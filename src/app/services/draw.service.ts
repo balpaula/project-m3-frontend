@@ -44,9 +44,10 @@ export class DrawService {
     this.markers.push(marker);
   }
 
-  drawAllMarkers(trip, map, options?) {
+  drawAllMarkers(places, map, options?) {
     this.eraseAllMarkers();
-    trip.places.forEach(place => {
+    places.forEach(place => {
+      console.log(place);
       this.drawMarker(place, map);
     });
   }

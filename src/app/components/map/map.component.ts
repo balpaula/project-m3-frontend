@@ -4,6 +4,7 @@ import { SelectMultipleControlValueAccessor } from '../../../../node_modules/@an
 import { LocationService } from '../../services/location.service';
 import { DrawService } from '../../services/draw.service';
 import { TripsService } from '../../services/trips.service';
+import { PlacesService } from '../../services/places.service';
 
 
 @Component({
@@ -14,23 +15,24 @@ import { TripsService } from '../../services/trips.service';
 export class MapComponent implements OnInit {
 
   map: any;
-  markers: any;
   currentTrip: any;
+  places = [];
 
-  constructor( private locationService: LocationService, private drawService: DrawService, private tripsService: TripsService ) { }
+  constructor( private locationService: LocationService, private drawService: DrawService, private tripsService: TripsService, private placesService: PlacesService ) { }
 
   ngOnInit() {
       this.drawService.mapChange$.subscribe((map) => {
         this.map = map;
       });
-      this.drawService.markersChange$.subscribe((markers) => {
-        this.markers = markers;
+      this.placesService.placesChange$.subscribe((places) => {
+        this.places = places;
+        this.drawService.drawAllMarkers(places, this.map);
       });
       this.tripsService.currentTripChange$.subscribe((currentTrip) => {
         this.currentTrip = currentTrip;
         if (this.map) {
           this.drawService.drawMap(this.currentTrip.places[this.currentTrip.places.length-1].coordinates);
-          this.drawService.drawAllMarkers(this.currentTrip, this.map);
+          this.drawService.drawAllMarkers(this.currentTrip.places, this.map);
         }
       });
       this.locationService.getPosition()
@@ -41,7 +43,7 @@ export class MapComponent implements OnInit {
           this.map = this.drawService.map;
         })
         .then(() => {
-          this.drawService.drawAllMarkers(this.currentTrip, this.map);
+          this.drawService.drawAllMarkers(this.currentTrip.places, this.map);
         })
         .catch(error => {
           console.log(error);
