@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { TripsService } from '../../services/trips.service';
 import { Router } from '@angular/router';
 
@@ -11,8 +11,8 @@ export class SidebarComponent implements OnInit {
 
   trips = [];
   currentTrip = {};
+  @Input() isTripsPage;
 
-  inMyTrips: boolean;
 
   constructor( private tripsService: TripsService, private router: Router ) { }
 
@@ -31,9 +31,9 @@ export class SidebarComponent implements OnInit {
           this.tripsService.setDefaultTrip();
         }
       })
-    if (this.router.url === '/trips') {
-      this.inMyTrips = true;
-    }
+    // if (this.router.url === '/trips') {
+    //   this.inMyTrips = true;
+    // }
   }
 
   handleChangeOfTrip(trip) {

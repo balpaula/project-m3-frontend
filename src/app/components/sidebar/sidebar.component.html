@@ -1,6 +1,6 @@
 <div [routerLink]="['/trips']">
   <h3>My trips</h3>
-  <div *ngIf="inMyTrips">
+  <div *ngIf="isTripsPage">
     <div *ngFor="let trip of trips" (click)="handleChangeOfTrip(trip)">
       <h4>{{trip.name}}</h4>
     </div>
