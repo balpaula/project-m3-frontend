@@ -36,7 +36,9 @@ export class MapComponent implements OnInit {
     //Subscribe to trip changes for when changing the trip
       this.tripsService.currentTripChange$.subscribe((currentTrip) => {
         this.currentTrip = currentTrip;
-        this.handleCurrentTripChange();
+        if (this.map) {
+          this.handleCurrentTripChange();
+        }
       });
 
     //Initialization of the map
@@ -44,7 +46,6 @@ export class MapComponent implements OnInit {
   }
 
   initMap() {
-    console.log(this.currentTrip)
     this.locationService.getPosition()
         .then(coordinates => {
           //draw map according to current position
@@ -55,9 +56,18 @@ export class MapComponent implements OnInit {
           this.map = this.drawService.map;
         })
         .then(() => {
+          this.currentTrip = this.tripsService.currentTrip;
+        })
+        .then(() => {
+          if (this.tripsService.exploring) {
+            this.handleCurrentTripChange();
+            this.tripsService.exploring = '';
+          }
+        })
+        .then(() => {
           //if there are already places in that trip, draw the markers
-          if (this.currentTrip.places.length) {
-            this.drawService.drawAllMarkers(this.currentTrip.places, this.map);
+          if (this.currentTrip.places) {
+            this.drawAllMarkers();
           }
         })
         .catch(error => {
@@ -68,16 +78,18 @@ export class MapComponent implements OnInit {
   handleCurrentTripChange() {
     //when there is a change of current trip coming from the navbar
     //only takes places if the map has been drawn
-    if (this.map) {
       if (this.currentTrip.places.length){
         //if there are already places added to that trip center the map to last one and draw markers
         this.drawService.drawMap(this.currentTrip.places[this.currentTrip.places.length-1].coordinates);
+        this.drawAllMarkers();
       } else {
         //if the trip is empty (new trip, for example), init map (will set to current position)
         this.initMap();
       }
-      this.drawService.drawAllMarkers(this.currentTrip.places, this.map);
-    }
+  }
+
+  drawAllMarkers() {
+    this.drawService.drawAllMarkers(this.currentTrip.places, this.map);
   }
 
 }

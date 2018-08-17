@@ -1,10 +1,12 @@
-<div>
+<div [routerLink]="['/trips']">
   <h3>My trips</h3>
-  <div *ngFor="let trip of trips" (click)="handleChangeOfTrip(trip)">
-    <h4>{{trip.name}}</h4>
+  <div *ngIf="inMyTrips">
+    <div *ngFor="let trip of trips" (click)="handleChangeOfTrip(trip)">
+      <h4>{{trip.name}}</h4>
+    </div>
   </div>
 </div>
-<div>
+<div [routerLink]="['/explore']">
   <h3>Explore</h3>
 </div>
 <div>

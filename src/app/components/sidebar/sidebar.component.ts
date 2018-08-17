@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TripsService } from '../../services/trips.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -11,7 +12,9 @@ export class SidebarComponent implements OnInit {
   trips = [];
   currentTrip = {};
 
-  constructor( private tripsService: TripsService) { }
+  inMyTrips: boolean;
+
+  constructor( private tripsService: TripsService, private router: Router ) { }
 
   ngOnInit() {
     this.tripsService.tripsChange$.subscribe((trips) => {
@@ -28,6 +31,9 @@ export class SidebarComponent implements OnInit {
           this.tripsService.setDefaultTrip();
         }
       })
+    if (this.router.url === '/trips') {
+      this.inMyTrips = true;
+    }
   }
 
   handleChangeOfTrip(trip) {
