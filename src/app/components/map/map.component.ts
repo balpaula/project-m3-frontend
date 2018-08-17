@@ -44,6 +44,7 @@ export class MapComponent implements OnInit {
   }
 
   initMap() {
+    console.log(this.currentTrip)
     this.locationService.getPosition()
         .then(coordinates => {
           //draw map according to current position
@@ -55,7 +56,7 @@ export class MapComponent implements OnInit {
         })
         .then(() => {
           //if there are already places in that trip, draw the markers
-          if (this.places.length) {
+          if (this.currentTrip.places.length) {
             this.drawService.drawAllMarkers(this.currentTrip.places, this.map);
           }
         })
@@ -71,11 +72,11 @@ export class MapComponent implements OnInit {
       if (this.currentTrip.places.length){
         //if there are already places added to that trip center the map to last one and draw markers
         this.drawService.drawMap(this.currentTrip.places[this.currentTrip.places.length-1].coordinates);
-        this.drawService.drawAllMarkers(this.currentTrip.places, this.map);
       } else {
         //if the trip is empty (new trip, for example), init map (will set to current position)
         this.initMap();
       }
+      this.drawService.drawAllMarkers(this.currentTrip.places, this.map);
     }
   }
 

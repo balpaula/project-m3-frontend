@@ -13,6 +13,7 @@ export class TripsService {
   private tripsChange: Subject<any> = new Subject();
   public currentTrip: any;
   private currentTripChange: Subject<any> = new Subject();
+  public exploring: any;
 
 
   tripsChange$: Observable<any> = this.tripsChange.asObservable();
@@ -81,6 +82,11 @@ export class TripsService {
     if (this.trips.length) {
       this.getOneTrip(this.trips[this.trips.length - 1]._id);
     }
+  }
+
+  public setExploreTrip() {
+    this.getOneTrip(this.exploring);
+    console.log('exploring', this.exploring)
   }
 
   public changeTrip(trip) {

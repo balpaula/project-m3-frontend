@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TripsService } from '../../services/trips.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-explore',
@@ -10,7 +11,7 @@ export class ExploreComponent implements OnInit {
 
   tripsExplore: Array<any>;
 
-  constructor( private tripsService: TripsService ) { }
+  constructor( private tripsService: TripsService, private router: Router ) { }
 
   ngOnInit() {
     this.tripsService.getExplore()
@@ -22,8 +23,9 @@ export class ExploreComponent implements OnInit {
     
   }
 
-  handleClick() {
-    
+  handleClick(id) {
+    this.tripsService.exploring = id;
+    this.router.navigate(['/trips']);
   }
 
 }

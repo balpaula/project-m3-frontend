@@ -22,7 +22,11 @@ export class SidebarComponent implements OnInit {
     });
     this.tripsService.getTrips()
       .then(() => {
-        this.tripsService.setDefaultTrip();
+        if (this.tripsService.exploring) {
+          this.tripsService.setExploreTrip();
+        } else {
+          this.tripsService.setDefaultTrip();
+        }
       })
   }
 
