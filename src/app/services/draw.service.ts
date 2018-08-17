@@ -24,7 +24,7 @@ export class DrawService {
       container: 'map', // container id
       style: 'mapbox://styles/mapbox/streets-v10', // stylesheet location
       center: coordinates , // starting position [lng, lat]
-      zoom: 13 // starting zoom
+      zoom: 12 // starting zoom
     });
     this.map = map;
     this.mapChange.next(map);
@@ -42,6 +42,16 @@ export class DrawService {
       .setPopup(popup)
       .addTo(map);
     this.markers.push(marker);
+  }
+
+  drawMarkerCurrentLocation(coordinates, map) {
+    const popup = new mapboxgl.Popup({ offset: 40 })
+      //.setText(place.description);
+      .setText("You're here!");
+    const marker = new mapboxgl.Marker({color: '#E53935'})
+      .setLngLat(coordinates)
+      .setPopup(popup)
+      .addTo(map);
   }
 
   drawAllMarkers(places, map, options?) {

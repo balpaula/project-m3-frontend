@@ -17,6 +17,7 @@ export class MapComponent implements OnInit {
   map: any;
   currentTrip: any;
   places = [];
+  coordinates: any;
 
   constructor( private locationService: LocationService, private drawService: DrawService, private tripsService: TripsService, private placesService: PlacesService ) { }
 
@@ -49,6 +50,7 @@ export class MapComponent implements OnInit {
     this.locationService.getPosition()
         .then(coordinates => {
           //draw map according to current position
+          this.coordinates = coordinates;
           this.drawService.drawMap(coordinates);
         })
         .then(() => {
@@ -66,6 +68,7 @@ export class MapComponent implements OnInit {
         })
         .then(() => {
           //if there are already places in that trip, draw the markers
+          this.drawService.drawMarkerCurrentLocation(this.coordinates,this.map);
           if (this.currentTrip.places) {
             this.drawAllMarkers();
           }
@@ -81,6 +84,7 @@ export class MapComponent implements OnInit {
       if (this.currentTrip.places.length){
         //if there are already places added to that trip center the map to last one and draw markers
         this.drawService.drawMap(this.currentTrip.places[this.currentTrip.places.length-1].coordinates);
+        this.drawService.drawMarkerCurrentLocation(this.coordinates,this.map);
         this.drawAllMarkers();
       } else {
         //if the trip is empty (new trip, for example), init map (will set to current position)

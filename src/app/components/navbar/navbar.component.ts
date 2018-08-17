@@ -9,20 +9,31 @@ export class NavbarComponent implements OnInit {
 
   @Input() isUser: any;
   @Output() whenLogout = new EventEmitter();
-  @Output() showLogIn = new EventEmitter();
-  @Output() showSignUp = new EventEmitter();
+
+  showLogin = false;
+  showSignup = false;
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  handleLogIn() {
-    this.showLogIn.emit();
+  handleSignup() {
+    if (this.showSignup) {
+      this.showSignup = false;
+    } else {
+      this.showSignup = true;
+      this.showLogin = false;
+    }
   }
 
-  handleSignUp() {
-    this.showSignUp.emit();
+  handleLogin() {
+    if (this.showLogin) {
+      this.showLogin = false;
+    } else {
+      this.showLogin = true;
+      this.showSignup = false;
+    }
   }
 
   handleLogout() {
