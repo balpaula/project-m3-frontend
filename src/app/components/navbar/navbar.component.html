@@ -3,8 +3,8 @@
 </p>
 
 <div *ngIf="!isUser">
-    <app-signup></app-signup>  
-    <app-login></app-login>
+    <a (click)="handleLogIn()">Log in</a>
+    <a (click)="handleSignUp()">Sign up</a>
 </div>
 
 <div *ngIf="isUser">

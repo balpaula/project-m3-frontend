@@ -69,6 +69,14 @@ export class TripsService {
       });
   }
 
+  getExplore(): Promise<any> {
+    const options = {
+      withCredentials: true
+    };
+    return this.httpClient.get(`${this.API_URL}/explore`, options)
+      .toPromise()
+  }
+
   public setDefaultTrip() {
     if (this.trips.length) {
       this.getOneTrip(this.trips[this.trips.length - 1]._id);

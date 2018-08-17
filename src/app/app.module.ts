@@ -23,10 +23,13 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { MapComponent } from './components/map/map.component';
 import { NewtripComponent } from './components/newtrip/newtrip.component';
 import { AddplaceComponent } from './components/addplace/addplace.component';
+import { ExplorePageComponent } from './pages/explore-page/explore-page.component';
+import { ExploreComponent } from './components/explore/explore.component';
 
 const routes: Routes = [
   { path: '',  component: HomePageComponent, canActivate: [ InitAuthGuard ]},
   { path: 'trips',  component: TripsPageComponent, canActivate: [ RequireUserGuard ] },
+  { path: 'explore',  component: ExplorePageComponent, canActivate: [ RequireUserGuard ] },
 ];
 
 @NgModule({
@@ -41,7 +44,9 @@ const routes: Routes = [
     SidebarComponent,
     MapComponent,
     NewtripComponent,
-    AddplaceComponent
+    AddplaceComponent,
+    ExplorePageComponent,
+    ExploreComponent
   ],
   imports: [
     BrowserModule,
