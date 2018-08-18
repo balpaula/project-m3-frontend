@@ -1,0 +1,27 @@
+.scrollable-trips-container {
+  background-color: #fff;
+  min-width: 100%;
+  min-height: 200px;
+  display: flex;
+  overflow-x: auto;
+}
+
+.card {
+  background-color: #e74c3c;
+  min-width: 200px;
+  margin: 5px;
+}
+
+.scrollable-favorites-container {
+  background-color: #fff;
+  min-width: 100%;
+  min-height: 200px;
+  display: flex;
+  overflow-x: auto;
+}
+
+.card-2  {
+  background-color: #e74c3c;
+  min-width: 200px;
+  margin: 5px;
+}
