@@ -5,6 +5,7 @@ import { LocationService } from '../../services/location.service';
 import { DrawService } from '../../services/draw.service';
 import { TripsService } from '../../services/trips.service';
 import { PlacesService } from '../../services/places.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -24,7 +25,12 @@ export class MapComponent implements OnInit {
 
   showUsername: boolean;
 
-  constructor( private locationService: LocationService, private drawService: DrawService, private tripsService: TripsService, private placesService: PlacesService ) { }
+  constructor( 
+    private locationService: LocationService, 
+    private drawService: DrawService, 
+    private tripsService: TripsService, 
+    private placesService: PlacesService, 
+    private router: Router ) { }
 
   ngOnInit() {
 
@@ -135,6 +141,10 @@ export class MapComponent implements OnInit {
     } else {
       this.showUsername = false;
     }
+  }
+
+  handleGoToProfile(username) {
+    this.router.navigate(['/profile', username]);
   }
 
 }

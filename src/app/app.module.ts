@@ -32,7 +32,7 @@ const routes: Routes = [
   { path: '',  component: HomePageComponent, canActivate: [ InitAuthGuard ]},
   { path: 'trips',  component: TripsPageComponent, canActivate: [ RequireUserGuard ] },
   { path: 'explore',  component: ExplorePageComponent, canActivate: [ RequireUserGuard ] },
-  { path: 'profile',  component: ProfilePageComponent, canActivate: [ RequireUserGuard ] }
+  { path: 'profile/:username',  component: ProfilePageComponent, canActivate: [ RequireUserGuard ]}
 ];
 
 @NgModule({

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TripsService } from '../../services/trips.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { ProfileService } from '../../services/profile.service';
 
 @Component({
   selector: 'app-profile',
@@ -12,7 +13,9 @@ export class ProfileComponent implements OnInit {
   trips: any;
   favorites: any;
 
-  constructor( private tripsService: TripsService, private router: Router ) { }
+  currentProfile: any;
+
+  constructor( private tripsService: TripsService, private router: Router, private route: ActivatedRoute, private profileService: ProfileService ) { }
 
   ngOnInit() {
     this.trips = this.tripsService.trips;
@@ -24,6 +27,17 @@ export class ProfileComponent implements OnInit {
     
     this.tripsService.favoritesChange$.subscribe((favorites) => {
       this.favorites = favorites;
+    });
+
+    this.route.params.subscribe((value) => {
+      console.log(value.username)
+      this.profileService.getOne(value.username)
+        .then(profile => {
+          this.currentProfile = profile;
+        })
+        .catch(error => {
+          console.error(error);
+        });
     });
   }
 
