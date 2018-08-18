@@ -1,0 +1,10 @@
+.login-global-div {
+    display: flex;
+    flex-direction: column;
+}
+
+.label-input-column {
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
+}
