@@ -9,9 +9,11 @@
   <h3>Travelist</h3>
   <a (click)="handleLogout()">Logout</a>
 </div>
+<div *ngIf="!isUser">
 <div *ngIf="showSignup">
   <app-signup></app-signup>
 </div>
 <div *ngIf="showLogin">
   <app-login></app-login>
+</div>
 </div>

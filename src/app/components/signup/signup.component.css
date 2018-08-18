@@ -8,3 +8,8 @@
     flex-direction: column;
     padding-top: 10px;
 }
+
+.signup-align {
+    display: flex;
+    justify-content: flex-end;
+}

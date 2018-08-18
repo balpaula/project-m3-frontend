@@ -1,35 +1,33 @@
-<form (ngSubmit)="submitForm(form)" #form="ngForm">
-  <div class="field signup-global-div" [ngClass]="{'has-error': feedbackEnabled && usernameField.errors}">
-    <div class="label-input-column">
-      <div>
-        <label>username</label>
+<div class="signup-align">
+  <form (ngSubmit)="submitForm(form)" #form="ngForm">
+    <div class="field signup-global-div" [ngClass]="{'has-error': feedbackEnabled && usernameField.errors}">
+      <div class="label-input-column">
+        <div>
+          <label>username</label>
+        </div>
+        <div>
+          <input type="text" name="username" [(ngModel)]="username" #usernameField="ngModel" required />
+        </div>
       </div>
-      <div>
-        <input type="text" name="username" [(ngModel)]="username" #usernameField="ngModel" required />
+      <div class="label-input-column">
+        <div>
+          <label>email</label>
+        </div>
+        <div>
+          <input type="email" name="email" [(ngModel)]="email" #passwordField="ngModel" required />
+        </div>
+      </div>
+      <div class="label-input-column">
+        <div>
+          <label>password</label>
+        </div>
+        <div>
+          <input type="password" name="password" [(ngModel)]="password" #passwordField="ngModel" required />
+        </div>
       </div>
     </div>
-
-    <div class="label-input-column">
-      <div>
-        <label>email</label>
-      </div>
-      <div>
-        <input type="email" name="email" [(ngModel)]="email" #passwordField="ngModel" required />
-      </div>
+    <div class="field submit">
+      <button type="submit">Sign up</button>
     </div>
-
-    <div class="label-input-column">
-      <div>
-        <label>password</label>
-      </div>
-      <div>
-        <input type="password" name="password" [(ngModel)]="password" #passwordField="ngModel" required />
-      </div>
-    </div>
-
-  </div>
-
-  <div class="field submit">
-    <button type="submit">Sign up</button>
-  </div>
-</form>
+  </form>
+</div>

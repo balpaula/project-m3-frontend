@@ -8,3 +8,8 @@
     flex-direction: column;
     padding-top: 10px;
 }
+
+.login-align {
+    display: flex;
+    justify-content: flex-end;
+}

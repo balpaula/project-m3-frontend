@@ -26,5 +26,10 @@
 }
 
 .navbar-registered {
-
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    background-color: #3b3b3b;
+    color: white;
 }
