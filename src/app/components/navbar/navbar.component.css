@@ -33,3 +33,11 @@
     background-color: #3b3b3b;
     color: white;
 }
+
+.navbar-registered h3 {
+    padding-left: 15px;
+}
+
+.navbar-registered a {
+    padding-right: 20px;
+}

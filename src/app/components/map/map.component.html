@@ -1,6 +1,11 @@
-<button *ngIf="!isFavorite" (click)="handleAddFavorite()">Add to favorites</button>
-<button *ngIf="isFavorite" (click)="handleDeleteFavorite()">Delete from favorites</button>
-<div *ngIf="showUsername">
-    <h5>@{{currentTrip.owner.username}}</h5>
+<div class="container">
+    <div id='map' style='width: 100%; height: 470px;' class="map-positioning">
+        <div class="fav-button">
+            <button *ngIf="!isFavorite" (click)="handleAddFavorite()">Add to favorites</button>
+            <button *ngIf="isFavorite" (click)="handleDeleteFavorite()">Delete from favorites</button>
+        </div>
+        <div *ngIf="showUsername" class="username">
+            <h4>@{{currentTrip.owner.username}}</h4>
+        </div>
+    </div>
 </div>
-<div id='map' style='width: 100%; height: 470px;'></div>

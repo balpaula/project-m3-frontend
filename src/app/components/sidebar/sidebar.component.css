@@ -1,0 +1,27 @@
+.sidebar-container {
+    display: flex;
+    flex-direction: column;
+    background-color: #3b3b3b;
+}
+
+.scrollable-div {
+    background-color: lightblue;
+    height: 150px;
+    overflow: scroll;
+}
+
+.trip-name {
+    padding-left: 20%;
+}
+
+.trips-link {
+    padding-left: 10%;
+}
+
+.explore-link {
+    padding-left: 10%;
+}
+
+.profile-link {
+    padding-left: 10%;
+}
