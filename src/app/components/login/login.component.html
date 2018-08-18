@@ -1,11 +1,24 @@
 <form (ngSubmit)="submitForm(form)" #form="ngForm">
 
-  <div class="field" [ngClass]="{'has-error': feedbackEnabled && usernameField.errors}">
-    <label>username</label>
-    <input type="text" name="username" [(ngModel)]="username" #usernameField="ngModel" required />
+  <div class="field login-global-div" [ngClass]="{'has-error': feedbackEnabled && usernameField.errors}">
 
-    <label>password</label>
-    <input type="password" name="password" [(ngModel)]="password" #passwordField="ngModel" required />
+    <div class="label-input-column">
+      <div>
+        <label>username</label>
+      </div>
+      <div>
+        <input type="text" name="username" [(ngModel)]="username" #usernameField="ngModel" required />
+      </div>
+    </div>
+
+    <div class="label-input-column">
+      <div>
+        <label>password</label>
+      </div>
+      <div>
+        <input type="password" name="password" [(ngModel)]="password" #passwordField="ngModel" required />
+      </div>
+    </div>
 
   </div>
 
