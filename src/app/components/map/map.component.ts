@@ -52,9 +52,6 @@ export class MapComponent implements OnInit {
 
     //Initialization of the map
       this.initMap();
-    
-    //Set favorites
-      // this.tripsService.getFavorites();
       
   }
 
@@ -75,7 +72,7 @@ export class MapComponent implements OnInit {
         .then(() => {
           if (this.tripsService.exploring) {
             this.handleCurrentTripChange();
-            this.tripsService.exploring = '';
+            this.tripsService.exploring = undefined;
           }
         })
         .then(() => {
@@ -96,9 +93,9 @@ export class MapComponent implements OnInit {
   handleCurrentTripChange() {
       if (this.currentTrip.places.length){
         //if there are already places added to that trip center the map to last one and draw markers
-        this.drawService.drawMap(this.currentTrip.places[this.currentTrip.places.length-1].coordinates);
+        this.drawService.drawMap(this.currentTrip.places[this.currentTrip.places.length-1].coordinates)
         this.drawService.drawMarkerCurrentLocation(this.coordinates,this.map);
-        this.setAllMarkers();
+        this.setAllMarkers(); 
       } else {
         //if the trip is empty (new trip, for example), init map (will set to current position)
         this.initMap();
@@ -110,8 +107,10 @@ export class MapComponent implements OnInit {
   }
 
   setIsFavorite() {
-    console.log('set is favorite');
-    if (this.favorites.includes(this.currentTrip._id)) {
+    let favoritesId = this.favorites.map(element => {
+      return element._id;
+    });
+    if (favoritesId.includes(this.currentTrip._id)) {
       this.isFavorite = true;
     } else {
       this.isFavorite = false;

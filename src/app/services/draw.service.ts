@@ -21,10 +21,10 @@ export class DrawService {
   drawMap(coordinates) {
     mapboxgl.accessToken = 'pk.eyJ1IjoiZXNib2FyZHMiLCJhIjoiY2prdHB4OTZuMDdtYjNrbGtvOGN1NGtqbyJ9.E8XQXS19fMbyyJY8PtiXaQ';
     const map = new mapboxgl.Map({
-      container: 'map', // container id
-      style: 'mapbox://styles/mapbox/streets-v10', // stylesheet location
-      center: coordinates , // starting position [lng, lat]
-      zoom: 12 // starting zoom
+      container: 'map',
+      style: 'mapbox://styles/mapbox/streets-v10',
+      center: coordinates,
+      zoom: 12
     });
     this.map = map;
     this.mapChange.next(map);

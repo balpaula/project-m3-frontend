@@ -9,7 +9,7 @@ import { environment } from '../../environments/environment';
 export class TripsService {
 
   private API_URL = environment.API_URL;
-  private trips = [];
+  public trips = [];
   private tripsChange: Subject<any> = new Subject();
   public currentTrip: any;
   private currentTripChange: Subject<any> = new Subject();
@@ -91,7 +91,6 @@ export class TripsService {
     const options = {
       withCredentials: true
     };
-    console.log('favorites from service')
     return this.httpClient.get(`${this.API_URL}/trips/favorites`, options)
       .toPromise()
       .then((favorites: any) => {
