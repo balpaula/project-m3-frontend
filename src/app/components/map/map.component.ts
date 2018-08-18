@@ -22,6 +22,8 @@ export class MapComponent implements OnInit {
   favorites = [];
   isFavorite: boolean;
 
+  showUsername: boolean;
+
   constructor( private locationService: LocationService, private drawService: DrawService, private tripsService: TripsService, private placesService: PlacesService ) { }
 
   ngOnInit() {
@@ -43,6 +45,7 @@ export class MapComponent implements OnInit {
         if (this.map) {
           this.handleCurrentTripChange();
         }
+        this.handleShowUsername();
       });
 
       this.tripsService.favoritesChange$.subscribe((favorites) => {
@@ -71,6 +74,7 @@ export class MapComponent implements OnInit {
         })
         .then(() => {
           if (this.tripsService.exploring) {
+            this.handleShowUsername();
             this.handleCurrentTripChange();
             this.tripsService.exploring = undefined;
           }
@@ -123,6 +127,14 @@ export class MapComponent implements OnInit {
 
   handleDeleteFavorite() {
     this.tripsService.deleteFavorite(this.currentTrip._id);
+  }
+
+  handleShowUsername() {
+    if (this.tripsService.exploring) {
+      this.showUsername = true;
+    } else {
+      this.showUsername = false;
+    }
   }
 
 }

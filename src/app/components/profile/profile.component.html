@@ -1,0 +1,9 @@
+<h3>Description</h3>
+<h3>My trips</h3>
+<div *ngFor="let trip of trips" (click)="handleChangeOfTrip(trip)">
+  <h4>{{trip.name}}</h4>
+</div>
+<h3>My favorites</h3>
+<div *ngFor="let favorite of favorites" (click)="handleExploreFavorite(favorite._id)">
+    <h4>{{favorite.name}}</h4>
+  </div>

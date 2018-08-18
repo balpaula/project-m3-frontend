@@ -25,11 +25,14 @@ import { NewtripComponent } from './components/newtrip/newtrip.component';
 import { AddplaceComponent } from './components/addplace/addplace.component';
 import { ExplorePageComponent } from './pages/explore-page/explore-page.component';
 import { ExploreComponent } from './components/explore/explore.component';
+import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
   { path: '',  component: HomePageComponent, canActivate: [ InitAuthGuard ]},
   { path: 'trips',  component: TripsPageComponent, canActivate: [ RequireUserGuard ] },
   { path: 'explore',  component: ExplorePageComponent, canActivate: [ RequireUserGuard ] },
+  { path: 'profile',  component: ProfilePageComponent, canActivate: [ RequireUserGuard ] }
 ];
 
 @NgModule({
@@ -46,7 +49,9 @@ const routes: Routes = [
     NewtripComponent,
     AddplaceComponent,
     ExplorePageComponent,
-    ExploreComponent
+    ExploreComponent,
+    ProfilePageComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
