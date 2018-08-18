@@ -15,7 +15,7 @@ export class LocationService {
         if (position) {
           resolve([position.coords.longitude, position.coords.latitude]);
         } else {
-          reject(new Error('no hemos podido obtener la localizacion'));
+          reject(new Error('Could not obtain location'));
         }
       });
     });

@@ -19,6 +19,9 @@ export class MapComponent implements OnInit {
   places = [];
   coordinates: any;
 
+  favorites = [];
+  isFavorite: boolean;
+
   constructor( private locationService: LocationService, private drawService: DrawService, private tripsService: TripsService, private placesService: PlacesService ) { }
 
   ngOnInit() {
@@ -42,8 +45,17 @@ export class MapComponent implements OnInit {
         }
       });
 
+      this.tripsService.favoritesChange$.subscribe((favorites) => {
+        this.favorites = favorites;
+        this.setIsFavorite();
+      });
+
     //Initialization of the map
       this.initMap();
+    
+    //Set favorites
+      // this.tripsService.getFavorites();
+      
   }
 
   initMap() {
@@ -67,10 +79,13 @@ export class MapComponent implements OnInit {
           }
         })
         .then(() => {
+          this.tripsService.getFavorites();
+        })
+        .then(() => {
           //if there are already places in that trip, draw the markers
           this.drawService.drawMarkerCurrentLocation(this.coordinates,this.map);
           if (this.currentTrip.places) {
-            this.drawAllMarkers();
+            this.setAllMarkers();
           }
         })
         .catch(error => {
@@ -79,21 +94,36 @@ export class MapComponent implements OnInit {
   }
 
   handleCurrentTripChange() {
-    //when there is a change of current trip coming from the navbar
-    //only takes places if the map has been drawn
       if (this.currentTrip.places.length){
         //if there are already places added to that trip center the map to last one and draw markers
         this.drawService.drawMap(this.currentTrip.places[this.currentTrip.places.length-1].coordinates);
         this.drawService.drawMarkerCurrentLocation(this.coordinates,this.map);
-        this.drawAllMarkers();
+        this.setAllMarkers();
       } else {
         //if the trip is empty (new trip, for example), init map (will set to current position)
         this.initMap();
-      }
+      }  
   }
 
-  drawAllMarkers() {
+  setAllMarkers() {
     this.drawService.drawAllMarkers(this.currentTrip.places, this.map);
+  }
+
+  setIsFavorite() {
+    console.log('set is favorite');
+    if (this.favorites.includes(this.currentTrip._id)) {
+      this.isFavorite = true;
+    } else {
+      this.isFavorite = false;
+    }
+  }
+
+  handleAddFavorite() {
+    this.tripsService.addFavorite(this.currentTrip._id);
+  }
+
+  handleDeleteFavorite() {
+    this.tripsService.deleteFavorite(this.currentTrip._id);
   }
 
 }

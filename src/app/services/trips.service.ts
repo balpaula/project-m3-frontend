@@ -14,10 +14,13 @@ export class TripsService {
   public currentTrip: any;
   private currentTripChange: Subject<any> = new Subject();
   public exploring: any;
+  public favorites = [];
+  private favoritesChange: Subject<any> = new Subject();
 
 
   tripsChange$: Observable<any> = this.tripsChange.asObservable();
   currentTripChange$: Observable<any> = this.currentTripChange.asObservable();
+  favoritesChange$: Observable<any> = this.favoritesChange.asObservable();
 
   constructor( private httpClient: HttpClient ) { }
 
@@ -31,6 +34,12 @@ export class TripsService {
     this.currentTrip = trip;
     this.currentTripChange.next(trip);
     return trip;
+  }
+
+  private setFavorites(favorites: Array<any>) {
+    this.favorites = favorites;
+    this.favoritesChange.next(favorites);
+    return favorites;
   }
 
   getTrips(): Promise<any> {
@@ -76,6 +85,41 @@ export class TripsService {
     };
     return this.httpClient.get(`${this.API_URL}/explore`, options)
       .toPromise()
+  }
+
+  getFavorites(): Promise<any> {
+    const options = {
+      withCredentials: true
+    };
+    console.log('favorites from service')
+    return this.httpClient.get(`${this.API_URL}/trips/favorites`, options)
+      .toPromise()
+      .then((favorites: any) => {
+        this.setFavorites(favorites);
+      });
+  }
+
+  addFavorite(tripId): Promise<any> {
+    console.log('add to favorites');
+    const options = {
+      withCredentials: true
+    };
+    return this.httpClient.post(`${this.API_URL}/trips/${tripId}/favorite`, tripId, options)
+      .toPromise()
+      .then(favorites => {
+        this.getFavorites();
+      });
+  }
+
+  deleteFavorite(tripId): Promise<any> {
+    const options = {
+      withCredentials: true
+    };
+    return this.httpClient.delete(`${this.API_URL}/trips/${tripId}/favorite`, options)
+      .toPromise()
+      .then(favorites => {
+        this.getFavorites();
+      });
   }
 
   public setDefaultTrip() {
