@@ -1,15 +1,15 @@
 .fav-button {
     position: absolute;
     z-index:2;
-    top: 50px;
-    left:1000px;
+    top: 5%;
+    left:85%;
 }
 
 .username {
     position: absolute;
     z-index:2;
-    top: 50px;
-    left: 50px;
+    top: 5%;
+    left: 5%;
 }
 
 .map-positioning {
