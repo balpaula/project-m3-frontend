@@ -1,21 +1,18 @@
+<section class="main-container">
 <h4>Create new trip</h4>
-
 <div class="overlay">
   <div class="new-trip-form">
-      <form (ngSubmit)="submitForm(form)" #form="ngForm">
-
-          <div class="field">
+      <form (ngSubmit)="submitForm(form)" #form="ngForm" class="form">
+          <div class="field" class="inner-form-div">
             <label>Name</label>
             <input type="text" name="name" [(ngModel)]="name" #nameField="ngModel" required/>
-        
             <label>Description</label>
-            <input type="text" name="description" [(ngModel)]="description" #descriptionField="ngModel"/>
-        
+            <input type="text" name="description" [(ngModel)]="description" #descriptionField="ngModel"/>    
           </div>
-        
           <div class="field submit">
             <button type="submit">Create</button>
           </div>
         </form>
   </div>
 </div>
+</section>

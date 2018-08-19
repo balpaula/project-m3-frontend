@@ -1,0 +1,31 @@
+.inner-form-div {
+    display: flex;
+    flex-direction: column;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    width: 10%;
+    position: absolute;
+    top: 40%;
+    left: 55%;
+    z-index:2;
+    background-color: white;
+    border-radius: 10px solid #3b3b3b;
+}
+
+.add-button {
+    width: 10%;
+    position: absolute;
+    top: 88%;
+    left: 57%;
+    z-index:2;
+}
+
+

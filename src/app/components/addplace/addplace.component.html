@@ -1,21 +1,23 @@
+<section class="main-container">
+<div class="title">
 <h4>Add new place</h4>
-
+</div>
 <div class="overlay">
   <div class="new-trip-form">
-      <form (ngSubmit)="submitForm(form)" #form="ngForm">
-
-          <div class="field">
+      <form (ngSubmit)="submitForm(form)" #form="ngForm" class="form">
+          <div class="field" class="inner-form-div">
             <label>Name</label>
             <input type="text" name="name" [(ngModel)]="name" #nameField="ngModel" required/>
-        
             <label>Description</label>
             <input type="text" name="description" [(ngModel)]="description" #descriptionField="ngModel"/>
-        
           </div>
-        
           <div class="field submit">
             <button type="submit">Add</button>
           </div>
         </form>
   </div>
+</div>
+</section>
+<div class="add-button">
+  <button>Add place</button>
 </div>
