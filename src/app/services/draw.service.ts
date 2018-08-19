@@ -8,9 +8,9 @@ import { Subject, Observable } from 'rxjs';
 })
 export class DrawService {
 
-  public map: any;
+  private map: any;
   private mapChange: Subject<any> = new Subject();
-  public markers = [];
+  private markers = [];
   private markersChange: Subject<any> = new Subject();
 
   mapChange$: Observable<any> = this.mapChange.asObservable();
@@ -70,6 +70,14 @@ export class DrawService {
 
   centerMap(coordinates) {
     this.map.center = coordinates;
+  }
+
+  getMap() {
+    return this.map;
+  }
+
+  getMarkers() {
+    return this.markers;
   }
 
 }

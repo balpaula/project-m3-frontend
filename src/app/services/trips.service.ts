@@ -9,7 +9,7 @@ import { environment } from '../../environments/environment';
 export class TripsService {
 
   private API_URL = environment.API_URL;
-  public trips = [];
+  private trips = [];
   private tripsChange: Subject<any> = new Subject();
   public currentTrip: any;
   private currentTripChange: Subject<any> = new Subject();
@@ -142,6 +142,14 @@ export class TripsService {
 
   public changeTrip(trip) {
     this.getOneTrip(trip._id);
+  }
+
+  getAllTrips() {
+    return this.trips;
+  }
+
+  getCurrentTrip() {
+    return this.currentTrip();
   }
 
 }

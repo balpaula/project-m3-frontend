@@ -10,7 +10,7 @@ export class PlacesService {
 
   private API_URL = environment.API_URL;
 
-  public places: any;
+  private places: any;
   private placesChange: Subject<any> = new Subject();
 
   placesChange$: Observable<any> = this.placesChange.asObservable();
@@ -32,5 +32,9 @@ export class PlacesService {
       .then((places: Array<any>) => {
         this.setPlaces(places);
       });
+  }
+
+  getPlaces() {
+    return this.places;
   }
 }

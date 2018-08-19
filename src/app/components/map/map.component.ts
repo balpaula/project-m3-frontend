@@ -73,7 +73,7 @@ export class MapComponent implements OnInit {
         })
         .then(() => {
           //associate maps
-          this.map = this.drawService.map;
+          this.map = this.drawService.getMap();
         })
         .then(() => {
           this.currentTrip = this.tripsService.currentTrip;

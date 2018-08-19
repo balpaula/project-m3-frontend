@@ -28,7 +28,7 @@ export class ProfileComponent implements OnInit {
     private authService: AuthService ) { }
 
   ngOnInit() {
-    this.trips = this.tripsService.trips;
+    this.trips = this.tripsService.getAllTrips();
     this.favorites = this.tripsService.favorites;
 
     this.tripsService.favoritesChange$.subscribe((favorites) => {
