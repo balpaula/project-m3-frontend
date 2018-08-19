@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TripsService } from '../../services/trips.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ProfileService } from '../../services/profile.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-profile',
@@ -10,11 +11,21 @@ import { ProfileService } from '../../services/profile.service';
 })
 export class ProfileComponent implements OnInit {
 
-  description: String;
+  user: any;
+
+  description: string;
   trips: any;
   favorites: any;
 
-  constructor( private tripsService: TripsService, private router: Router, private route: ActivatedRoute, private profileService: ProfileService ) { }
+  showEditDescription = false;
+  showForm = false;
+
+  constructor( 
+    private tripsService: TripsService, 
+    private router: Router, 
+    private route: ActivatedRoute, 
+    private profileService: ProfileService,
+    private authService: AuthService ) { }
 
   ngOnInit() {
     this.trips = this.tripsService.trips;
@@ -28,13 +39,16 @@ export class ProfileComponent implements OnInit {
       this.favorites = favorites;
     });
 
+    this.user = this.authService.getUser();
+
     this.route.params.subscribe((value) => {
-      console.log(value.username)
       this.profileService.getOne(value.username)
         .then(profile => {
-          //this.description = profile.description;
+          this.description = profile.description;
           this.favorites = profile.favorites;
-          console.log(profile._id)
+          if (profile.username === this.user.username) {
+            this.showEditDescription = true;
+          }
           this.trips = this.tripsService.getTripsFromUser(profile._id)
             .then(trips => {
               console.log(trips)
@@ -55,5 +69,23 @@ export class ProfileComponent implements OnInit {
   handleExploreFavorite(id) {
     this.tripsService.exploring = id;
     this.router.navigate(['/trips']);
+  }
+
+  handleEdit() {
+    this.showEditDescription = false;
+    this.showForm = true;
+  }
+
+  submitForm(form) {
+    this.profileService.updateDescription({
+      description: this.description
+    })
+    .then(() => {
+      this.showForm = false;
+      this.showEditDescription = true;
+    })
+    .catch(error => {
+      console.log(error);
+    })
   }
 }

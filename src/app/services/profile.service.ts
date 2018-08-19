@@ -17,6 +17,14 @@ export class ProfileService {
     };
     return this.httpClient.get(`${this.API_URL}/profile/${username}`, options)
       .toPromise()
-  }   
+  }  
+  
+  updateDescription(description: any): Promise<any> {
+    const options = {
+      withCredentials: true
+    };
+    return this.httpClient.post(`${this.API_URL}/profile/description`, description, options)
+      .toPromise()
+  }
 
 }

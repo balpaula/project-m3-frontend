@@ -1,4 +1,14 @@
-<h3>Description</h3>
+<div>
+  <h3>Description</h3>
+  <p *ngIf="!showForm">{{this.description}}</p>
+  <button *ngIf="showEditDescription && !showForm" (click)="handleEdit()">Edit bio</button>
+  <form *ngIf="showForm" (ngSubmit)="submitForm(form)" #form="ngForm">
+    <div>
+      <textarea type="text" name="description" [(ngModel)]="description" #descriptionField="ngModel"></textarea>
+    </div>
+    <button type="submit">Done</button>
+  </form>
+</div>
 <div>
   <h3>My trips</h3>
 </div>
