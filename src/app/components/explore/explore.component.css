@@ -1,0 +1,12 @@
+.explore-card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.card-div {
+    width:30%;
+    border: 1px solid blue;
+    margin: 1%;
+}

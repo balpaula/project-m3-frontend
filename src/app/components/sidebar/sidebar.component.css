@@ -2,20 +2,22 @@
     display: flex;
     flex-direction: column;
     background-color: #3b3b3b;
+    height: 700px;
+    border-right: 5px solid black;
 }
 
 .scrollable-div {
-    background-color: lightblue;
-    height: 150px;
+    height: 175px;
     overflow: scroll;
 }
 
 .trip-name {
-    padding-left: 20%;
+    padding-left: 10%;
+    display: inline;
 }
 
-.trips-link {
-    padding-left: 10%;
+.scrollable-container {
+    background-color: 	#808080;
 }
 
 .explore-link {
@@ -24,4 +26,20 @@
 
 .profile-link {
     padding-left: 10%;
+} 
+
+.trips-title {
+    padding-left:10%; 
+}
+
+.plane {
+    height: 5vh;
+    padding-left: 15%;
+}
+
+.trip-detail-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
 }

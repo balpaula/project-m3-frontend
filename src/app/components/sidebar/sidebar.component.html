@@ -1,9 +1,13 @@
 <div class="sidebar-container">
-<div [routerLink]="['/trips']" class="trips-link">
-  <h3>My trips</h3>
-  <div *ngIf="isTripsPage" class="scrollable-div">
-    <div *ngFor="let trip of trips" (click)="handleChangeOfTrip(trip)">
-      <h4 class="trip-name">{{trip.name}}</h4>
+  <div [routerLink]="['/trips']" class="trips-link">
+    <h3 class="trips-title">My trips</h3>
+    <div class="scrollable-container">
+      <div *ngIf="isTripsPage" class="scrollable-div">
+        <div *ngFor="let trip of trips" (click)="handleChangeOfTrip(trip)" class="trip-detail-container">
+          <img src="../../../assets/img/airplane.png" alt="" class="plane">
+          <h4 class="trip-name">{{trip.name}}</h4>
+        </div>
+      </div>
     </div>
   </div>
 </div>
