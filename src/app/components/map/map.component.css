@@ -15,4 +15,5 @@
 .map-positioning {
     position: relative;
     z-index:1;
+    height: calc(100vh - 2.9vh - 8vh);
 }
