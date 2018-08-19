@@ -12,7 +12,8 @@
 }
 
 .trip-name {
-    padding-left: 20%;
+    padding-left: 10%;
+    display: inline;
 }
 
 .scrollable-container {
@@ -29,4 +30,16 @@
 
 .trips-title {
     padding-left:10%; 
+}
+
+.plane {
+    height: 5vh;
+    padding-left: 15%;
+}
+
+.trip-detail-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
 }
