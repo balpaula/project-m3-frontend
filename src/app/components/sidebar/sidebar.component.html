@@ -9,11 +9,11 @@
         </div>
       </div>
     </div>
+    <div [routerLink]="['/explore']" class="explore-link">
+      <h3>Explore</h3>
+    </div>
+    <div [routerLink]="['/profile', this.user.username]" class="profile-link">
+      <h3>My profile</h3>
+    </div>
   </div>
-</div>
-<div [routerLink]="['/explore']" class="explore-link">
-  <h3>Explore</h3>
-</div>
-<div [routerLink]="['/profile', this.user.username]" class="profile-link">
-  <h3>My profile</h3>
 </div>
