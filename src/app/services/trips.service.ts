@@ -53,6 +53,14 @@ export class TripsService {
       });
   }
 
+  getTripsFromUser(userId): Promise<any> {
+    const options = {
+      withCredentials: true
+    };
+    return this.httpClient.get(`${this.API_URL}/trips/user/${userId}`, options)
+      .toPromise()
+  }
+
   getOneTrip(tripId): Promise<any> {
     const options = {
       withCredentials: true

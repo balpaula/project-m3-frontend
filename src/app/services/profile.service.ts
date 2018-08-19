@@ -17,6 +17,6 @@ export class ProfileService {
     };
     return this.httpClient.get(`${this.API_URL}/profile/${username}`, options)
       .toPromise()
-  }
+  }   
 
 }

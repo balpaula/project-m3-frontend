@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { TripsService } from '../../services/trips.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -11,12 +12,14 @@ export class SidebarComponent implements OnInit {
 
   trips = [];
   currentTrip = {};
+  user: any;
   @Input() isTripsPage;
 
 
-  constructor( private tripsService: TripsService, private router: Router ) { }
+  constructor( private tripsService: TripsService, private router: Router, private authService: AuthService ) { }
 
   ngOnInit() {
+    this.user = this.authService.getUser();
     this.tripsService.tripsChange$.subscribe((trips) => {
       this.trips = trips;
     });
@@ -31,9 +34,6 @@ export class SidebarComponent implements OnInit {
           this.tripsService.setDefaultTrip();
         }
       })
-    // if (this.router.url === '/trips') {
-    //   this.inMyTrips = true;
-    // }
   }
 
   handleChangeOfTrip(trip) {

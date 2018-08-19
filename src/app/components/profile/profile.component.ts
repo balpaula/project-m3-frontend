@@ -10,10 +10,9 @@ import { ProfileService } from '../../services/profile.service';
 })
 export class ProfileComponent implements OnInit {
 
+  description: String;
   trips: any;
   favorites: any;
-
-  currentProfile: any;
 
   constructor( private tripsService: TripsService, private router: Router, private route: ActivatedRoute, private profileService: ProfileService ) { }
 
@@ -33,7 +32,14 @@ export class ProfileComponent implements OnInit {
       console.log(value.username)
       this.profileService.getOne(value.username)
         .then(profile => {
-          this.currentProfile = profile;
+          //this.description = profile.description;
+          this.favorites = profile.favorites;
+          console.log(profile._id)
+          this.trips = this.tripsService.getTripsFromUser(profile._id)
+            .then(trips => {
+              console.log(trips)
+              this.trips = trips;
+            })
         })
         .catch(error => {
           console.error(error);
