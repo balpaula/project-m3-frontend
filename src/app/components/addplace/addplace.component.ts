@@ -4,6 +4,7 @@ import { TripsService } from '../../services/trips.service';
 import { PlacesService } from '../../services/places.service';
 import axios from 'axios';
 import { dependenciesFromGlobalMetadata } from '@angular/compiler/src/render3/r3_factory';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-addplace',
@@ -15,20 +16,29 @@ export class AddplaceComponent implements OnInit {
   CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/travelist/image/upload';
   CLOUDINARY_UPLOAD_PRESET = 'hcwbowtz';
 
+  user: any;
+  currentTrip: any;
+
   name: string;
   description: string;
   photo: any;
 
   formData: any;
 
-  currentTrip = {};
+  showForm = false;
+  showButton = false;
 
-  constructor( private locationService: LocationService, private tripsService: TripsService, private placesService: PlacesService ) { }
+  constructor( private locationService: LocationService, 
+    private tripsService: TripsService, 
+    private placesService: PlacesService,
+    private authService: AuthService ) { }
 
   ngOnInit() {
     this.tripsService.currentTripChange$.subscribe((currentTrip) => {
       this.currentTrip = currentTrip;
+      this.checkUser();
     });  
+    this.user = this.authService.getUser();
   }
 
   getFiles(event) {
@@ -62,12 +72,15 @@ export class AddplaceComponent implements OnInit {
       .catch((error) => {
       
       });
-
-
-
-
-
-    
   }
 
+  handleClick() {
+    this.showForm = !this.showForm;
+  }
+
+  checkUser() {
+    if (this.user._id === this.currentTrip.owner._id){
+      this.showButton = true;
+    }
+  }
 }

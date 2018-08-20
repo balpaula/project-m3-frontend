@@ -1,4 +1,4 @@
-<section class="main-container">
+<section  *ngIf="showForm" class="main-container">
 <div class="title">
 <h4>Add new place</h4>
 </div>
@@ -20,6 +20,6 @@
   </div>
 </div>
 </section>
-<div class="add-button">
-  <button>Add place</button>
+<div *ngIf="showButton" class="add-button">
+  <button (click)="handleClick()">Add place</button>
 </div>
