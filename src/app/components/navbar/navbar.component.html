@@ -2,8 +2,8 @@
 <div *ngIf="!isUser" class="navbar-not-registered">
   <h3 class="title">Travelist</h3>
   <div class="navbar-not-registered-2">
-    <a (click)="handleSignup()" class="link-signup">Sign up</a>
-    <a (click)="handleLogin()" class="link-login">Log in</a>
+    <a (click)="handleSignup()" class="link-signup link">Sign up</a>
+    <a (click)="handleLogin()" class="link-login link">Log in</a>
   </div>
 </div>
 <div *ngIf="isUser" class="navbar-registered">

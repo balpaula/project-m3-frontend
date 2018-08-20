@@ -1,0 +1,159 @@
+.video-section {
+    
+}
+
+.video-container {
+    width: 100%;
+}
+
+.promotional-video {
+    height: 92vh;
+}
+
+.animation-title {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    position: absolute;
+    top: 35%;
+    left:37.5%;
+    width: 420px;
+}
+
+.animation {
+    margin-top: 5%;
+    font-size: 1.4em;
+    color: white;
+}
+
+.title {
+    font-size: 3em;
+    color: white;
+}
+
+.line-1{
+    position: relative;
+    top: 50%;  
+    width: 24em;
+    margin: 0 auto;
+    border-right: 2px solid rgba(255,255,255,.75);
+    font-size: 120%;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    transform: translateY(-50%);    
+}
+
+/* Animation */
+.anim-typewriter{
+  animation: typewriter 4s steps(44) 1s 1 normal both,
+             blinkTextCursor 500ms steps(44) infinite normal;
+}
+@keyframes typewriter{
+  from{width: 0;}
+  to{width: 14em;}
+}
+@keyframes blinkTextCursor{
+  from{border-right-color: rgba(255,255,255,.75);}
+  to{border-right-color: transparent;}
+}
+
+#slideshow {
+    overflow: hidden;
+    height: 30vh;
+    width: 728px;
+    margin: 0 auto;
+    border-radius: 50px;
+    margin-top: 5%;
+  }
+
+  .slide-title-img {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      margin-top: 3%;
+  }
+
+  .slide-img {
+      height: 13vh;;
+  }
+  
+  .slide-wrapper {
+    width: 2912px;
+    -webkit-animation: slide 18s ease infinite;
+  }
+
+  .slide-text {
+      padding: 10px;
+      padding-left: 15px;
+      color: white;
+  }
+  
+  .slide {
+    float: left;
+    height: 510px;
+    width: 728px;
+  }
+  
+  .slide:nth-child(1) {
+    background: #EF5350;
+  }
+  
+  .slide:nth-child(2) {
+    background: #EF5350;
+  }
+  
+  .slide:nth-child(3) {
+    background: #EF5350;
+  }
+  
+  .slide:nth-child(4) {
+    background: #EF5350;
+  }
+  
+  .slide-title {
+    color: white;
+    text-align: center;
+    font-size: 2em;
+  }
+  
+  @-webkit-keyframes slide {
+    20% {margin-left: 0px;}
+    30% {margin-left: -728px;}
+    50% {margin-left: -728px;}
+    60% {margin-left: -1456px;}
+    70% {margin-left: -1456px;}
+    80% {margin-left: -2184px;}
+    90% {margin-left: -2184px;}
+  }
+
+  .icons-section {
+      margin-top: 5%;
+  }
+
+  .section-3-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      background-color: #EF5350;
+      padding-bottom: 5%;
+  }
+
+  .icon-and-text {
+      display: flex;
+      flex-direction: column;
+      width: 20%;
+      text-align: center;
+      color: white;
+  }
+
+  .section-3-title {
+      font-size: 2em;
+      color: white;
+  }
+
+  .section-3-img {
+      height: 10vh;
+      margin-bottom: 7%;
+  }
+  
