@@ -32,7 +32,7 @@ export class DrawService {
   }
 
   drawMarker(place, map) {
-    const description = `<h3>${place.name}</h3><p>${place.description}</p>`;
+    const description = `<h3>${place.name}</h3><p>${place.description}</p><img src=${place.photo}>`;
     const popup = new mapboxgl.Popup({ offset: 40 })
       //.setText(place.description);
       .setHTML(description);
