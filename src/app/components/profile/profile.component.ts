@@ -30,10 +30,6 @@ export class ProfileComponent implements OnInit {
     private statusService: StatusService ) { }
 
   ngOnInit() {
-    // this.tripsService.favoritesChange$.subscribe((favorites) => {
-    //   this.favorites = favorites;
-    // });
-
     this.user = this.authService.getUser();
 
     this.route.params.subscribe((value) => {

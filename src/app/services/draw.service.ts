@@ -48,7 +48,7 @@ export class DrawService {
     const popup = new mapboxgl.Popup({ offset: 40 })
       //.setText(place.description);
       .setText("You're here!");
-    const marker = new mapboxgl.Marker({color: '#E53935'})
+    const marker = new mapboxgl.Marker({color: '#EF5350'})
       .setLngLat(coordinates)
       .setPopup(popup)
       .addTo(map);

@@ -21,6 +21,7 @@ export class AddplaceComponent implements OnInit {
 
   name: string;
   description: string;
+  coordinates: any;
   photo: any;
 
   formData: any;
@@ -37,6 +38,10 @@ export class AddplaceComponent implements OnInit {
       this.currentTrip = currentTrip;
     });  
     this.user = this.authService.getUser();
+    this.locationService.getPosition()
+      .then(coordinates => {
+        this.coordinates = coordinates;
+      })
   }
 
   getFiles(event) {
@@ -48,28 +53,36 @@ export class AddplaceComponent implements OnInit {
 
   submitForm(form) {
 
-    axios({
-      url: this.CLOUDINARY_URL,
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      data: this.formData
-    })
-      .then((res) => {
-        this.locationService.getPosition()
-          .then(coordinates => {
-            this.placesService.addPlace({
-              name: this.name,
-              coordinates: coordinates,
-              description: this.description,
-              photo: res.data.secure_url
-            }, this.currentTrip)
-          })
+    if (this.photo) {
+      axios({
+        url: this.CLOUDINARY_URL,
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        data: this.formData
       })
-      .catch((error) => {
+        .then((res) => {
+              this.placesService.addPlace({
+                name: this.name,
+                coordinates: this.coordinates,
+                description: this.description,
+                photo: res.data.secure_url
+              }, this.currentTrip)
+            
+        })
+        .catch((error) => {
+          console.log(error)
+        });
+    } else {
+        this.placesService.addPlace({
+          name: this.name,
+          coordinates: this.coordinates,
+          description: this.description,
+        }, this.currentTrip)
       
-      });
+    }
+
   }
 
   handleClick() {

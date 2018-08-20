@@ -54,6 +54,7 @@ export class MapComponent implements OnInit {
       this.currentTrip = this.tripsService.currentTrip;
       this.tripsService.currentTripChange$.subscribe((currentTrip) => {
         this.currentTrip = currentTrip;
+        console.log('current trip', currentTrip)
         if (this.map) {
           this.handleCurrentTripChange();
         }
@@ -114,8 +115,13 @@ export class MapComponent implements OnInit {
         this.setAllMarkers(); 
       } else {
         //if the trip is empty (new trip, for example), init map (will set to current position)
-        this.initMap();
+        this.changeToEmptyMap();
       }  
+  }
+
+  changeToEmptyMap() {
+    this.drawService.drawMap(this.coordinates);
+    this.drawService.drawMarkerCurrentLocation(this.coordinates,this.map);
   }
 
   setAllMarkers() {
