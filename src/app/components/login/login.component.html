@@ -3,7 +3,7 @@
     <div class="field login-global-div" [ngClass]="{'has-error': feedbackEnabled && usernameField.errors}">
       <div class="label-input-column">
         <div>
-          <label>username</label>
+          <label>Username</label>
         </div>
         <div>
           <input type="text" name="username" [(ngModel)]="username" #usernameField="ngModel" required />
@@ -11,15 +11,15 @@
       </div>
       <div class="label-input-column">
         <div>
-          <label>password</label>
+          <label>Password</label>
         </div>
         <div>
           <input type="password" name="password" [(ngModel)]="password" #passwordField="ngModel" required />
         </div>
       </div>
     </div>
-    <div class="field submit">
-      <button type="submit">Login</button>
+    <div class="field-submit">
+      <button type="submit" class="login-button">Login</button>
     </div>
   </form>
 </div>

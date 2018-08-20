@@ -1,21 +1,21 @@
 <section class="navbar-heigt">
-<div *ngIf="!isUser" class="navbar-not-registered">
-  <h3 class="title">Travelist</h3>
-  <div class="navbar-not-registered-2">
-    <a (click)="handleSignup()" class="link-signup link">Sign up</a>
-    <a (click)="handleLogin()" class="link-login link">Log in</a>
+  <div *ngIf="!isUser" class="navbar-not-registered">
+    <h3 class="title">Travelist</h3>
+    <div class="navbar-not-registered-2">
+      <a (click)="handleSignup()" class="link-signup link">Sign up</a>
+      <a (click)="handleLogin()" class="link-login link">Log in</a>
+    </div>
   </div>
-</div>
-<div *ngIf="isUser" class="navbar-registered">
-  <h3>Travelist</h3>
-  <a (click)="handleLogout()">Logout</a>
-</div>
+  <div *ngIf="isUser" class="navbar-registered">
+    <h3>Travelist</h3>
+    <a (click)="handleLogout()">Logout</a>
+  </div>
 </section>
 <div *ngIf="!isUser">
-<div *ngIf="showSignup">
-  <app-signup></app-signup>
-</div>
-<div *ngIf="showLogin">
-  <app-login></app-login>
-</div>
+  <div *ngIf="showSignup">
+    <app-signup></app-signup>
+  </div>
+  <div *ngIf="showLogin">
+    <app-login></app-login>
+  </div>
 </div>

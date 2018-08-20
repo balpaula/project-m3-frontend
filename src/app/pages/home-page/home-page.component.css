@@ -1,3 +1,7 @@
+body {
+    
+}
+
 .video-section {
     
 }
@@ -51,7 +55,7 @@
 }
 @keyframes typewriter{
   from{width: 0;}
-  to{width: 14em;}
+  to{width: 16em;}
 }
 @keyframes blinkTextCursor{
   from{border-right-color: rgba(255,255,255,.75);}
