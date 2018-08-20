@@ -4,6 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
+import { FileSelectDirective } from 'ng2-file-upload';
+
 import { AuthService } from './services/auth.service';
 import { LocationService } from './services/location.service';
 import { TripsService } from './services/trips.service';
@@ -12,6 +14,7 @@ import { AppComponent } from './app.component';
 import { TripsPageComponent } from './pages/trips-page/trips-page.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { LoginComponent } from './components/login/login.component';
+
 
 import { RequireAnonGuard } from './guards/require-anon.guard';
 import { RequireUserGuard } from './guards/require-user.guard';
@@ -27,6 +30,7 @@ import { ExplorePageComponent } from './pages/explore-page/explore-page.componen
 import { ExploreComponent } from './components/explore/explore.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { ProfileComponent } from './components/profile/profile.component';
+
 
 const routes: Routes = [
   { path: '',  component: HomePageComponent, canActivate: [ InitAuthGuard ]},
@@ -51,7 +55,8 @@ const routes: Routes = [
     ExplorePageComponent,
     ExploreComponent,
     ProfilePageComponent,
-    ProfileComponent
+    ProfileComponent,
+    FileSelectDirective
   ],
   imports: [
     BrowserModule,

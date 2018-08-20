@@ -3,10 +3,13 @@
     flex-wrap: wrap;
     justify-content: space-around;
     width: 100%;
+    overflow: scroll;
+    height: calc(100vh - 2.9vh - 8vh);
 }
 
 .card-div {
     width:30%;
+    height: 30vh;
     border: 1px solid blue;
     margin: 1%;
 }
