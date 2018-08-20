@@ -28,6 +28,7 @@
 
 .navbar-registered {
     display: flex;
+    height: 8vh;
     flex-direction: row;
     justify-content: space-between;
     align-items: baseline;
