@@ -3,7 +3,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: baseline;
-    background-color: #3b3b3b;
+    background-color: #EF5350;
     color: white;
     height: 8vh;
 }
@@ -31,9 +31,8 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: baseline;
-    background-color: #3b3b3b;
+    background-color: #EF5350;
     color: white;
-    border-bottom: 5px solid black;
 }
 
 .navbar-registered h3 {
