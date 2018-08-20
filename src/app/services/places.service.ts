@@ -23,11 +23,11 @@ export class PlacesService {
     return places;
   }
 
-  addPlace(place: any, trip: any): Promise<any> {
+  addPlace(place: any, tripId: any): Promise<any> {
     const options = {
       withCredentials: true
     };
-    return this.httpClient.post(`${this.API_URL}/trips/${trip._id}/addplace`, place, options)
+    return this.httpClient.post(`${this.API_URL}/trips/${tripId}/addplace`, place, options)
       .toPromise()
       .then((places: Array<any>) => {
         this.setPlaces(places);

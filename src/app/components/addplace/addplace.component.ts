@@ -34,9 +34,10 @@ export class AddplaceComponent implements OnInit {
     private authService: AuthService ) { }
 
   ngOnInit() {
+    this.currentTrip = this.tripsService.currentTrip;
     this.tripsService.currentTripChange$.subscribe((currentTrip) => {
       this.currentTrip = currentTrip;
-    });  
+    });
     this.user = this.authService.getUser();
     this.locationService.getPosition()
       .then(coordinates => {
@@ -63,13 +64,12 @@ export class AddplaceComponent implements OnInit {
         data: this.formData
       })
         .then((res) => {
-              this.placesService.addPlace({
-                name: this.name,
-                coordinates: this.coordinates,
-                description: this.description,
-                photo: res.data.secure_url
-              }, this.currentTrip)
-            
+          this.placesService.addPlace({
+            name: this.name,
+            coordinates: this.coordinates,
+            description: this.description,
+            photo: res.data.secure_url
+          }, this.currentTrip._id)      
         })
         .catch((error) => {
           console.log(error)
@@ -79,7 +79,7 @@ export class AddplaceComponent implements OnInit {
           name: this.name,
           coordinates: this.coordinates,
           description: this.description,
-        }, this.currentTrip)
+        }, this.currentTrip._id)
       
     }
 
