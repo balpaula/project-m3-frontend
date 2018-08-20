@@ -6,6 +6,7 @@ import { DrawService } from '../../services/draw.service';
 import { TripsService } from '../../services/trips.service';
 import { PlacesService } from '../../services/places.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 
 @Component({
@@ -14,6 +15,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./map.component.css']
 })
 export class MapComponent implements OnInit {
+
+  user: any;
 
   map: any;
   currentTrip: any;
@@ -29,10 +32,12 @@ export class MapComponent implements OnInit {
     private locationService: LocationService, 
     private drawService: DrawService, 
     private tripsService: TripsService, 
-    private placesService: PlacesService, 
+    private placesService: PlacesService,
+    private authService: AuthService,
     private router: Router ) { }
 
   ngOnInit() {
+      this.user = this.authService.getUser();
 
     //Subscribe to map changes for centering
       this.drawService.mapChange$.subscribe((map) => {
@@ -46,6 +51,7 @@ export class MapComponent implements OnInit {
       });
 
     //Subscribe to trip changes for when changing the trip
+      this.currentTrip = this.tripsService.currentTrip;
       this.tripsService.currentTripChange$.subscribe((currentTrip) => {
         this.currentTrip = currentTrip;
         if (this.map) {
@@ -136,7 +142,7 @@ export class MapComponent implements OnInit {
   }
 
   handleShowUsername() {
-    if (this.tripsService.exploring) {
+    if (this.tripsService.exploring && (this.currentTrip.owner._id !== this.user._id)) {
       this.showUsername = true;
     } else {
       this.showUsername = false;

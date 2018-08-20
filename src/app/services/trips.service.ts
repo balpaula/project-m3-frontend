@@ -101,7 +101,7 @@ export class TripsService {
     };
     return this.httpClient.get(`${this.API_URL}/trips/favorites`, options)
       .toPromise()
-      .then((favorites: any) => {
+      .then((favorites: Array<any>) => {
         this.setFavorites(favorites);
       });
   }
@@ -150,6 +150,10 @@ export class TripsService {
 
   getCurrentTrip() {
     return this.currentTrip();
+  }
+
+  setExploringFalse() {
+    this.exploring = undefined;
   }
 
 }

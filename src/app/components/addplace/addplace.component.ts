@@ -26,7 +26,6 @@ export class AddplaceComponent implements OnInit {
   formData: any;
 
   showForm = false;
-  showButton = false;
 
   constructor( private locationService: LocationService, 
     private tripsService: TripsService, 
@@ -36,7 +35,6 @@ export class AddplaceComponent implements OnInit {
   ngOnInit() {
     this.tripsService.currentTripChange$.subscribe((currentTrip) => {
       this.currentTrip = currentTrip;
-      this.checkUser();
     });  
     this.user = this.authService.getUser();
   }
@@ -78,9 +76,4 @@ export class AddplaceComponent implements OnInit {
     this.showForm = !this.showForm;
   }
 
-  checkUser() {
-    if (this.user._id === this.currentTrip.owner._id){
-      this.showButton = true;
-    }
-  }
 }

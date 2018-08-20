@@ -7,7 +7,7 @@
           <h4 class="trip-name">{{trip.name}}</h4>
         </div>
         <div>
-          <button class="add-button">Add new trip</button>
+          <button class="add-button" (click)="handleClick()">Create new trip</button>
         </div>
       </div>
     </div>
@@ -19,4 +19,4 @@
     <h3>My profile</h3>
   </div>
 </div>
-<app-newtrip></app-newtrip>
+<app-newtrip *ngIf="showForm"></app-newtrip>

@@ -3,6 +3,7 @@ import { TripsService } from '../../services/trips.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ProfileService } from '../../services/profile.service';
 import { AuthService } from '../../services/auth.service';
+import { StatusService } from '../../services/status.service';
 
 @Component({
   selector: 'app-profile',
@@ -25,19 +26,13 @@ export class ProfileComponent implements OnInit {
     private router: Router, 
     private route: ActivatedRoute, 
     private profileService: ProfileService,
-    private authService: AuthService ) { }
+    private authService: AuthService,
+    private statusService: StatusService ) { }
 
   ngOnInit() {
-    this.trips = this.tripsService.getAllTrips();
-    this.favorites = this.tripsService.favorites;
-
-    this.tripsService.favoritesChange$.subscribe((favorites) => {
-      this.favorites = favorites;
-    });
-    
-    this.tripsService.favoritesChange$.subscribe((favorites) => {
-      this.favorites = favorites;
-    });
+    // this.tripsService.favoritesChange$.subscribe((favorites) => {
+    //   this.favorites = favorites;
+    // });
 
     this.user = this.authService.getUser();
 
@@ -46,6 +41,7 @@ export class ProfileComponent implements OnInit {
         .then(profile => {
           this.description = profile.description;
           this.favorites = profile.favorites;
+          console.log('profile fav', profile.favorites)
           if (profile.username === this.user.username) {
             this.showEditDescription = true;
           }
@@ -59,10 +55,13 @@ export class ProfileComponent implements OnInit {
           console.error(error);
         });
     });
+
+    this.statusService.hideAddPlace();
   }
 
   handleChangeOfTrip(trip) {
     this.tripsService.changeTrip(trip);
+    this.tripsService.exploring = trip._id;
     this.router.navigate(['/trips']);
   }
 

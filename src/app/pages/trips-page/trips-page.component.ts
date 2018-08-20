@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { StatusService } from '../../services/status.service';
 
 @Component({
   selector: 'app-trips-page',
@@ -9,9 +10,15 @@ export class TripsPageComponent implements OnInit {
 
   @Input() isTripsPage=true;
 
-  constructor() { }
+  showAddPlace: boolean;
+
+  constructor( private statusService: StatusService) { }
 
   ngOnInit() {
+    this.statusService.addPlaceChange$.subscribe((bool) => {
+      this.showAddPlace = bool;
+    });
+    this.showAddPlace = true;
   }
 
 }
