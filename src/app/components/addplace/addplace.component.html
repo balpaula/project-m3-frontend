@@ -4,6 +4,7 @@
 </div>
 <div class="overlay">
   <div class="new-trip-form">
+<<<<<<< HEAD
       <form (ngSubmit)="submitForm(form)" #form="ngForm" class="form" enctype="multipart/form-data">
           <div class="inner-form-div">
             <div class="field">
@@ -18,6 +19,16 @@
               <label>Photo</label>
               <input type="file" name="photo" [(ngModel)]="photo" (change)="getFiles($event)">
             </div>
+=======
+      <form (ngSubmit)="submitForm(form)" #form="ngForm" class="form">
+          <div class="field" class="inner-form-div">
+            <label>Name</label>
+            <input type="text" name="name" [(ngModel)]="name" #nameField="ngModel" required/>
+            <label>Description</label>
+            <input type="text" name="description" [(ngModel)]="description" #descriptionField="ngModel"/>
+            <label>Photo</label>
+            <input type="file" name="photo" [(ngModel)]="photo" (change)="getFiles($event)">
+>>>>>>> 4cf1a4f052a04345930f98238f415517b767cce3
           </div>
           <div class="field submit">
             <button type="submit"><a class="add-button check"><span><i class="fa fa-check"></i></span></a></button>

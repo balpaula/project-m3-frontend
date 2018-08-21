@@ -15,11 +15,11 @@
 }
 
 .link-signup {
-    padding-right: 20px;
+    margin-right: 50px;
 }
 
 .link-login {
-    padding-right: 20px;
+    margin-right: 50px;
 }
 
 .title {
@@ -43,3 +43,32 @@
 .navbar-registered a {
     padding-right: 20px;
 }
+
+a{
+    text-decoration: none;
+    color: #fff;
+  }
+  
+  .link{
+    position: relative;
+  }
+  
+  .link:after{
+    content: '';
+    position: absolute;
+    width: 0; height: 3px;
+    display: block;
+    margin-top: 5px;
+    right: 0;
+    background: #fff;
+    transition: width .2s ease;
+    -webkit-transition: width .2s ease;
+  }
+   
+  .link:hover:after{
+    width: 100%;
+    left: 0;
+    background: #fff;
+  }
+  
+  
