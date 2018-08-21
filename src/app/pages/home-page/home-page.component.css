@@ -1,11 +1,3 @@
-body {
-    
-}
-
-.video-section {
-    
-}
-
 .video-container {
     width: 100%;
 }
@@ -182,3 +174,6 @@ body {
       margin-top: 7%;
   }
   
+::-webkit-scrollbar {
+    display: none;
+}

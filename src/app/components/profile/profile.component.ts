@@ -14,7 +14,7 @@ export class ProfileComponent implements OnInit {
 
   user: any;
 
-  description: string;
+  description = '';
   trips: Array<any>;
   favorites: Array<any>;
 
@@ -46,7 +46,7 @@ export class ProfileComponent implements OnInit {
             })
         })
         .catch(error => {
-          console.error(error);
+          console.error("Couldn't get the searched user");
         });
     });
 
@@ -78,7 +78,7 @@ export class ProfileComponent implements OnInit {
       this.showEditDescription = true;
     })
     .catch(error => {
-      console.log(error);
+      console.log("Couldn't update the description");
     })
   }
 }

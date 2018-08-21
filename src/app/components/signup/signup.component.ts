@@ -34,7 +34,7 @@ export class SignupComponent implements OnInit {
         this.router.navigate(['/trips']);
     })
     .catch(error => {
-        console.log(error);
+        console.log("Couldn't sign up");
     });
   }
 

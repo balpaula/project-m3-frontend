@@ -43,6 +43,9 @@ export class AddplaceComponent implements OnInit {
       .then(coordinates => {
         this.coordinates = coordinates;
       })
+      .catch(error => {
+        console.log("Couldn't get current location");
+      });
   }
 
   getFiles(event) {
@@ -72,7 +75,7 @@ export class AddplaceComponent implements OnInit {
           }, this.currentTrip._id)      
         })
         .catch((error) => {
-          console.log(error)
+          console.log("Couldn't send the form with picture");
         });
     } else {
         this.placesService.addPlace({

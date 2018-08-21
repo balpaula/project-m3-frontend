@@ -102,7 +102,7 @@ export class MapComponent implements OnInit {
           }
         })
         .catch(error => {
-          console.log(error);
+          console.log("Couldn't set the map with markers");
         });
   }
 

@@ -19,6 +19,9 @@ export class ExploreComponent implements OnInit {
       .then((trips) => {
         this.tripsExplore = trips;
       })
+      .catch(error => {
+        console.log("Couldn't get the trips");
+      })
 
     this.statusService.hideAddPlace();    
   }

@@ -31,18 +31,6 @@ input:focus {
     outline: none;
 }
 
-.ng-touched {
-    border-color: blue;
-}
-
-.ng-touched.ng-invalid {
-    border-color: red;
-}
-
-.ng-touched.ng-valid {
-    border-color: green;
-}
-
 .field-submit {
     display: flex;
     flex-direction: column-reverse;

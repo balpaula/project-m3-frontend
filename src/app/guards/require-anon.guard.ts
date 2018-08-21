@@ -24,7 +24,6 @@ export class RequireAnonGuard implements CanActivate {
         }
       })
       .catch((error) => {
-        console.error(error);
         return false;
       });
   }

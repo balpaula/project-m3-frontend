@@ -40,6 +40,9 @@ export class SidebarComponent implements OnInit {
           this.tripsService.setDefaultTrip();
         }
       })
+      .catch(error => {
+        console.log("Couldn't charge trips in sidebar");
+      });
 
     this.statusService.createTripChange$.subscribe((bool) => {
       this.showForm = bool;
