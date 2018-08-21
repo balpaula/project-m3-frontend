@@ -3,7 +3,7 @@
 }
 
 .promotional-video {
-    width: 98.9vw;
+    width: 100vw;
 }
 
 .animation-title {
@@ -111,7 +111,8 @@
   .slide-title {
     color: #EF5350;
     text-align: center;
-    font-size: 2em;    
+    font-size: 1.3em;    
+    text-align: right;
   }
 
   .slide-title-div {
