@@ -1,32 +1,35 @@
 .container {
-  height: calc(100vh - 3vh - 8vh );
+  height: calc(100vh - 3vh - 8vh);
+  overflow: scroll;
 }
 
 .description {
   margin: 0%;
 }
 
-
 .scrollable-trips-container {
   background-color: #fff;
-  min-width: 100%;
   min-height: 200px;
   display: flex;
   overflow-x: auto;
+  width: 90%;
+  margin-left: 5%;
 }
 
 .card {
   background-color: #e74c3c;
   min-width: 200px;
   margin: 5px;
+  border-radius: 15px;
 }
 
 .scrollable-favorites-container {
   background-color: #fff;
-  min-width: 100%;
   min-height: 200px;
   display: flex;
   overflow-x: auto;
+  width: 90%;
+  margin-left: 5%;
 }
 
 ::-webkit-scrollbar {
@@ -34,7 +37,7 @@
   background: transparent;
 }
 
-.card-2 {
+.card-2  {
   background-color: #e74c3c;
   min-width: 200px;
   margin: 5px;
@@ -44,4 +47,80 @@ textarea {
   width: 34vw;
   height: 12vh;
   resize: none;
+}
+
+.info-photo {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-pic {
+  height: 10vh;
+}
+
+.profile-pic-div {
+  text-align: center;
+}
+
+.info-container {
+  display: flex;
+  flex-direction: row;
+  margin-top: 3%;
+  margin-left: 5%;
+}
+
+.bio-container {
+  margin-left: 20%;
+  margin-top: 1%;
+  margin-right: 10%;
+}
+
+.description {
+  border-bottom: 1px solid black;
+}
+
+.button-edit {
+  padding: 10px;
+  font-size: 1em;
+  border-radius: 10px;
+  border-color: #EF5350;
+}
+
+.button-edit:hover {
+  transition: 0.5s;
+  padding: 10px;
+  font-size: 1em;
+  border-radius: 1px solid  #EF5350;
+  color: white;
+  background-color: #EF5350;
+}
+
+.trips-title {
+  margin-left: 6.1%;
+}
+
+.fav-title {
+  margin-left: 5%;
+}
+
+.scroll-container {
+  width: 100%;
+}
+
+.mytrips-card-title {
+  display: flex;
+  flex-direction: column;
+  padding: 3% 7%;
+  width: 250px;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  top: 35%;
+  right: 0;
+  left: 20%;
+  margin: auto;
+  background-color: white;
 }
