@@ -26,20 +26,6 @@
     background-color: 	white;
 }
 
-.explore-link {
-    padding-left: 10%;
-}
-
-.profile-link {
-    padding-left: 10%;
-} 
-
-.trips-title {
-    padding-left:10%; 
-    border-bottom: 1px solid #EF5350;
-    padding-bottom: 5%;
-}
-
 .plane {
     height: 5vh;
     padding-left: 15%;
@@ -58,4 +44,41 @@
 
 .new-trip-link {
     font-style: italic;
+}
+
+.trips-title {
+    padding-left:10%; 
+    border-bottom: 1px solid #EF5350;
+    padding-bottom: 5%;
+}
+
+.profile-title {
+    border-bottom: 1px solid #EF5350;
+    padding-left: 10%;
+    padding-bottom: 5%;
+}
+
+.explore-link {
+
+}
+
+.profile-link {
+
+} 
+
+.explore-title {
+    border-top: 1px solid #EF5350;
+    padding-left: 10%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+
+.trips-title:hover,.profile-title:hover,.explore-title:hover{
+    color: #EF5350;
+    transition:0.5s;
+}
+
+.trip-name:hover {
+    color:#F08080;
+    transition: 0.25s;
 }
