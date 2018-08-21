@@ -10,7 +10,12 @@
 
 .card-div {
     width: 38vh;
-    height: 44vh;
+    height: 48vh;
     border: 1px solid blue;
     margin: 3% 1%;
+}
+
+.card-div img {
+    width: 38vh;
+    height: 38vh;
 }

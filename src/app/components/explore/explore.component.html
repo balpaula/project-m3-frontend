@@ -1,7 +1,12 @@
 <div class="explore-card-container">
   <div *ngFor="let trip of tripsExplore" (click)="handleClick(trip._id)" class="card-div">
-    <h3>{{trip.name}}</h3>
-    <h5>{{trip.description}}</h5>
-    <h5>{{trip.owner}}</h5>
+    <div>
+      <img src="../../../assets/img/placeholder.png">
+    </div>
+    <div>
+      <h5>@{{trip.owner}}</h5>
+      <h3>{{trip.name}}</h3>
+      <h5>{{trip.description}}</h5>
+    </div>
   </div>
 </div>
