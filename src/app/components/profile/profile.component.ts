@@ -15,8 +15,8 @@ export class ProfileComponent implements OnInit {
   user: any;
 
   description: string;
-  trips: any;
-  favorites: any;
+  trips: Array<any>;
+  favorites: Array<any>;
 
   showEditDescription = false;
   showForm = false;
@@ -37,13 +37,11 @@ export class ProfileComponent implements OnInit {
         .then(profile => {
           this.description = profile.description;
           this.favorites = profile.favorites;
-          console.log('profile fav', profile.favorites)
           if (profile.username === this.user.username) {
             this.showEditDescription = true;
           }
-          this.trips = this.tripsService.getTripsFromUser(profile._id)
+          this.tripsService.getTripsFromUser(profile._id)
             .then(trips => {
-              console.log(trips)
               this.trips = trips;
             })
         })

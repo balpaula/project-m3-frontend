@@ -54,7 +54,6 @@ export class MapComponent implements OnInit {
       this.currentTrip = this.tripsService.currentTrip;
       this.tripsService.currentTripChange$.subscribe((currentTrip) => {
         this.currentTrip = currentTrip;
-        console.log('current trip', currentTrip)
         if (this.map) {
           this.handleCurrentTripChange();
         }

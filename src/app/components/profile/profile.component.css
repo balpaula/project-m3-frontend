@@ -34,3 +34,9 @@
   min-width: 200px;
   margin: 5px;
 }
+
+textarea {
+  width: 34vw;
+  height: 12vh;
+  resize: none;
+}

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TripsService } from '../../services/trips.service';
+import { StatusService } from '../../services/status.service';
 
 @Component({
   selector: 'app-newtrip',
@@ -11,7 +12,8 @@ export class NewtripComponent implements OnInit {
   name: string;
   description: string;
 
-  constructor( private tripsService: TripsService) { }
+  constructor( private tripsService: TripsService,
+    private statusService: StatusService ) { }
 
   ngOnInit() {
   }
@@ -21,6 +23,6 @@ export class NewtripComponent implements OnInit {
       name: this.name,
       description: this.description
     });
+    this.statusService.hideCreateTrip();
   }
-
 }

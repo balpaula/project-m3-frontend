@@ -9,6 +9,12 @@
 .scrollable-div {
     height: 175px;
     overflow: scroll;
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
 }
 
 .trip-name {
@@ -48,4 +54,8 @@
 
 .add-button {
     margin-left: 10%;
+}
+
+.new-trip-link {
+    font-style: italic;
 }

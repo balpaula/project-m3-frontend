@@ -40,6 +40,10 @@ export class SidebarComponent implements OnInit {
           this.tripsService.setDefaultTrip();
         }
       })
+
+    this.statusService.createTripChange$.subscribe((bool) => {
+      this.showForm = bool;
+    })
   }
 
   handleChangeOfTrip(trip) {

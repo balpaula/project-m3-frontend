@@ -107,7 +107,6 @@ export class TripsService {
   }
 
   addFavorite(tripId): Promise<any> {
-    console.log('add to favorites');
     const options = {
       withCredentials: true
     };
@@ -137,7 +136,6 @@ export class TripsService {
 
   public setExploreTrip() {
     this.getOneTrip(this.exploring);
-    console.log('exploring', this.exploring)
   }
 
   public changeTrip(trip) {

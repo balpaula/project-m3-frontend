@@ -83,6 +83,8 @@ export class AddplaceComponent implements OnInit {
       
     }
 
+    this.showForm = false;
+
   }
 
   handleClick() {

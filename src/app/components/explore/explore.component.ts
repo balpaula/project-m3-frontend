@@ -17,9 +17,7 @@ export class ExploreComponent implements OnInit {
   ngOnInit() {
     this.tripsService.getExplore()
       .then((trips) => {
-        console.log(trips);
         this.tripsExplore = trips;
-        console.log(this.tripsExplore);
       })
 
     this.statusService.hideAddPlace();    

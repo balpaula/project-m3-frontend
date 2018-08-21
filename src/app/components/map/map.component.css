@@ -1,8 +1,8 @@
 .fav-button {
     position: absolute;
     z-index:2;
-    top: 5%;
-    left:85%;
+    top: 3vh;
+    right: 3vh;
 }
 
 .username {

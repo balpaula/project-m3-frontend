@@ -1,6 +1,22 @@
+section {
+    color: #3b3b3b;
+}
+
+.title {
+    padding: 0 7%;
+    background-color: #EF5350;
+    border-radius: 12px 12px 0 0;
+}
+
+h4 {
+    margin: 3%;
+    color: white;
+}
+
 .inner-form-div {
     display: flex;
     flex-direction: column;
+    padding: 3% 7%;
 }
 
 .form {
@@ -11,21 +27,57 @@
 .main-container {
     display: flex;
     flex-direction: column;
-    width: 15%;
+    width: fit-content;
     position: absolute;
-    top: 40%;
-    left: 55%;
+    top: 35%;
+    right: 0;
+    left: 20%;
+    margin: auto;
     z-index:2;
     background-color: white;
-    border-radius: 10px solid #3b3b3b;
+    border-radius: 12px;
 }
 
 .add-button {
-    width: 10%;
+    font-size: 1.4rem;
     position: absolute;
     top: 88%;
-    left: 57%;
+    right: 0;
+    left: 20%;
+    margin: auto;
     z-index:2;
+    color: white;
+    width: 7vh;
+    height: 7vh;
+    background-color: #EF5350;
+    border-radius: 100%;
+    text-align: center;
+    line-height: 7vh;
 }
+
+button {
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.check {
+    top: 89%;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.field {
+    flex-direction: column;
+    display: flex;
+    padding: 2%;
+}
+
+input {
+    width: 200px;
+}
+
+
+
 
 

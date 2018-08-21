@@ -57,7 +57,6 @@ export class DrawService {
   drawAllMarkers(places, map, options?) {
     this.eraseAllMarkers();
     places.forEach(place => {
-      console.log(place);
       this.drawMarker(place, map);
     });
   }
