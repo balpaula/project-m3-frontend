@@ -48,7 +48,6 @@
 
 .trips-title {
     padding-left:10%; 
-    border-bottom: 1px solid #EF5350;
     padding-bottom: 5%;
 }
 
@@ -81,4 +80,26 @@
 .trip-name:hover {
     color:#F08080;
     transition: 0.25s;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+    padding-right: 5px;
+}
+
+/* Track
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+} */
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888; 
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
 }
