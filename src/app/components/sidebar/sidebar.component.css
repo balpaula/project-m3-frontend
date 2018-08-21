@@ -1,0 +1,61 @@
+.sidebar-container {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    height: calc(100vh - 3vh - 8vh);
+    border-right: 1px solid #EF5350;
+}
+
+.scrollable-div {
+    height: 175px;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+}
+
+.trip-name {
+    padding-left: 20%;
+    display: inline;
+}
+
+.scrollable-container {
+    background-color: 	white;
+}
+
+.explore-link {
+    padding-left: 10%;
+}
+
+.profile-link {
+    padding-left: 10%;
+} 
+
+.trips-title {
+    padding-left:10%; 
+    border-bottom: 1px solid #EF5350;
+    padding-bottom: 5%;
+}
+
+.plane {
+    height: 5vh;
+    padding-left: 15%;
+}
+
+.trip-detail-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+}
+
+.add-button {
+    margin-left: 10%;
+}
+
+.new-trip-link {
+    font-style: italic;
+}

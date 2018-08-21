@@ -1,0 +1,29 @@
+<section class="container">
+  <div>
+    <h3 class="description">Description</h3>
+    <p *ngIf="!showForm">{{this.description}}</p>
+    <button *ngIf="showEditDescription && !showForm" (click)="handleEdit()">Edit bio</button>
+    <form *ngIf="showForm" (ngSubmit)="submitForm(form)" #form="ngForm">
+      <div>
+        <textarea type="text" name="description" [(ngModel)]="description" #descriptionField="ngModel"></textarea>
+      </div>
+      <button type="submit">Done</button>
+    </form>
+  </div>
+  <div>
+    <h3>My trips</h3>
+  </div>
+  <div class="scrollable-trips-container">
+    <div *ngFor="let trip of trips" (click)="handleChangeOfTrip(trip)" class="card">
+      <h4>{{trip.name}}</h4>
+    </div>
+  </div>
+  <div>
+    <h3>My favorites</h3>
+  </div>
+  <div class="scrollable-trips-container">
+    <div *ngFor="let favorite of favorites" (click)="handleExploreFavorite(favorite._id)" class="card">
+      <h4>{{favorite.name}}</h4>
+    </div>
+  </div>
+</section>

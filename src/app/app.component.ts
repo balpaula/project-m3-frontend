@@ -9,7 +9,7 @@ import { AuthService } from './services/auth.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'Project Example';
+  title = 'Travelist';
   loading = true;
   anon: boolean;
   user: any;
@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
 
   logout() {
     this.authService.logout()
-      .then(() => this.router.navigate(['/login']));
+      .then(() => this.router.navigate(['/']));
   }
 
 }

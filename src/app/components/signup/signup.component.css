@@ -1,0 +1,58 @@
+.signup-global-div {
+    display: flex;
+    flex-direction: column;
+}
+
+.label-input-column {
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
+}
+
+.signup-align {
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    top: 8%;
+    right: 0;
+    background-color: white;
+    padding: 1%;
+    z-index: 2;
+    border-radius: 5px;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-left: 2%;
+    padding-right: 2.8%;
+    width: 15%;
+    text-align: center;
+}
+
+input:focus {
+    outline: none;
+}
+
+.ng-touched {
+    border-color: blue;
+}
+
+.ng-touched.ng-invalid {
+    border-color: red;
+}
+
+.ng-touched.ng-valid {
+    border-color: green;
+}
+
+.field-submit {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    padding-top: 15px;
+}
+
+.submit-button {
+    padding: 10px;
+    font-size: 1em;
+    border-radius: 10px;
+    border-color: #EF5350;
+}

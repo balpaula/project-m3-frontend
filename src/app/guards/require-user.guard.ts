@@ -7,7 +7,7 @@ import { AuthService } from '../services/auth.service';
 
 @Injectable()
 export class RequireUserGuard implements CanActivate {
-  
+
   constructor(
     private authService: AuthService,
     private router: Router
@@ -19,7 +19,7 @@ export class RequireUserGuard implements CanActivate {
         if (user) {
           return true;
         } else {
-          this.router.navigate(['/login']);
+          this.router.navigate(['/']);
           return false;
         }
       })

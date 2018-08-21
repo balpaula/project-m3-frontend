@@ -1,0 +1,19 @@
+.fav-button {
+    position: absolute;
+    z-index:2;
+    top: 3vh;
+    right: 3vh;
+}
+
+.username {
+    position: absolute;
+    z-index:2;
+    top: 5%;
+    left: 5%;
+}
+
+.map-positioning {
+    position: relative;
+    z-index:1;
+    height: calc(100vh - 3vh - 8vh);
+}

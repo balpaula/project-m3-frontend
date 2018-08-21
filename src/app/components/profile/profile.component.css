@@ -1,0 +1,47 @@
+.container {
+  height: calc(100vh - 3vh - 8vh );
+}
+
+.description {
+  margin: 0%;
+}
+
+
+.scrollable-trips-container {
+  background-color: #fff;
+  min-width: 100%;
+  min-height: 200px;
+  display: flex;
+  overflow-x: auto;
+}
+
+.card {
+  background-color: #e74c3c;
+  min-width: 200px;
+  margin: 5px;
+}
+
+.scrollable-favorites-container {
+  background-color: #fff;
+  min-width: 100%;
+  min-height: 200px;
+  display: flex;
+  overflow-x: auto;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
+.card-2 {
+  background-color: #e74c3c;
+  min-width: 200px;
+  margin: 5px;
+}
+
+textarea {
+  width: 34vw;
+  height: 12vh;
+  resize: none;
+}
