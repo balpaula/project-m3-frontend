@@ -17,10 +17,11 @@
 }
 
 .card {
-  background-color: #e74c3c;
+  background-color: white;
   min-width: 200px;
   margin: 5px;
   border-radius: 15px;
+  border-radius: 1px solid #EF5350;
 }
 
 .scrollable-favorites-container {
@@ -112,6 +113,18 @@ textarea {
   flex-direction: column;
   padding: 3% 7%;
   width: 250px;
+  background-color:#EF5350;
+  width: 200px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.user-trip {
+  color: white;
+}
+
+.mytrips-card-info {
+  margin-left:7%;
 }
 
 .card-container {

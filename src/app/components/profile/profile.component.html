@@ -27,7 +27,7 @@
     <div class="scrollable-trips-container">
       <div *ngFor="let trip of trips" (click)="handleChangeOfTrip(trip)" class="card">
         <div class="mytrips-card-title">
-          <h4>@{{user.username}}</h4>
+          <h4 class="user-trip">@{{user.username}}</h4>
         </div>
         <div class="mytrips-card-info">
           <h4>{{trip.name}}</h4>
