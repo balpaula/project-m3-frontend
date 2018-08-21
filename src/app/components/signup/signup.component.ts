@@ -14,6 +14,8 @@ export class SignupComponent implements OnInit {
   password: string;
   email: string;
 
+  feedbackEnabled: any;
+
   constructor(
     private authService: AuthService,
     private router: Router

@@ -1,4 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,15 +9,29 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  @Input() isUser: any;
-  @Output() whenLogout = new EventEmitter();
+  title = 'Travelist';
+  loading = true;
+  anon: boolean;
+  user: any;
+
+  // @Input() isUser: any;
+  // @Output() whenLogout = new EventEmitter();
+
 
   showLogin = false;
   showSignup = false;
 
-  constructor() { }
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
+    this.authService.userChange$.subscribe((user) => {
+      this.loading = false;
+      this.user = user;
+      this.anon = !user;
+    });
   }
 
   handleSignup() {
@@ -36,7 +52,12 @@ export class NavbarComponent implements OnInit {
     }
   }
 
+  // handleLogout() {
+  //   this.whenLogout.emit();
+  // }
+
   handleLogout() {
-    this.whenLogout.emit();
+    this.authService.logout()
+      .then(() => this.router.navigate(['/']));
   }
 }

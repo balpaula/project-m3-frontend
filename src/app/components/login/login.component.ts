@@ -12,6 +12,8 @@ export class LoginComponent implements OnInit {
   username: string;
   password: string;
 
+  feedbackEnabled: any;
+
   constructor(
     private authService: AuthService,
     private router: Router

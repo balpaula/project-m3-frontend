@@ -4,8 +4,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
-import { FileSelectDirective } from 'ng2-file-upload';
-
 import { AuthService } from './services/auth.service';
 import { LocationService } from './services/location.service';
 import { TripsService } from './services/trips.service';
@@ -55,8 +53,7 @@ const routes: Routes = [
     ExplorePageComponent,
     ExploreComponent,
     ProfilePageComponent,
-    ProfileComponent,
-    FileSelectDirective
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
