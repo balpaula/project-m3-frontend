@@ -29,6 +29,11 @@
   overflow-x: auto;
 }
 
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
 .card-2 {
   background-color: #e74c3c;
   min-width: 200px;

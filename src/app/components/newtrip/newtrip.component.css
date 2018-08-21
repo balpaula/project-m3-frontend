@@ -36,6 +36,16 @@ h4 {
     z-index:2;
     background-color: white;
     border-radius: 12px;
+    animation:move 3s infinite ease-in-out;
+}
+
+@keyframes move{
+    0%{
+        transform: scale(1) rotate(0deg);
+    }
+    100%{
+        transform: scale(2) rotate(0.1deg);
+    }
 }
 
 .add-button {
@@ -66,6 +76,3 @@ button {
     padding: 2%;
 }
 
-input {
-    width: 200px;
-}
