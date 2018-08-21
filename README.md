@@ -1,27 +1,165 @@
-# FrontEnd
+# TRAVELIST
+Travelist is a web application where users can save in a map the places they have been during their trips and explore maps from other users.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.2.
+## User stories
+  **404:** As an anon/user I can see a 404 page if I try to reach a page that does not exist so that I know it's my fault.
+  
+  **Signup:** As an anon I can sign up in the platform so that I can start saving favorite restaurants.
+  
+  **Login:** As a user I can login to the platform so that I can see my favorite restaurants.
+  
+  **Logout:** As a user I can logout from the platform so no one else can use it.
 
-## Development server
+  **Create a trip:** As a user I can create a new map view with the name of my trip.
+  
+  **Add a place:** As a user I can add a place to my trip (geolocalisation).
+  
+  **Add a comment with each place:** As a user I can add a little description with each marker.
+  
+  **See maps from other users:** As a user I can see maps with marked places from other users.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## Backlog
+  **Registration mail:** As I user I would like to receive a confirmation email when I register to Travelist.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+  **Profile:** As a user I would like to see other users profile so I can see their trips and their favourites.
 
-## Build
+  **Favourites:** As a user I would to mark maps as favourites so I can save them in my profile.
+  
+  **Likes:** As I user I would to like other maps.
+  
+  **Wishlist markers:** As a user I would to mark places I would like to visit in a future.
+  
+  **Notifications**
+  
+# Client
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Routes
 
-## Running unit tests
+  - / - Homepage
+  - /mytrips/:id - My trips detail
+  - /mytrips/add - Create new trip
+  - /explore - Random trips list
+  - /trips/:id - Other trips detail
+  - /profile/me - My details and favourite trips
+  - /profile/:id - Other user's details
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Services
 
-## Running end-to-end tests
+- Auth Service
+  - auth.login(user)
+  - auth.signup(user)
+  - auth.logout()
+  - auth.me()
+  
+- Profile Service
+  - profile.me()
+  
+- Trips Service
+  - trips.list() (get the name of the trips)
+  - trips.detail(id) (get markers)
+  
+- SetMap Service
+  - set-map.getposition()
+  - set-map.drawMarker(coordinates, map)
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+## Pages
 
-## Further help
+- 404 Page
+- Home Page
+- Map Page
+- List Page
+- Profile Page
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Components
+
+- Navbar component
+- Footer component
+- Side bar component
+- Pop-up new trip component
+- Pop-up new place component
+- Login/Signup form component
+
+## IO
+
+- Login/Sign up form outputs the form to the parent component
+
+## Guards
+
+- if logged in cannot access home page
+- if not logged in cannot access profile page, trips page and explore page
+- if not the owner of the trip cannot see editing features
+
+# Server
+
+## Models
+
+  User model
+
+  ```
+  username: {
+    type: String,
+    required: true
+  },
+  email: {
+    type: String,
+    required: true
+  },
+  password: {
+    type: String,
+    required: true
+  }
+  ```
+
+  Trip model
+
+  ```
+  name: {
+    type: String,
+    required: true
+  },
+  places: [{
+    type: ObjectId,
+    ref: 'Place'
+  }],
+  owner: {
+    type: ObjectId,
+    ref: 'User'
+  }
+  
+```
+  
+  Place model
+ 
+ ```
+   name: {
+      type: String,
+      required: true
+    },
+    coordinates: {
+      type: Array,
+      required: true
+    },
+    description: String,
+    date: Date,
+  }
+ ```
+
+## API Endpoints/Backend Routes
+
+  - GET /auth/me
+  - POST /auth/signup
+  - POST /auth/login
+  - POST /auth/me
+  - GET /profile/me
+  - GET /trips/list
+  - GET /trips/:id
+  - POST /trips/new
+  - POST /trips/:id/addplace
+  
+  **Backlog:**
+  - POST /favorite
+
+## Links
+- Backend of the project: https://github.com/balpaula/project-m3-backend
+- Trello: https://trello.com/b/9ahCkyVh/travelist
