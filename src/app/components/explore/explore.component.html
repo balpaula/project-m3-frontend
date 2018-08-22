@@ -1,4 +1,4 @@
-<input type="text" name="search" [(ngModel)]="search" placeholder="Search for trips or users" (change)="handleSearch()">
+<input type="text" name="search" [(ngModel)]="search" placeholder="Search for trips or users" (ngModelChange)="handleSearch()">
 <div>
   <div *ngIf="!searchResults.length" class="explore-card-container">
     <div *ngFor="let trip of tripsExplore" class="card-div">
