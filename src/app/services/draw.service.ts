@@ -20,27 +20,34 @@ export class DrawService {
 
   drawMap(coordinates) {
     mapboxgl.accessToken = 'pk.eyJ1IjoiZXNib2FyZHMiLCJhIjoiY2prdHB4OTZuMDdtYjNrbGtvOGN1NGtqbyJ9.E8XQXS19fMbyyJY8PtiXaQ';
-    const map = new mapboxgl.Map({
+    this.map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v10',
       center: coordinates,
       zoom: 12
     });
-    this.map = map;
-    this.mapChange.next(map);
-    return map;
+    this.mapChange.next(this.map);
+    return this.map;
   }
 
   drawMarker(place, map) {
-    const description = `<h3>${place.name}</h3><div><p width="200px">${place.description}</p></div><img src=${place.photo} width="200px">`;
-    const popup = new mapboxgl.Popup({ offset: 40, height: 200 })
-      //.setText(place.description);
-      .setHTML(description);
+    const imageTag = `<img src=${place.photo} width="200px">`;
+    const description = `
+      <h3>${place.name}</h3>
+      <div>
+        <p style="width: 200px">
+          ${place.description}
+        </p>
+      </div>
+      ${place.photo ? imageTag : ''}
+    `;
+    const popup = new mapboxgl.Popup({ offset: 40, height: 200 }).setHTML(description);
 
     const marker = new mapboxgl.Marker()
       .setLngLat(place.coordinates)
       .setPopup(popup)
       .addTo(map);
+
     this.markers.push(marker);
   }
 
@@ -64,7 +71,7 @@ export class DrawService {
   private eraseAllMarkers() {
     this.markers.forEach(marker => {
       marker.remove();
-    })
+    });
   }
 
   centerMap(coordinates) {
