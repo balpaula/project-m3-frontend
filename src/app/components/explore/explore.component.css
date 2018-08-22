@@ -69,14 +69,11 @@ h5 {
   flex-direction: column;
 }
 
-.cards-parent {
-}
-
 .cards-container {
   display: flex;
   flex-wrap: wrap;
-  width: 88%;
-    margin: 0 auto;
+  width: 78%;
+  margin: 0 auto;
 }
 
 .input-container {

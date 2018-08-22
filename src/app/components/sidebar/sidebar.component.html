@@ -6,6 +6,9 @@
     </div>
     <div class="scrollable-container">
       <div *ngIf="isTripsPage" class="scrollable-div">
+          <div>
+            <h4 class="trip-name new-trip-link trip-detail-container" (click)="handleClickAllTrips()">All trips</h4>
+          </div>
         <div *ngFor="let trip of trips" (click)="handleChangeOfTrip(trip)" class="trip-detail-container">
           <h4 class="trip-name">{{trip.name}}</h4>
         </div>

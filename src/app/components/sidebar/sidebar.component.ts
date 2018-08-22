@@ -52,6 +52,8 @@ export class SidebarComponent implements OnInit {
   handleChangeOfTrip(trip) {
     this.tripsService.changeTrip(trip);
     this.tripsService.setExploringFalse();
+    this.tripsService.setShowingAllTripsFalse();
+    this.statusService.showAddPlace();
   }
 
   handleClick() {
@@ -62,6 +64,11 @@ export class SidebarComponent implements OnInit {
     if (this.showForm === false) {
       this.checkUser();
     }
+  }
+
+  handleClickAllTrips() {
+    this.tripsService.allPlaces();
+    this.statusService.hideAddPlace();
   }
 
   checkUser() {

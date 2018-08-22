@@ -31,6 +31,10 @@ export class ExploreComponent implements OnInit {
     this.statusService.hideAddPlace();    
   }
 
+  ngOnDestroy() {
+    this.tripsExplore = [];
+  }
+
   handleClickTrip(id) {
     this.tripsService.exploring = id;
     this.router.navigate(['/trips']);

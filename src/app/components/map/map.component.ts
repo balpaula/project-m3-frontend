@@ -28,6 +28,8 @@ export class MapComponent implements OnInit, OnDestroy {
 
   showUsername: boolean;
 
+  showFavoriteStar = true;
+
   subscriptionMap: any;
   subscriptionPlaces: any;
   subscriptionCurrentTrip: any;
@@ -63,6 +65,7 @@ export class MapComponent implements OnInit, OnDestroy {
         this.handleCurrentTripChange();
       }
       this.handleShowUsername();
+      this.handleShowFavorites();
     });
 
     this.subscriptionFavorites = this.tripsService.favoritesChange$.subscribe((favorites) => {
@@ -162,6 +165,14 @@ export class MapComponent implements OnInit, OnDestroy {
       this.showUsername = true;
     } else {
       this.showUsername = false;
+    }
+  }
+
+  handleShowFavorites() {
+    if (this.tripsService.showingAllTrips) {
+      this.showFavoriteStar = false;
+    } else {
+      this.showFavoriteStar = true;
     }
   }
 

@@ -14,7 +14,7 @@
               <img src="{{trip.places[0].photo}}">
             </div>
             <div *ngIf="!trip.places[0] || !trip.places[0].photo">
-              <img src="../../../assets/img/placeholder.png" alt="">
+              <img src="../../../assets/img/placeholder2.jpeg" alt="">
             </div>
             <div (click)="handleClickTrip(trip._id)">
               <div class="detail-trip-container">
@@ -35,7 +35,7 @@
               <h5>@{{result.owner.username}}</h5>
             </div>
             <div (click)="handleClickTrip(result._id)">
-              <img src="../../../assets/img/placeholder.png">
+              <img src="../../../assets/img/placeholder2.jpeg">
               <div class="detail-trip-container">
                 <h3>{{result.name}}</h3>
                 <h5>{{result.description}}</h5>

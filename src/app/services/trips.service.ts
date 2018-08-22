@@ -14,6 +14,7 @@ export class TripsService {
   public currentTrip: any;
   private currentTripChange: Subject<any> = new Subject();
   public exploring: any;
+  public showingAllTrips: boolean;
   public favorites = [];
   private favoritesChange: Subject<any> = new Subject();
   public searchResults = [];
@@ -181,5 +182,27 @@ export class TripsService {
   setExploringFalse() {
     this.exploring = undefined;
   }
+
+  allPlaces() {
+    const placesAll = [];
+    this.trips.forEach(trip => {
+      trip.places.forEach(place => {
+        placesAll.push(place);
+      })
+    })
+    const newTrip = this.currentTrip;
+    newTrip.places = placesAll;
+    this.setCurrentTrip(newTrip);
+    this.setShowingAllTripsTrue();
+  }
+
+  setShowingAllTripsFalse() {
+    this.showingAllTrips = false;
+  }
+
+  setShowingAllTripsTrue() {
+    this.showingAllTrips = true;
+  }
+  
 
 }
