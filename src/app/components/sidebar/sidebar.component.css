@@ -19,8 +19,7 @@
 }
 
 .trip-name {
-    padding-left: 20%;
-    display: inline;
+    margin-left: 20%;
 }
 
 .scrollable-container {
