@@ -45,7 +45,6 @@ export class ExploreComponent implements OnInit {
   }
 
   handleSearch() {
-    console.log(this.search);
     this.tripsService.getSearch(this.search);
   }
 

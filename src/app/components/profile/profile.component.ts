@@ -50,7 +50,6 @@ export class ProfileComponent implements OnInit {
             });
           this.tripsService.getFavoritesFromUser(profile._id)
             .then(favorites => {
-              console.log(favorites);
               this.favorites = favorites;
             })
             .catch(error => {
