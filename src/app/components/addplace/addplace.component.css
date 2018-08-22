@@ -37,6 +37,16 @@ h4 {
     z-index:2;
     background-color: white;
     border-radius: 12px;
+    animation: popup 0.17s ease-in-out;
+}
+
+@keyframes popup{
+    0%{
+       transform: scale(0.95);
+    }
+    100%{
+        transform: scale(1);
+    }
 }
 
 .add-button {
