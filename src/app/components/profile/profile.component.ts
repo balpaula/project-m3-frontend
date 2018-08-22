@@ -64,6 +64,10 @@ export class ProfileComponent implements OnInit {
     this.router.navigate(['/trips']);
   }
 
+  handleClickUsername(username) {
+    this.router.navigate(['/profile', username]);
+  }
+
   handleEdit() {
     this.showEditDescription = false;
     this.showForm = true;
