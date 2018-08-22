@@ -14,6 +14,7 @@ export class ProfileComponent implements OnInit {
 
   user: any;
 
+  username: any;
   description = '';
   trips: Array<any>;
   favorites: Array<any>;
@@ -35,6 +36,7 @@ export class ProfileComponent implements OnInit {
     this.route.params.subscribe((value) => {
       this.profileService.getOne(value.username)
         .then(profile => {
+          this.username = profile.username;
           this.description = profile.description;
           if (profile.username === this.user.username) {
             this.showEditDescription = true;
@@ -43,10 +45,17 @@ export class ProfileComponent implements OnInit {
             .then(trips => {
               this.trips = trips;
             })
+            .catch(error => {
+              console.log(error);
+            });
           this.tripsService.getFavoritesFromUser(profile._id)
             .then(favorites => {
+              console.log(favorites);
               this.favorites = favorites;
             })
+            .catch(error => {
+              console.log(error);
+            });
         })
         .catch(error => {
           console.error("Couldn't get the searched user");
