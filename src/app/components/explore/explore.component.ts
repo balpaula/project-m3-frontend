@@ -11,7 +11,7 @@ import { StatusService } from '../../services/status.service';
 export class ExploreComponent implements OnInit {
 
   tripsExplore: Array<any>;
-  search: any;
+  search = '';
   searchResults = [];
 
   constructor( private tripsService: TripsService, private router: Router, private statusService: StatusService ) { }
