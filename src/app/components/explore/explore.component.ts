@@ -11,10 +11,15 @@ import { StatusService } from '../../services/status.service';
 export class ExploreComponent implements OnInit {
 
   tripsExplore: Array<any>;
+  search: any;
+  searchResults = [];
 
   constructor( private tripsService: TripsService, private router: Router, private statusService: StatusService ) { }
 
   ngOnInit() {
+    this.tripsService.searchResultsChange$.subscribe((results) => {
+      this.searchResults = results;     
+    });
     this.tripsService.getExplore()
       .then((trips) => {
         this.tripsExplore = trips;
@@ -26,9 +31,18 @@ export class ExploreComponent implements OnInit {
     this.statusService.hideAddPlace();    
   }
 
-  handleClick(id) {
+  handleClickTrip(id) {
     this.tripsService.exploring = id;
     this.router.navigate(['/trips']);
+  }
+
+  handleClickUsername(username) {
+    this.router.navigate(['/profile', username]);
+  }
+
+  handleSearch() {
+    console.log(this.search);
+    this.tripsService.getSearch(this.search);
   }
 
 }

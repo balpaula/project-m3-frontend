@@ -61,4 +61,13 @@ export class NavbarComponent implements OnInit {
       .then(() => this.router.navigate(['/']))
       .catch(error => console.log("Couldn't log out"));
   }
+
+  handleGoHome() {
+    this.router.navigate(['/']);
+  }
+
+  handleGoTrips() {
+    this.router.navigate(['/trips'])
+  }
+
 }

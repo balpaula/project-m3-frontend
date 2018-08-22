@@ -46,6 +46,7 @@ input:focus {
     font-size: 1em;
     border-radius: 10px;
     border-color: #EF5350;
+    background-color: transparent;
 }
 
 .submit-button:hover {

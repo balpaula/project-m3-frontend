@@ -16,11 +16,14 @@ export class TripsService {
   public exploring: any;
   public favorites = [];
   private favoritesChange: Subject<any> = new Subject();
+  public searchResults = [];
+  private searchResultsChange: Subject<any> = new Subject();
 
 
   tripsChange$: Observable<any> = this.tripsChange.asObservable();
   currentTripChange$: Observable<any> = this.currentTripChange.asObservable();
   favoritesChange$: Observable<any> = this.favoritesChange.asObservable();
+  searchResultsChange$: Observable<any> = this.searchResultsChange.asObservable();
 
   constructor( private httpClient: HttpClient ) { }
 
@@ -40,6 +43,12 @@ export class TripsService {
     this.favorites = favorites;
     this.favoritesChange.next(favorites);
     return favorites;
+  }
+
+  private setSearchResults(searchResults: Array<any>) {
+    this.searchResults = searchResults;
+    this.searchResultsChange.next(searchResults);
+    return searchResults;
   }
 
   getTrips(): Promise<any> {
@@ -93,6 +102,17 @@ export class TripsService {
     };
     return this.httpClient.get(`${this.API_URL}/explore`, options)
       .toPromise()
+  }
+
+  getSearch(text): Promise<any> {
+    const options = {
+      withCredentials: true
+    };
+    return this.httpClient.get(`${this.API_URL}/explore/search/${text}`, options)
+      .toPromise()
+      .then((results: Array<any>) => {
+        this.setSearchResults(results);
+      })
   }
 
   getFavorites(): Promise<any> {

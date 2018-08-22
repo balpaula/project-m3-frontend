@@ -10,12 +10,32 @@
 
 .card-div {
     width: 38vh;
-    height: 48vh;
-    border: 1px solid blue;
+    height: fit-content;
     margin: 3% 1%;
+}
+
+.card-div h3, h5{
+    margin: 1%;
+    cursor: pointer;
+}
+
+.username-container {
+    height: 4vh;
+    padding: 2%;
+    background-color: #EF5350;
+    color: white;
+    border-radius: 10px 10px 0 0;
 }
 
 .card-div img {
     width: 38vh;
-    height: 38vh;
+    height: 36vh;
+}
+
+.detail-trip-container {
+    height: 8vh;
+    padding: 1% 2%;
+    border: 1px solid #EF5350;
+    border-top: none;
+    border-radius: 0 0 10px 10px;
 }

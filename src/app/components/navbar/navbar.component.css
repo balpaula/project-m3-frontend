@@ -47,13 +47,17 @@
 a{
     text-decoration: none;
     color: #fff;
-  }
+}
+
+a, h3 {
+    cursor: pointer;
+}
   
-  .link{
+.link{
     position: relative;
-  }
-  
-  .link:after{
+}
+
+.link:after{
     content: '';
     position: absolute;
     width: 0; height: 3px;
@@ -63,12 +67,12 @@ a{
     background: #fff;
     transition: width .2s ease;
     -webkit-transition: width .2s ease;
-  }
-   
-  .link:hover:after{
+}
+
+.link:hover:after{
     width: 100%;
     left: 0;
     background: #fff;
-  }
+}
   
   
