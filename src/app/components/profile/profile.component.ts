@@ -36,13 +36,16 @@ export class ProfileComponent implements OnInit {
       this.profileService.getOne(value.username)
         .then(profile => {
           this.description = profile.description;
-          this.favorites = profile.favorites;
           if (profile.username === this.user.username) {
             this.showEditDescription = true;
           }
           this.tripsService.getTripsFromUser(profile._id)
             .then(trips => {
               this.trips = trips;
+            })
+          this.tripsService.getFavoritesFromUser(profile._id)
+            .then(favorites => {
+              this.favorites = favorites;
             })
         })
         .catch(error => {

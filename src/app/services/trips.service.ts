@@ -126,6 +126,14 @@ export class TripsService {
       });
   }
 
+  getFavoritesFromUser(userId): Promise<any> {
+    const options = {
+      withCredentials: true
+    };
+    return this.httpClient.get(`${this.API_URL}/trips/favorites/${userId}`, options)
+      .toPromise()
+  }
+
   addFavorite(tripId): Promise<any> {
     const options = {
       withCredentials: true

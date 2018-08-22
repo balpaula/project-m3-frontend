@@ -1,4 +1,4 @@
-.navbar-not-registered {
+.navbar-not-registered, .navbar-registered {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -14,11 +14,7 @@
     justify-content: space-around;
 }
 
-.link-signup {
-    margin-right: 50px;
-}
-
-.link-login {
+.link-signup, .link-login {
     margin-right: 50px;
 }
 
@@ -26,22 +22,9 @@
     padding-left: 15px;
 }
 
-.navbar-registered {
-    display: flex;
-    height: 8vh;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: baseline;
-    background-color: #EF5350;
-    color: white;
-}
-
-.navbar-registered h3 {
-    padding-left: 15px;
-}
-
-.navbar-registered a {
-    padding-right: 20px;
+.navbar-registered a, h3 {
+    margin-right: 20px;
+    margin-left: 15px;
 }
 
 a{

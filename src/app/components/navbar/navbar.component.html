@@ -8,7 +8,7 @@
   </div>
   <div *ngIf="user" class="navbar-registered">
     <h3 (click)="handleGoTrips()">Travelist</h3>
-    <a (click)="handleLogout()">Log out</a>
+    <a (click)="handleLogout()" class="link-logout link">Log out</a>
   </div>
 </section>
 <div *ngIf="!user">

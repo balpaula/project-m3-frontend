@@ -19,11 +19,12 @@ export class DrawService {
   constructor( private httpClient: HttpClient) { }
 
   drawMap(coordinates) {
+    const center = new mapboxgl.LngLat(coordinates[0], coordinates[1]);
     mapboxgl.accessToken = 'pk.eyJ1IjoiZXNib2FyZHMiLCJhIjoiY2prdHB4OTZuMDdtYjNrbGtvOGN1NGtqbyJ9.E8XQXS19fMbyyJY8PtiXaQ';
     this.map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v10',
-      center: coordinates,
+      center,
       zoom: 12
     });
     this.mapChange.next(this.map);
