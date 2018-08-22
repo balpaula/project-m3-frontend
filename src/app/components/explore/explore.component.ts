@@ -18,17 +18,17 @@ export class ExploreComponent implements OnInit {
 
   ngOnInit() {
     this.tripsService.searchResultsChange$.subscribe((results) => {
-      this.searchResults = results;     
+      this.searchResults = results;
     });
     this.tripsService.getExplore()
       .then((trips) => {
         this.tripsExplore = trips;
       })
       .catch(error => {
-        console.log("Couldn't get the trips");
-      })
+        console.log('Could not get the trips');
+      });
 
-    this.statusService.hideAddPlace();    
+    this.statusService.hideAddPlace();
   }
 
   ngOnDestroy() {

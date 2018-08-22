@@ -54,8 +54,8 @@ export class DrawService {
 
   drawMarkerCurrentLocation(coordinates, map) {
     const popup = new mapboxgl.Popup({ offset: 40 })
-      //.setText(place.description);
-      .setText("You're here!");
+      // .setText(place.description);
+      .setText('You are here!');
     const marker = new mapboxgl.Marker({color: '#EF5350'})
       .setLngLat(coordinates)
       .setPopup(popup)

@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ExplorePageComponent implements OnInit {
 
-  @Input() isTtripsPage=false;
+  @Input() isTtripsPage = false;
 
   constructor() { }
 

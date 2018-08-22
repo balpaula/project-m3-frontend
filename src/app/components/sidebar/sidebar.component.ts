@@ -18,9 +18,9 @@ export class SidebarComponent implements OnInit {
 
   showForm = false;
 
-  constructor( private tripsService: TripsService, 
-    private router: Router, 
-    private authService: AuthService, 
+  constructor( private tripsService: TripsService,
+    private router: Router,
+    private authService: AuthService,
     private statusService: StatusService ) { }
 
   ngOnInit() {
@@ -41,12 +41,12 @@ export class SidebarComponent implements OnInit {
         }
       })
       .catch(error => {
-        console.log("Couldn't charge trips in sidebar");
+        console.log('Could not charge trips in sidebar');
       });
 
     this.statusService.createTripChange$.subscribe((bool) => {
       this.showForm = bool;
-    })
+    });
   }
 
   handleChangeOfTrip(trip) {
@@ -60,7 +60,7 @@ export class SidebarComponent implements OnInit {
     this.showForm = !this.showForm;
     if (this.showForm === true) {
       this.statusService.hideAddPlace();
-    } 
+    }
     if (this.showForm === false) {
       this.checkUser();
     }
@@ -72,7 +72,7 @@ export class SidebarComponent implements OnInit {
   }
 
   checkUser() {
-    if (this.user._id === this.currentTrip.owner._id){
+    if (this.user._id === this.currentTrip.owner._id) {
       this.statusService.showAddPlace();
     } else {
       this.statusService.hideAddPlace();

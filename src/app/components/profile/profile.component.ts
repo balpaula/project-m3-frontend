@@ -22,10 +22,10 @@ export class ProfileComponent implements OnInit {
   showEditDescription = false;
   showForm = false;
 
-  constructor( 
-    private tripsService: TripsService, 
-    private router: Router, 
-    private route: ActivatedRoute, 
+  constructor(
+    private tripsService: TripsService,
+    private router: Router,
+    private route: ActivatedRoute,
     private profileService: ProfileService,
     private authService: AuthService,
     private statusService: StatusService ) { }
@@ -58,7 +58,7 @@ export class ProfileComponent implements OnInit {
             });
         })
         .catch(error => {
-          console.error("Couldn't get the searched user");
+          console.error('Could not get the searched user');
         });
     });
 
@@ -94,7 +94,7 @@ export class ProfileComponent implements OnInit {
       this.showEditDescription = true;
     })
     .catch(error => {
-      console.log("Couldn't update the description");
-    })
+      console.log('Could not update the description');
+    });
   }
 }

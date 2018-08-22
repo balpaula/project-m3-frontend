@@ -8,7 +8,7 @@ import { StatusService } from '../../services/status.service';
 })
 export class TripsPageComponent implements OnInit {
 
-  @Input() isTripsPage=true;
+  @Input() isTripsPage = true;
 
   showAddPlace: boolean;
 
