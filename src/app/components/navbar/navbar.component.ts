@@ -58,6 +58,16 @@ export class NavbarComponent implements OnInit {
 
   handleLogout() {
     this.authService.logout()
-      .then(() => this.router.navigate(['/']));
+      .then(() => this.router.navigate(['/']))
+      .catch(error => console.log("Couldn't log out"));
   }
+
+  handleGoHome() {
+    this.router.navigate(['/']);
+  }
+
+  handleGoTrips() {
+    this.router.navigate(['/trips'])
+  }
+
 }

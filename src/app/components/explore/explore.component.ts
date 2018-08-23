@@ -11,21 +11,43 @@ import { StatusService } from '../../services/status.service';
 export class ExploreComponent implements OnInit {
 
   tripsExplore: Array<any>;
+  search = '';
+  searchResults = [];
 
   constructor( private tripsService: TripsService, private router: Router, private statusService: StatusService ) { }
 
   ngOnInit() {
+    this.tripsService.searchResultsChange$.subscribe((results) => {
+      this.searchResults = results;
+    });
     this.tripsService.getExplore()
       .then((trips) => {
         this.tripsExplore = trips;
       })
+      .catch(error => {
+        console.log('Could not get the trips');
+      });
 
-    this.statusService.hideAddPlace();    
+    this.statusService.hideAddPlace();
   }
 
-  handleClick(id) {
+  ngOnDestroy() {
+    this.tripsExplore = [];
+  }
+
+  handleClickTrip(id) {
     this.tripsService.exploring = id;
     this.router.navigate(['/trips']);
+  }
+
+  handleClickUsername(username) {
+    this.router.navigate(['/profile', username]);
+  }
+
+  handleSearch() {
+    if (this.search.length) {
+      this.tripsService.getSearch(this.search);
+    }
   }
 
 }

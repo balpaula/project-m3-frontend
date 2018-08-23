@@ -14,13 +14,17 @@ export class TripsService {
   public currentTrip: any;
   private currentTripChange: Subject<any> = new Subject();
   public exploring: any;
+  public showingAllTrips: boolean;
   public favorites = [];
   private favoritesChange: Subject<any> = new Subject();
+  public searchResults = [];
+  private searchResultsChange: Subject<any> = new Subject();
 
 
   tripsChange$: Observable<any> = this.tripsChange.asObservable();
   currentTripChange$: Observable<any> = this.currentTripChange.asObservable();
   favoritesChange$: Observable<any> = this.favoritesChange.asObservable();
+  searchResultsChange$: Observable<any> = this.searchResultsChange.asObservable();
 
   constructor( private httpClient: HttpClient ) { }
 
@@ -42,6 +46,12 @@ export class TripsService {
     return favorites;
   }
 
+  private setSearchResults(searchResults: Array<any>) {
+    this.searchResults = searchResults;
+    this.searchResultsChange.next(searchResults);
+    return searchResults;
+  }
+
   getTrips(): Promise<any> {
     const options = {
       withCredentials: true
@@ -58,7 +68,7 @@ export class TripsService {
       withCredentials: true
     };
     return this.httpClient.get(`${this.API_URL}/trips/user/${userId}`, options)
-      .toPromise()
+      .toPromise();
   }
 
   getOneTrip(tripId): Promise<any> {
@@ -69,7 +79,7 @@ export class TripsService {
       .toPromise()
       .then((trip: any) => {
         this.setCurrentTrip(trip);
-      })
+      });
   }
 
   createTrip(trip: any): Promise<any> {
@@ -92,7 +102,18 @@ export class TripsService {
       withCredentials: true
     };
     return this.httpClient.get(`${this.API_URL}/explore`, options)
+      .toPromise();
+  }
+
+  getSearch(text): Promise<any> {
+    const options = {
+      withCredentials: true
+    };
+    return this.httpClient.get(`${this.API_URL}/explore/search/${text}`, options)
       .toPromise()
+      .then((results: Array<any>) => {
+        this.setSearchResults(results);
+      });
   }
 
   getFavorites(): Promise<any> {
@@ -104,6 +125,14 @@ export class TripsService {
       .then((favorites: Array<any>) => {
         this.setFavorites(favorites);
       });
+  }
+
+  getFavoritesFromUser(userId): Promise<any> {
+    const options = {
+      withCredentials: true
+    };
+    return this.httpClient.get(`${this.API_URL}/trips/favorites/${userId}`, options)
+      .toPromise();
   }
 
   addFavorite(tripId): Promise<any> {
@@ -153,5 +182,27 @@ export class TripsService {
   setExploringFalse() {
     this.exploring = undefined;
   }
+
+  allPlaces() {
+    const placesAll = [];
+    this.trips.forEach(trip => {
+      trip.places.forEach(place => {
+        placesAll.push(place);
+      });
+    });
+    const newTrip = this.currentTrip;
+    newTrip.places = placesAll;
+    this.setCurrentTrip(newTrip);
+    this.setShowingAllTripsTrue();
+  }
+
+  setShowingAllTripsFalse() {
+    this.showingAllTrips = false;
+  }
+
+  setShowingAllTripsTrue() {
+    this.showingAllTrips = true;
+  }
+
 
 }

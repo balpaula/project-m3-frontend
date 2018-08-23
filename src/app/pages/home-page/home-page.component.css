@@ -1,17 +1,9 @@
-body {
-    
-}
-
-.video-section {
-    
-}
-
 .video-container {
     width: 100%;
 }
 
 .promotional-video {
-    height: 92vh;
+    width: 100vw;
 }
 
 .animation-title {
@@ -19,9 +11,11 @@ body {
     flex-direction: column;
     text-align: center;
     position: absolute;
-    top: 35%;
-    left:37.5%;
-    width: 420px;
+    top: 40%;
+    left:0;
+    right: 0;
+    margin: auto;
+    width: fit-content;
 }
 
 .animation {
@@ -30,9 +24,12 @@ body {
     color: white;
 }
 
-.title {
-    font-size: 3em;
+.title h2{
+    font-size: 9em;
     color: white;
+    font-family: 'Lato', 'Quicksand', sans-serif;
+    font-weight: 400;
+    margin: 0 0;
 }
 
 .line-1{
@@ -55,7 +52,7 @@ body {
 }
 @keyframes typewriter{
   from{width: 0;}
-  to{width: 16em;}
+  to{width: 18.5em;}
 }
 @keyframes blinkTextCursor{
   from{border-right-color: rgba(255,255,255,.75);}
@@ -119,7 +116,8 @@ body {
   .slide-title {
     color: #EF5350;
     text-align: center;
-    font-size: 2em;    
+    font-size: 1.3em;    
+    text-align: right;
   }
 
   .slide-title-div {
@@ -157,8 +155,10 @@ body {
   }
 
   .section-3-title {
-      font-size: 2em;
+      font-size: 2.2em;
       color: white;
+      font-family: 'Lato', 'Quicksand', sans-serif;
+      font-weight: 300;
   }
 
   .section-3-img {
@@ -182,3 +182,6 @@ body {
       margin-top: 7%;
   }
   
+::-webkit-scrollbar {
+    display: none;
+}

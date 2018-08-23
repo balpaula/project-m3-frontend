@@ -1,8 +1,8 @@
-.navbar-not-registered {
+.navbar-not-registered, .navbar-registered {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: center;
     background-color: #EF5350;
     color: white;
     height: 8vh;
@@ -14,11 +14,7 @@
     justify-content: space-around;
 }
 
-.link-signup {
-    margin-right: 50px;
-}
-
-.link-login {
+.link-signup, .link-login {
     margin-right: 50px;
 }
 
@@ -26,34 +22,30 @@
     padding-left: 15px;
 }
 
-.navbar-registered {
-    display: flex;
-    height: 8vh;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: baseline;
-    background-color: #EF5350;
-    color: white;
-}
-
-.navbar-registered h3 {
-    padding-left: 15px;
-}
-
-.navbar-registered a {
-    padding-right: 20px;
+.navbar-registered a, h3 {
+    margin-right: 20px;
+    margin-left: 15px;
 }
 
 a{
     text-decoration: none;
     color: #fff;
-  }
+}
+
+a, h3 {
+    cursor: pointer;
+}
+
+h3 {
+    font-family: 'Lato', 'Quicksand', sans-serif;
+    font-weight: 400;
+}
   
-  .link{
+.link{
     position: relative;
-  }
-  
-  .link:after{
+}
+
+.link:after{
     content: '';
     position: absolute;
     width: 0; height: 3px;
@@ -63,12 +55,12 @@ a{
     background: #fff;
     transition: width .2s ease;
     -webkit-transition: width .2s ease;
-  }
-   
-  .link:hover:after{
+}
+
+.link:hover:after{
     width: 100%;
     left: 0;
     background: #fff;
-  }
+}
   
   

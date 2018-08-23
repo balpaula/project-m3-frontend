@@ -1,29 +1,68 @@
 <section class="container">
-  <div>
-    <h3 class="description">Description</h3>
-    <p *ngIf="!showForm">{{this.description}}</p>
-    <button *ngIf="showEditDescription && !showForm" (click)="handleEdit()">Edit bio</button>
-    <form *ngIf="showForm" (ngSubmit)="submitForm(form)" #form="ngForm">
-      <div>
-        <textarea type="text" name="description" [(ngModel)]="description" #descriptionField="ngModel"></textarea>
+  <div class="info-container">
+    <div class="info-photo">
+      <div class="profile-pic-div">
+        <img src="../../../assets/img/profile-placeholder.png" alt="" class="profile-pic">
       </div>
-      <button type="submit">Done</button>
-    </form>
-  </div>
-  <div>
-    <h3>My trips</h3>
-  </div>
-  <div class="scrollable-trips-container">
-    <div *ngFor="let trip of trips" (click)="handleChangeOfTrip(trip)" class="card">
-      <h4>{{trip.name}}</h4>
+      <div class="user">
+        <h2>@{{this.username}}</h2>
+      </div>
+    </div>
+    <div class="bio-container">
+      <h3 class="description">About me</h3>
+      <p *ngIf="!showForm">{{this.description}}</p>
+      <button *ngIf="showEditDescription && !showForm" (click)="handleEdit()" class="button-edit">Edit bio</button>
+      <form *ngIf="showForm" (ngSubmit)="submitForm(form)" #form="ngForm">
+        <div>
+          <textarea type="text" name="description" [(ngModel)]="description" #descriptionField="ngModel"></textarea>
+        </div>
+        <button type="submit" class="button-edit">Done</button>
+      </form>
     </div>
   </div>
   <div>
-    <h3>My favorites</h3>
+    <h3 class="trips-title">My trips</h3>
   </div>
-  <div class="scrollable-trips-container">
-    <div *ngFor="let favorite of favorites" (click)="handleExploreFavorite(favorite._id)" class="card">
-      <h4>{{favorite.name}}</h4>
+  <div class="scroll-container">
+    <div class="scrollable-trips-container">
+      <div *ngFor="let trip of trips" (click)="handleChangeOfTrip(trip)" class="card-div">
+          <div *ngIf="trip.places[0] && trip.places[0].photo" class="user-trip-image-div">
+            <img src="{{trip.places[0].photo}}">
+          </div>
+          <div *ngIf="!trip.places[0] || !trip.places[0].photo" class="user-trip-image-div">
+            <img src="../../../assets/img/placeholder2.jpeg">
+          </div>
+          <div (click)="handleChangeOfTrip(trip)">
+            <div class="detail-trip-container">
+              <h3>{{trip.name}}</h3>
+              <h5>{{trip.description}}</h5>
+            </div>
+          </div>
+      </div>
+    </div>
+    <div>
+      <h3 class="fav-title">My favorites</h3>
+    </div>
+    <div class="scroll-container">
+      <div class="scrollable-favorites-container">
+        <div *ngFor="let favorite of favorites" class="card-div">
+          <div class="username-container" (click)="handleClickUsername(favorite.owner.username)">
+            <h5>@{{favorite.owner.username}}</h5>
+          </div>
+          <div *ngIf="favorite.places[0] && favorite.places[0].photo">
+            <img src="{{favorite.places[0].photo}}">
+          </div>
+          <div *ngIf="!favorite.places[0] || !favorite.places[0].photo">
+            <img src="../../../assets/img/placeholder2.jpeg" alt="">
+          </div>
+          <div (click)="handleExploreFavorite(favorite._id)">
+            <div class="detail-trip-container">
+              <h3>{{favorite.name}}</h3>
+              <h5>{{favorite.description}}</h5>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>

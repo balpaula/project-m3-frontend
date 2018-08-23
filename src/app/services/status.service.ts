@@ -11,9 +11,12 @@ export class StatusService {
   private addPlaceChange: Subject<any> = new Subject();
   public createTrip: boolean;
   private createTripChange: Subject<any> = new Subject();
+  public star: boolean;
+  private starChange: Subject<any> = new Subject();
 
   addPlaceChange$: Observable<any> = this.addPlaceChange.asObservable();
   createTripChange$: Observable<any> = this.createTripChange.asObservable();
+  starChange$: Observable<any> = this.starChange.asObservable();
 
   constructor() { }
 
@@ -26,6 +29,12 @@ export class StatusService {
   private setCreateTrip(bool: boolean) {
     this.createTrip = bool;
     this.createTripChange.next(bool);
+    return bool;
+  }
+
+  private setStar(bool: boolean) {
+    this.star = bool;
+    this.starChange.next(bool);
     return bool;
   }
 
@@ -43,6 +52,14 @@ export class StatusService {
 
   showCreateTrip() {
     this.setCreateTrip(true);
+  }
+
+  hideStar() {
+    this.setStar(false);
+  }
+
+  showStar() {
+    this.setStar(true);
   }
 
 }

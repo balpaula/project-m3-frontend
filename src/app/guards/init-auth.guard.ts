@@ -16,7 +16,6 @@ export class InitAuthGuard implements CanActivate {
         return true;
       })
       .catch((error) => {
-        console.error(error);
         return false;
       });
   }

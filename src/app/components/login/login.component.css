@@ -1,8 +1,6 @@
 .login-global-div {
     display: flex;
     flex-direction: column;
-    text-align: center;
-    align-content: center;
 }
 
 .label-input-column {
@@ -24,8 +22,12 @@
     padding-top: 1%;
     padding-bottom: 1%;
     padding-left: 2%;
-    padding-right: 2.8%;
-    width: 15%;
+    padding-right: 2%;
+    width: fit-content;
+}
+
+.input-style {
+    width: 200px;
 }
 
 .field-submit {
@@ -40,4 +42,14 @@
     font-size: 1em;
     border-radius: 10px;
     border-color: #EF5350;
+    background-color: transparent;
+}
+
+.login-button:hover {
+    transition: 0.5s;
+    padding: 10px;
+    font-size: 1em;
+    border-radius: 1px solid  #EF5350;
+    color: white;
+    background-color: #EF5350;
 }

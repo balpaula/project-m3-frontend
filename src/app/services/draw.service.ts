@@ -19,35 +19,43 @@ export class DrawService {
   constructor( private httpClient: HttpClient) { }
 
   drawMap(coordinates) {
+    const center = new mapboxgl.LngLat(coordinates[0], coordinates[1]);
     mapboxgl.accessToken = 'pk.eyJ1IjoiZXNib2FyZHMiLCJhIjoiY2prdHB4OTZuMDdtYjNrbGtvOGN1NGtqbyJ9.E8XQXS19fMbyyJY8PtiXaQ';
-    const map = new mapboxgl.Map({
+    this.map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v10',
-      center: coordinates,
+      center,
       zoom: 12
     });
-    this.map = map;
-    this.mapChange.next(map);
-    return map;
+    this.mapChange.next(this.map);
+    return this.map;
   }
 
   drawMarker(place, map) {
-    const description = `<div width="200"><h3>${place.name}</h3><p>${place.description}</p><img src=${place.photo}></div>`;
-    const popup = new mapboxgl.Popup({ offset: 40 })
-      //.setText(place.description);
-      .setHTML(description);
+    const imageTag = `<img src=${place.photo} width="200px">`;
+    const description = `
+      <h3>${place.name}</h3>
+      <div>
+        <p style="width: 200px">
+          ${place.description}
+        </p>
+      </div>
+      ${place.photo ? imageTag : ''}
+    `;
+    const popup = new mapboxgl.Popup({ offset: 40, height: 200 }).setHTML(description);
 
     const marker = new mapboxgl.Marker()
       .setLngLat(place.coordinates)
       .setPopup(popup)
       .addTo(map);
+
     this.markers.push(marker);
   }
 
   drawMarkerCurrentLocation(coordinates, map) {
     const popup = new mapboxgl.Popup({ offset: 40 })
-      //.setText(place.description);
-      .setText("You're here!");
+      // .setText(place.description);
+      .setText('You are here!');
     const marker = new mapboxgl.Marker({color: '#EF5350'})
       .setLngLat(coordinates)
       .setPopup(popup)
@@ -64,7 +72,7 @@ export class DrawService {
   private eraseAllMarkers() {
     this.markers.forEach(marker => {
       marker.remove();
-    })
+    });
   }
 
   centerMap(coordinates) {

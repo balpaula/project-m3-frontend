@@ -28,8 +28,8 @@ export class AddplaceComponent implements OnInit {
 
   showForm = false;
 
-  constructor( private locationService: LocationService, 
-    private tripsService: TripsService, 
+  constructor( private locationService: LocationService,
+    private tripsService: TripsService,
     private placesService: PlacesService,
     private authService: AuthService ) { }
 
@@ -43,6 +43,9 @@ export class AddplaceComponent implements OnInit {
       .then(coordinates => {
         this.coordinates = coordinates;
       })
+      .catch(error => {
+        console.log('Could not get current location');
+      });
   }
 
   getFiles(event) {
@@ -69,18 +72,18 @@ export class AddplaceComponent implements OnInit {
             coordinates: this.coordinates,
             description: this.description,
             photo: res.data.secure_url
-          }, this.currentTrip._id)      
+          }, this.currentTrip._id);
         })
         .catch((error) => {
-          console.log(error)
+          console.log('Could not send the form with picture');
         });
     } else {
         this.placesService.addPlace({
           name: this.name,
           coordinates: this.coordinates,
           description: this.description,
-        }, this.currentTrip._id)
-      
+        }, this.currentTrip._id);
+
     }
 
     this.showForm = false;

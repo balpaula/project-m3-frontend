@@ -1,7 +1,55 @@
-<div class="explore-card-container">
-  <div *ngFor="let trip of tripsExplore" (click)="handleClick(trip._id)" class="card-div">
-    <h3>{{trip.name}}</h3>
-    <h5>{{trip.description}}</h5>
-    <h5>{{trip.owner}}</h5>
+<div class="main-container">
+  <div class="main-scrollable-container">
+    <div class="input-container">
+      <input type="text" name="search" [(ngModel)]="search" placeholder="Search for trips" (ngModelChange)="handleSearch()" class="input-search">
+    </div>
+    <div *ngIf="!search.length" class="explore-card-container">
+      <div class="cards-parent">
+        <div class="cards-container">
+          <div *ngFor="let trip of tripsExplore" class="card-div">
+            <div class="username-container" (click)="handleClickUsername(trip.owner.username)">
+              <h5>@{{trip.owner.username}}</h5>
+            </div>
+            <div *ngIf="trip.places[0] && trip.places[0].photo" (click)="handleClickTrip(trip._id)">
+              <img src="{{trip.places[0].photo}}">
+            </div>
+            <div *ngIf="!trip.places[0] || !trip.places[0].photo" (click)="handleClickTrip(trip._id)">
+              <img src="../../../assets/img/placeholder2.jpeg" alt="">
+            </div>
+            <div (click)="handleClickTrip(trip._id)">
+              <div class="detail-trip-container">
+                <h3>{{trip.name}}</h3>
+                <h5>{{trip.description}}</h5>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div *ngIf="search.length" class="explore-card-container">
+      <div class="cards-parent">
+        <div class="cards-container">
+          <div *ngFor="let result of searchResults" class="card-div">
+            <div class="username-container" (click)="handleClickUsername(result.owner.username)">
+              <h5>@{{result.owner.username}}</h5>
+            </div>
+            <div *ngIf="result.places[0] && result.places[0].photo" (click)="handleClickTrip(trip._id)">
+              <img src="{{result.places[0].photo}}">
+            </div>
+            <div *ngIf="!result.places[0] || !result.places[0].photo" (click)="handleClickTrip(trip._id)">
+              <img src="../../../assets/img/placeholder2.jpeg" alt="">
+            </div>
+            <div (click)="handleClickTrip(trip._id)">
+              <div class="detail-trip-container">
+                <h3>{{result.name}}</h3>
+                <h5>{{result.description}}</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
   </div>
 </div>

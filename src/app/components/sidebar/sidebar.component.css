@@ -10,6 +10,7 @@
     height: 175px;
     overflow: scroll;
     overflow-x: hidden;
+    border-top: 1px solid #EF5350;
 }
 
 ::-webkit-scrollbar {
@@ -18,26 +19,11 @@
 }
 
 .trip-name {
-    padding-left: 20%;
-    display: inline;
+    margin-left: 20%;
 }
 
 .scrollable-container {
     background-color: 	white;
-}
-
-.explore-link {
-    padding-left: 10%;
-}
-
-.profile-link {
-    padding-left: 10%;
-} 
-
-.trips-title {
-    padding-left:10%; 
-    border-bottom: 1px solid #EF5350;
-    padding-bottom: 5%;
 }
 
 .plane {
@@ -58,4 +44,85 @@
 
 .new-trip-link {
     font-style: italic;
+}
+
+.trips-title {
+    margin-left:10%;
+    margin-bottom: 5%;
+}
+
+.profile-title {
+    margin-left:10%;
+    margin-bottom: 5%;
+}
+
+.explore-title {
+    padding-left: 10%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+
+.trips-title:hover,.profile-title:hover,.explore-title:hover{
+    color: #EF5350;
+    transition:0.5s;
+}
+
+.trip-name:hover {
+    color:#F08080;
+    transition: 0.25s;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+    padding-right: 5px;
+}
+
+/* Track
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+} */
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888; 
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+
+.icon-title-div {
+    display: flex;
+    flex-direction: row;
+    border-top: 1px solid #EF5350;
+    width: 100%;
+}
+
+.img-icon-marker {
+    height: 3.5vh;
+    margin-top: 5%;
+    margin-left: 5%;
+}
+
+.img-icon-world {
+    height: 3.5vh;
+    margin-top: 12%;
+    margin-left: 5%;
+}
+
+.img-icon-profile {
+    height: 3.5vh;
+    margin-top: 5%;
+    margin-left: 5%;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #EF5350;
+}
+
+.sidebar-container h3, h4 {
+    cursor: pointer;
 }

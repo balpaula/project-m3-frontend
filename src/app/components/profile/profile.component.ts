@@ -14,17 +14,18 @@ export class ProfileComponent implements OnInit {
 
   user: any;
 
-  description: string;
+  username: any;
+  description = '';
   trips: Array<any>;
   favorites: Array<any>;
 
   showEditDescription = false;
   showForm = false;
 
-  constructor( 
-    private tripsService: TripsService, 
-    private router: Router, 
-    private route: ActivatedRoute, 
+  constructor(
+    private tripsService: TripsService,
+    private router: Router,
+    private route: ActivatedRoute,
     private profileService: ProfileService,
     private authService: AuthService,
     private statusService: StatusService ) { }
@@ -35,8 +36,8 @@ export class ProfileComponent implements OnInit {
     this.route.params.subscribe((value) => {
       this.profileService.getOne(value.username)
         .then(profile => {
+          this.username = profile.username;
           this.description = profile.description;
-          this.favorites = profile.favorites;
           if (profile.username === this.user.username) {
             this.showEditDescription = true;
           }
@@ -44,9 +45,19 @@ export class ProfileComponent implements OnInit {
             .then(trips => {
               this.trips = trips;
             })
+            .catch(error => {
+              console.log(error);
+            });
+          this.tripsService.getFavoritesFromUser(profile._id)
+            .then(favorites => {
+              this.favorites = favorites;
+            })
+            .catch(error => {
+              console.log(error);
+            });
         })
         .catch(error => {
-          console.error(error);
+          console.error('Could not get the searched user');
         });
     });
 
@@ -64,6 +75,10 @@ export class ProfileComponent implements OnInit {
     this.router.navigate(['/trips']);
   }
 
+  handleClickUsername(username) {
+    this.router.navigate(['/profile', username]);
+  }
+
   handleEdit() {
     this.showEditDescription = false;
     this.showForm = true;
@@ -78,7 +93,7 @@ export class ProfileComponent implements OnInit {
       this.showEditDescription = true;
     })
     .catch(error => {
-      console.log(error);
-    })
+      console.log('Could not update the description');
+    });
   }
 }

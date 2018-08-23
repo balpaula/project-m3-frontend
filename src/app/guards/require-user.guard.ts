@@ -24,7 +24,6 @@ export class RequireUserGuard implements CanActivate {
         }
       })
       .catch((error) => {
-        console.error(error);
         return false;
       });
   }
