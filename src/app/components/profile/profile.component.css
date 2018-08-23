@@ -43,6 +43,7 @@ textarea {
 
 .profile-pic {
   height: 10vh;
+  border-radius: 50%;
 }
 
 .profile-pic-div {
