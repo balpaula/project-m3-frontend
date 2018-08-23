@@ -7,7 +7,7 @@
             <!-- <button *ngIf="isFavorite" (click)="handleDeleteFavorite()">Delete from favorites</button> -->
         </div>
         <div *ngIf="showUsername" class="username">
-            <h3 [routerLink]="['/profile', currentTrip.owner.username]">@{{currentTrip.owner.username}}</h3>
+            <h3 [routerLink]="['/profile', currentTrip.owner.username]" class="username-title">@{{currentTrip.owner.username}}</h3>
         </div>
     </div>
 </div>
