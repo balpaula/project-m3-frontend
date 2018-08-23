@@ -30,7 +30,7 @@
             <img src="{{trip.places[0].photo}}">
           </div>
           <div *ngIf="!trip.places[0] || !trip.places[0].photo" class="user-trip-image-div">
-            <img src="../../../assets/img/placeholder.png">
+            <img src="../../../assets/img/placeholder2.jpeg">
           </div>
           <div (click)="handleChangeOfTrip(trip)">
             <div class="detail-trip-container">
@@ -53,7 +53,7 @@
             <img src="{{favorite.places[0].photo}}">
           </div>
           <div *ngIf="!favorite.places[0] || !favorite.places[0].photo">
-            <img src="../../../assets/img/placeholder.png" alt="">
+            <img src="../../../assets/img/placeholder2.jpeg" alt="">
           </div>
           <div (click)="handleExploreFavorite(favorite._id)">
             <div class="detail-trip-container">
