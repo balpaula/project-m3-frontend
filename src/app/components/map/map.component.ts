@@ -76,7 +76,7 @@ export class MapComponent implements OnInit, OnDestroy {
 
     this.subscriptionStar = this.statusService.starChange$.subscribe((boolean) => {
       this.showStar = boolean;
-    })
+    });
     this.statusService.showStar();
 
     // Initialization of the map

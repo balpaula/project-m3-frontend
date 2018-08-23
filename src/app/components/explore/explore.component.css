@@ -9,9 +9,6 @@
   flex-direction: column;
 }
 
-.explore-card-container {
-}
-
 .main-scrollable-container {
     overflow: scroll;
     height: calc(100vh - 3vh - 8vh);
