@@ -1,9 +1,5 @@
 <section class="navbar-heigt">
   <div *ngIf="!user" class="navbar-not-registered">
-    <div>
-      <input type="checkbox" id="slide" name="" value="" />
-      <label for="slide" class="toggle"><img src="../../../assets/img/menu.png" class="menu-icon"></label>
-    </div>
     <h3 (click)="handleGoHome()" class="title">Travelist.</h3>
     <div class="navbar-not-registered-2">
       <a (click)="handleSignup()" class="link-signup link">Sign up</a>
@@ -11,11 +7,7 @@
     </div>
   </div>
   <div *ngIf="user" class="navbar-registered">
-    <div>
-      <input type="checkbox" id="slide" name="" value="" />
-      <label for="slide" class="toggle"><img src="../../../assets/img/menu.png" class="menu-icon"></label>
-    </div>
-    <h3 (click)="handleGoTrips()">Travelist.</h3>
+    <h3 (click)="handleGoTrips()" class="title">Travelist.</h3>
     <a (click)="handleLogout()" class="link-logout link">Log out</a>
   </div>
 </section>

@@ -1,4 +1,7 @@
-<div class="sidebar-container">
+<input type="checkbox" id="slide" name="" value="" />
+<div class="container">
+<label for="slide" class="toggle"><img src="../../../assets/img/menu.png"></label>
+<div class="sidebar">
   <div [routerLink]="['/trips']" class="trips-link">
     <div class="icon-title-div">
       <img src="../../../assets/img/direction-pin-and-map.png" alt="" class="img-icon-marker">
@@ -30,5 +33,6 @@
       <h3 class="profile-title">My profile</h3>
     </div>
   </div>
+</div>
 </div>
 <app-newtrip *ngIf="showForm"></app-newtrip>

@@ -15,8 +15,7 @@ app-map {
 @media (max-width: 425px) {
     app-sidebar {
         position: absolute;
-        width: 80%;
-        left: -80%;
+        z-index: 3;
     }
 
     app-map {

@@ -72,9 +72,11 @@ h3 {
 }
 
 @media (max-width: 425px) {
-    .menu-icon {
-        display: unset;
-        width: 25px;
-        margin-left: 15px;
+    .title {
+        margin: 55px;
+    }
+
+    .link-signup, .link-login {
+        margin-right: 30px;
     }
 }

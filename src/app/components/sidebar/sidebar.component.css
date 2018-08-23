@@ -1,4 +1,4 @@
-.sidebar-container {
+.sidebar {
     display: flex;
     flex-direction: column;
     background-color: white;
@@ -123,6 +123,41 @@
     border-bottom: 1px solid #EF5350;
 }
 
-.sidebar-container h3, h4 {
+.sidebar h3, h4 {
     cursor: pointer;
+}
+
+#slide {
+    display: none;
+}
+
+.menu {
+    display: none;
+}
+
+@media (max-width: 425px) {
+    .sidebar {
+        position: fixed;
+        width: 290px;
+        left: -290px;
+        z-index: 3;
+    }
+
+    .toggle {
+        display: unset;
+        width: fit-content;
+        position: absolute;
+        top: -36px;
+        left: 15px;
+    }
+
+    .toggle img {
+        width: 20px;
+    }
+
+    #slide:checked + .container .sidebar {
+        left: 0px;
+        transition: 0.5s;
+    }
+    
 }
