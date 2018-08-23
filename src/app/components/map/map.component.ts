@@ -152,10 +152,12 @@ export class MapComponent implements OnInit, OnDestroy {
     const favoritesId = this.favorites.map(element => {
       return element._id;
     });
-    if (favoritesId.includes(this.currentTrip._id)) {
-      this.isFavorite = true;
-    } else {
-      this.isFavorite = false;
+    if (this.currentTrip) {
+      if (favoritesId.includes(this.currentTrip._id)) {
+        this.isFavorite = true;
+      } else {
+        this.isFavorite = false;
+      }
     }
   }
 
