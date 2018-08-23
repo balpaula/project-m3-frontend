@@ -47,19 +47,18 @@
 }
 
 .trips-title {
-    margin-left:10%;
-    margin-bottom: 5%;
+    padding-left:10%;
+    width: fit-content;
 }
 
 .profile-title {
-    margin-left:10%;
-    margin-bottom: 5%;
+    padding-left:10%;
+    width: fit-content;
 }
 
 .explore-title {
     padding-left: 10%;
-    padding-top: 5%;
-    padding-bottom: 5%;
+    width: fit-content;
 }
 
 .trips-title:hover,.profile-title:hover,.explore-title:hover{
@@ -98,33 +97,26 @@
     display: flex;
     flex-direction: row;
     border-top: 1px solid #EF5350;
+    align-content: center;
+    align-items: center;
     width: 100%;
 }
 
-.img-icon-marker {
-    height: 3.5vh;
-    margin-top: 5%;
-    margin-left: 5%;
-}
-
-.img-icon-world {
-    height: 3.5vh;
-    margin-top: 12%;
-    margin-left: 5%;
-}
-
-.img-icon-profile {
-    height: 3.5vh;
-    margin-top: 5%;
-    margin-left: 5%;
+.icon-title-div img {
+    width: 2.2em;
+    padding-left: 5%;
 }
 
 .border-bottom {
     border-bottom: 1px solid #EF5350;
 }
 
-.sidebar h3, h4 {
+.sidebar h3, h4, img {
     cursor: pointer;
+}
+
+.active-link {
+    color: #EF5350;
 }
 
 #slide {

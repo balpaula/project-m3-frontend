@@ -13,6 +13,7 @@ import { StatusService } from '../../services/status.service';
 export class ProfileComponent implements OnInit {
 
   user: any;
+  profile: any;
 
   username: any;
   description = '';
@@ -33,28 +34,36 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     this.user = this.authService.getUser();
 
+    this.statusService.profileChange$.subscribe((profile) => {
+      this.profile = profile;
+      this.description = this.profile.description;
+      this.username = this.profile.username;
+      if (this.profile.username === this.user.username) {
+        this.showEditDescription = true;
+      } else {
+        this.showEditDescription = false;
+      }
+      this.tripsService.getTripsFromUser(profile._id)
+        .then(trips => {
+          this.trips = trips;
+        })
+        .catch(error => {
+          console.log(error);
+        });
+      this.tripsService.getFavoritesFromUser(profile._id)
+        .then(favorites => {
+          this.favorites = favorites;
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    });
+
     this.route.params.subscribe((value) => {
       this.profileService.getOne(value.username)
         .then(profile => {
-          this.username = profile.username;
-          this.description = profile.description;
-          if (profile.username === this.user.username) {
-            this.showEditDescription = true;
-          }
-          this.tripsService.getTripsFromUser(profile._id)
-            .then(trips => {
-              this.trips = trips;
-            })
-            .catch(error => {
-              console.log(error);
-            });
-          this.tripsService.getFavoritesFromUser(profile._id)
-            .then(favorites => {
-              this.favorites = favorites;
-            })
-            .catch(error => {
-              console.log(error);
-            });
+          console.log(profile)
+          this.statusService.changeProfile(profile);
         })
         .catch(error => {
           console.error('Could not get the searched user');
@@ -77,6 +86,7 @@ export class ProfileComponent implements OnInit {
 
   handleClickUsername(username) {
     this.router.navigate(['/profile', username]);
+    
   }
 
   handleEdit() {
