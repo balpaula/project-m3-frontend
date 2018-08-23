@@ -27,6 +27,9 @@ export class SidebarComponent implements OnInit {
     this.user = this.authService.getUser();
     this.tripsService.tripsChange$.subscribe((trips) => {
       this.trips = trips;
+      if (!this.trips.length) {
+        this.statusService.hideAddPlace();
+      }
     });
     this.tripsService.currentTripChange$.subscribe((currentTrip) => {
       this.currentTrip = currentTrip;
