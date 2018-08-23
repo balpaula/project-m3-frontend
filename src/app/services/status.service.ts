@@ -13,10 +13,13 @@ export class StatusService {
   private createTripChange: Subject<any> = new Subject();
   public star: boolean;
   private starChange: Subject<any> = new Subject();
+  public profile: any;
+  private profileChange: Subject<any> = new Subject();
 
   addPlaceChange$: Observable<any> = this.addPlaceChange.asObservable();
   createTripChange$: Observable<any> = this.createTripChange.asObservable();
   starChange$: Observable<any> = this.starChange.asObservable();
+  profileChange$: Observable<any> = this.profileChange.asObservable();
 
   constructor() { }
 
@@ -36,6 +39,12 @@ export class StatusService {
     this.star = bool;
     this.starChange.next(bool);
     return bool;
+  }
+
+  private setProfile(profile: any) {
+    this.profile = profile;
+    this.profileChange.next(profile);
+    return profile;
   }
 
   hideAddPlace() {
@@ -60,6 +69,10 @@ export class StatusService {
 
   showStar() {
     this.setStar(true);
+  }
+
+  changeProfile(profile) {
+    this.setProfile(profile);
   }
 
 }
