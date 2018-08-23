@@ -34,13 +34,13 @@
             <div class="username-container" (click)="handleClickUsername(result.owner.username)">
               <h5>@{{result.owner.username}}</h5>
             </div>
-            <div *ngIf="result.places[0] && result.places[0].photo" (click)="handleClickTrip(trip._id)">
+            <div *ngIf="result.places[0] && result.places[0].photo" (click)="handleClickTrip(result._id)">
               <img src="{{result.places[0].photo}}">
             </div>
-            <div *ngIf="!result.places[0] || !result.places[0].photo" (click)="handleClickTrip(trip._id)">
+            <div *ngIf="!result.places[0] || !result.places[0].photo" (click)="handleClickTrip(result._id)">
               <img src="../../../assets/img/placeholder2.jpeg" alt="">
             </div>
-            <div (click)="handleClickTrip(trip._id)">
+            <div (click)="handleClickTrip(result._id)">
               <div class="detail-trip-container">
                 <h3>{{result.name}}</h3>
                 <h5>{{result.description}}</h5>

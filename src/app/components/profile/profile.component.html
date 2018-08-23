@@ -49,10 +49,10 @@
           <div class="username-container" (click)="handleClickUsername(favorite.owner.username)">
             <h5>@{{favorite.owner.username}}</h5>
           </div>
-          <div *ngIf="favorite.places[0] && favorite.places[0].photo">
+          <div *ngIf="favorite.places[0] && favorite.places[0].photo" (click)="handleExploreFavorite(favorite._id)">
             <img src="{{favorite.places[0].photo}}">
           </div>
-          <div *ngIf="!favorite.places[0] || !favorite.places[0].photo">
+          <div *ngIf="!favorite.places[0] || !favorite.places[0].photo" (click)="handleExploreFavorite(favorite._id)">
             <img src="../../../assets/img/placeholder2.jpeg" alt="">
           </div>
           <div (click)="handleExploreFavorite(favorite._id)">
