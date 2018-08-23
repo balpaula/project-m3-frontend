@@ -75,6 +75,7 @@ h5 {
 
 .input-container {
     margin-top: 3%;
+    margin-left: 28%;
 }
 
 .input-search {
@@ -93,5 +94,9 @@ h5 {
   .input-search {
     width: 66%;
     margin: 0 17%;
+  }
+
+  .input-container {
+    margin-left: 0;
   }
 }

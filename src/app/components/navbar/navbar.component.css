@@ -72,7 +72,7 @@ h3 {
 }
 
 @media (max-width: 425px) {
-    .title {
+    .navbar-registered .title {
         margin: 55px;
     }
 

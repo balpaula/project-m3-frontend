@@ -219,6 +219,10 @@
         padding: 0 8px;
     }
 
+    .icon-and-text h4 {
+        margin-bottom: 20px;
+    }
+
     .section-3-text {
         margin-bottom: 5%;
     }
