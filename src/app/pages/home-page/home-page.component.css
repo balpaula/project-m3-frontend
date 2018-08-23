@@ -155,8 +155,10 @@
   }
 
   .section-3-title {
-      font-size: 2em;
+      font-size: 2.2em;
       color: white;
+      font-family: 'Lato', 'Quicksand', sans-serif;
+      font-weight: 300;
   }
 
   .section-3-img {

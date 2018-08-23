@@ -31,10 +31,11 @@ import { ProfileComponent } from './components/profile/profile.component';
 
 
 const routes: Routes = [
-  { path: '',  component: HomePageComponent, canActivate: [ InitAuthGuard ]},
+  { path: '',  component: HomePageComponent, canActivate: [ InitAuthGuard, RequireAnonGuard ] },
   { path: 'trips',  component: TripsPageComponent, canActivate: [ RequireUserGuard ] },
   { path: 'explore',  component: ExplorePageComponent, canActivate: [ RequireUserGuard ] },
-  { path: 'profile/:username',  component: ProfilePageComponent, canActivate: [ RequireUserGuard ]}
+  { path: 'profile/:username',  component: ProfilePageComponent, canActivate: [ RequireUserGuard ]},
+  { path: '**', component: HomePageComponent, canActivate: [  RequireAnonGuard, RequireUserGuard ]},
 ];
 
 @NgModule({
