@@ -45,13 +45,9 @@ export class ExploreComponent implements OnInit {
   }
 
   handleSearch() {
-<<<<<<< HEAD
     if (this.search.length) {
       this.tripsService.getSearch(this.search);
     }
-=======
-    this.tripsService.getSearch(this.search);
->>>>>>> c5b73690f53df33cb2d5c583a0f272a0fa053314
   }
 
 }
