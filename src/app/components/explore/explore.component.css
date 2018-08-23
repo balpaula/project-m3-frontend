@@ -75,7 +75,6 @@ h5 {
 
 .input-container {
     margin-top: 3%;
-    margin-left: 28%;
 }
 
 .input-search {
@@ -84,4 +83,15 @@ h5 {
   font-size: 1.1em;
   border-radius: 8px;
   border-color: #EF5350;
+}
+
+@media (max-width: 425px) {
+  .cards-container {
+    width: 38vh;
+  }
+
+  .input-search {
+    width: 66%;
+    margin: 0 17%;
+  }
 }

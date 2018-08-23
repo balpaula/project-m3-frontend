@@ -142,3 +142,13 @@ textarea {
 .user-trip-image-div img {
   border-radius: 10px 10px 0 0;
 }
+
+@media (max-width: 425px) {
+  .user h2 {
+    font-size: 1em;
+  }
+
+  .profile-pic {
+    height: 90px;
+  }
+}
