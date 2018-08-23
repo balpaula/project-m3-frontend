@@ -90,6 +90,13 @@ button {
     padding: 2%;
 }
 
+@media (max-width: 425px) {
+    .add-button {
+        left: 0;
+    }
+
+}
+
 
 
 

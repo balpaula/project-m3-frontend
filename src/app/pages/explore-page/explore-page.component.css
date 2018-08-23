@@ -10,3 +10,15 @@ app-sidebar {
 app-explore {
     width: 80%;
 }
+
+@media (max-width: 425px) {
+    app-sidebar {
+        position: absolute;
+        width: 80%;
+        left: -80%;
+    }
+
+    app-explore {
+        width: 100%;
+    }
+}

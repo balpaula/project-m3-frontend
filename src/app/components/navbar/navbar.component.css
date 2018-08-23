@@ -1,3 +1,7 @@
+.menu-icon {
+    display: none;
+}
+
 .navbar-not-registered, .navbar-registered {
     display: flex;
     flex-direction: row;
@@ -63,4 +67,14 @@ h3 {
     background: #fff;
 }
   
-  
+#slide {
+    display: none;
+}
+
+@media (max-width: 425px) {
+    .menu-icon {
+        display: unset;
+        width: 25px;
+        margin-left: 15px;
+    }
+}
