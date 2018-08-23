@@ -27,6 +27,12 @@ export class SidebarComponent implements OnInit {
     this.user = this.authService.getUser();
     this.tripsService.tripsChange$.subscribe((trips) => {
       this.trips = trips;
+      if (!this.trips.length) {
+        this.statusService.hideAddPlace();
+        if (!this.tripsService.exploring) {
+          this.statusService.hideStar();
+        }
+      }
     });
     this.tripsService.currentTripChange$.subscribe((currentTrip) => {
       this.currentTrip = currentTrip;
@@ -54,6 +60,7 @@ export class SidebarComponent implements OnInit {
     this.tripsService.setExploringFalse();
     this.tripsService.setShowingAllTripsFalse();
     this.statusService.showAddPlace();
+    this.statusService.showStar();
   }
 
   handleClick() {
@@ -69,6 +76,7 @@ export class SidebarComponent implements OnInit {
   handleClickAllTrips() {
     this.tripsService.allPlaces();
     this.statusService.hideAddPlace();
+    this.statusService.hideStar();
   }
 
   checkUser() {

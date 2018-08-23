@@ -18,3 +18,7 @@
     height: calc(100vh - 3vh - 8vh);
 }
 
+.username-title {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1.4em;
+}

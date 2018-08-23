@@ -1,6 +1,6 @@
 <div class="container">
     <div id='map' style='width: 100%;' class="map-positioning">
-        <div *ngIf="showFavoriteStar" class="fav-button">
+        <div *ngIf="showStar" class="fav-button">
             <img src="../../../assets/img/star.png" *ngIf="!isFavorite" (click)="handleAddFavorite()">
             <!-- <button *ngIf="!isFavorite" (click)="handleAddFavorite()">Add to favorites</button> -->
             <img src="../../../assets/img/star-filled.png" *ngIf="isFavorite" (click)="handleDeleteFavorite()">

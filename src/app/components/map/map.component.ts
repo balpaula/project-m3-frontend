@@ -7,6 +7,7 @@ import { TripsService } from '../../services/trips.service';
 import { PlacesService } from '../../services/places.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { StatusService } from '../../services/status.service';
 
 
 @Component({
@@ -27,13 +28,13 @@ export class MapComponent implements OnInit, OnDestroy {
   isFavorite: boolean;
 
   showUsername: boolean;
-
-  showFavoriteStar = true;
+  showStar: boolean;
 
   subscriptionMap: any;
   subscriptionPlaces: any;
   subscriptionCurrentTrip: any;
   subscriptionFavorites: any;
+  subscriptionStar: any;
 
   constructor(
     private locationService: LocationService,
@@ -41,6 +42,7 @@ export class MapComponent implements OnInit, OnDestroy {
     private tripsService: TripsService,
     private placesService: PlacesService,
     private authService: AuthService,
+    private statusService: StatusService,
     private router: Router ) { }
 
   ngOnInit() {
@@ -65,13 +67,17 @@ export class MapComponent implements OnInit, OnDestroy {
         this.handleCurrentTripChange();
       }
       this.handleShowUsername();
-      this.handleShowFavorites();
     });
 
     this.subscriptionFavorites = this.tripsService.favoritesChange$.subscribe((favorites) => {
       this.favorites = favorites;
       this.setIsFavorite();
     });
+
+    this.subscriptionStar = this.statusService.starChange$.subscribe((boolean) => {
+      this.showStar = boolean;
+    })
+    this.statusService.showStar();
 
     // Initialization of the map
     this.initMap();
@@ -82,6 +88,7 @@ export class MapComponent implements OnInit, OnDestroy {
     this.subscriptionPlaces.unsubscribe();
     this.subscriptionCurrentTrip.unsubscribe();
     this.subscriptionFavorites.unsubscribe();
+    this.subscriptionStar.unsubscribe();
   }
 
   initMap() {
@@ -165,14 +172,6 @@ export class MapComponent implements OnInit, OnDestroy {
       this.showUsername = true;
     } else {
       this.showUsername = false;
-    }
-  }
-
-  handleShowFavorites() {
-    if (this.tripsService.showingAllTrips) {
-      this.showFavoriteStar = false;
-    } else {
-      this.showFavoriteStar = true;
     }
   }
 
