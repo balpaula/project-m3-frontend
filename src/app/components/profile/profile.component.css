@@ -39,10 +39,11 @@ textarea {
 .info-photo {
   display: flex;
   flex-direction: column;
+  text-align: center;
 }
 
 .profile-pic {
-  height: 10vh;
+  height: 20vh;
   border-radius: 50%;
 }
 
@@ -54,12 +55,11 @@ textarea {
   display: flex;
   flex-direction: row;
   margin-top: 3%;
-  margin-left: 5%;
+  margin-left: 7%;
 }
 
 .bio-container {
-  margin-left: 20%;
-  margin-top: 1%;
+  margin-left: 10%;
   margin-right: 10%;
 }
 
