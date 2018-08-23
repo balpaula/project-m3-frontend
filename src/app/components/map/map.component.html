@@ -1,13 +1,13 @@
 <div class="container">
     <div id='map' style='width: 100%;' class="map-positioning">
-        <div class="fav-button">
+        <div *ngIf="showStar" class="fav-button">
             <img src="../../../assets/img/star.png" *ngIf="!isFavorite" (click)="handleAddFavorite()">
             <!-- <button *ngIf="!isFavorite" (click)="handleAddFavorite()">Add to favorites</button> -->
             <img src="../../../assets/img/star-filled.png" *ngIf="isFavorite" (click)="handleDeleteFavorite()">
             <!-- <button *ngIf="isFavorite" (click)="handleDeleteFavorite()">Delete from favorites</button> -->
         </div>
         <div *ngIf="showUsername" class="username">
-            <h3 [routerLink]="['/profile', currentTrip.owner.username]" class="username-title">@{{currentTrip.owner.username}}</h3>
+            <h3 [routerLink]="['/profile', currentTrip.owner.username]">@{{currentTrip.owner.username}}</h3>
         </div>
     </div>
 </div>
