@@ -123,7 +123,7 @@ export class MapComponent implements OnInit, OnDestroy {
           }
         })
         .catch(error => {
-          console.log('Could not set the map with markers');
+          console.log('Waiting to set map');
         });
   }
 
