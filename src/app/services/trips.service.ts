@@ -68,7 +68,7 @@ export class TripsService {
       withCredentials: true
     };
     return this.httpClient.get(`${this.API_URL}/trips/user/${userId}`, options)
-      .toPromise()
+      .toPromise();
   }
 
   getOneTrip(tripId): Promise<any> {
@@ -79,7 +79,7 @@ export class TripsService {
       .toPromise()
       .then((trip: any) => {
         this.setCurrentTrip(trip);
-      })
+      });
   }
 
   createTrip(trip: any): Promise<any> {
@@ -102,7 +102,7 @@ export class TripsService {
       withCredentials: true
     };
     return this.httpClient.get(`${this.API_URL}/explore`, options)
-      .toPromise()
+      .toPromise();
   }
 
   getSearch(text): Promise<any> {
@@ -113,7 +113,7 @@ export class TripsService {
       .toPromise()
       .then((results: Array<any>) => {
         this.setSearchResults(results);
-      })
+      });
   }
 
   getFavorites(): Promise<any> {
@@ -132,7 +132,7 @@ export class TripsService {
       withCredentials: true
     };
     return this.httpClient.get(`${this.API_URL}/trips/favorites/${userId}`, options)
-      .toPromise()
+      .toPromise();
   }
 
   addFavorite(tripId): Promise<any> {
@@ -188,8 +188,8 @@ export class TripsService {
     this.trips.forEach(trip => {
       trip.places.forEach(place => {
         placesAll.push(place);
-      })
-    })
+      });
+    });
     const newTrip = this.currentTrip;
     newTrip.places = placesAll;
     this.setCurrentTrip(newTrip);
@@ -203,6 +203,6 @@ export class TripsService {
   setShowingAllTripsTrue() {
     this.showingAllTrips = true;
   }
-  
+
 
 }

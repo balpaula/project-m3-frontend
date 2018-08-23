@@ -110,21 +110,21 @@ export class MapComponent implements OnInit, OnDestroy {
         })
         .then(() => {
           // if there are already places in that trip, draw the markers
-          this.drawService.drawMarkerCurrentLocation(this.coordinates,this.map);
+          this.drawService.drawMarkerCurrentLocation(this.coordinates, this.map);
           if (this.currentTrip.places) {
             this.setAllMarkers();
           }
         })
         .catch(error => {
-          console.log("Couldn't set the map with markers");
+          console.log('Could not set the map with markers');
         });
   }
 
   handleCurrentTripChange() {
-      if (this.currentTrip.places.length){
+      if (this.currentTrip.places.length) {
         // if there are already places added to that trip center the map to last one and draw markers
-        this.drawService.drawMap(this.currentTrip.places[this.currentTrip.places.length-1].coordinates)
-        this.drawService.drawMarkerCurrentLocation(this.coordinates,this.map);
+        this.drawService.drawMap(this.currentTrip.places[this.currentTrip.places.length - 1 ].coordinates);
+        this.drawService.drawMarkerCurrentLocation(this.coordinates, this.map);
         this.setAllMarkers();
       } else {
         // if the trip is empty (new trip, for example), init map (will set to current position)
@@ -134,7 +134,7 @@ export class MapComponent implements OnInit, OnDestroy {
 
   changeToEmptyMap() {
     this.drawService.drawMap(this.coordinates);
-    this.drawService.drawMarkerCurrentLocation(this.coordinates,this.map);
+    this.drawService.drawMarkerCurrentLocation(this.coordinates, this.map);
   }
 
   setAllMarkers() {

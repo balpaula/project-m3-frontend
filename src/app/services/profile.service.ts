@@ -16,15 +16,15 @@ export class ProfileService {
       withCredentials: true
     };
     return this.httpClient.get(`${this.API_URL}/profile/${username}`, options)
-      .toPromise()
-  }  
-  
+      .toPromise();
+  }
+
   updateDescription(description: any): Promise<any> {
     const options = {
       withCredentials: true
     };
     return this.httpClient.post(`${this.API_URL}/profile/description`, description, options)
-      .toPromise()
+      .toPromise();
   }
 
 }

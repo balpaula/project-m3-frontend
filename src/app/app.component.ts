@@ -30,7 +30,7 @@ export class AppComponent implements OnInit {
   logout() {
     this.authService.logout()
       .then(() => this.router.navigate(['/']))
-      .catch(error => {console.log("Couldn't log out")});
+      .catch(error => {console.log('Could not log out'); });
   }
 
 }

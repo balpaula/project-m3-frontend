@@ -18,17 +18,17 @@ export class ExploreComponent implements OnInit {
 
   ngOnInit() {
     this.tripsService.searchResultsChange$.subscribe((results) => {
-      this.searchResults = results;     
+      this.searchResults = results;
     });
     this.tripsService.getExplore()
       .then((trips) => {
         this.tripsExplore = trips;
       })
       .catch(error => {
-        console.log("Couldn't get the trips");
-      })
+        console.log('Could not get the trips');
+      });
 
-    this.statusService.hideAddPlace();    
+    this.statusService.hideAddPlace();
   }
 
   ngOnDestroy() {
@@ -45,9 +45,13 @@ export class ExploreComponent implements OnInit {
   }
 
   handleSearch() {
+<<<<<<< HEAD
     if (this.search.length) {
       this.tripsService.getSearch(this.search);
     }
+=======
+    this.tripsService.getSearch(this.search);
+>>>>>>> c5b73690f53df33cb2d5c583a0f272a0fa053314
   }
 
 }
