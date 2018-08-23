@@ -76,7 +76,8 @@
   }
 
   .slide-img {
-      height: 13vh;;
+      height: 13vh;
+      border-radius: 50%;
   }
   
   .slide-wrapper {
