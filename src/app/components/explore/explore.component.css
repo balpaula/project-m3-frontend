@@ -37,6 +37,8 @@ h5 {
 .card-div img {
   width: 38vh;
   height: 36vh;
+  border-left: 1px solid #ef5350;
+  border-right: 1px solid #ef5350;
 }
 
 .detail-trip-container {
