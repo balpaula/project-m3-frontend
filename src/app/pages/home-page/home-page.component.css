@@ -185,3 +185,44 @@
 ::-webkit-scrollbar {
     display: none;
 }
+
+@media (max-width: 425px) { 
+
+    .section-2-container {
+        display: none;
+    }
+
+    .animation{
+        display: none;
+    }
+
+    .animation-title {
+        top:20%;
+    }
+
+    .title h2{
+        font-size: 3em;
+        color: white;
+    }
+
+    .icons-section {
+        margin-top: 0%;
+    }
+
+    .section-3-container {
+        flex-direction: column;
+    }
+
+    .icon-and-text {
+        width: 100%;
+    }
+
+    .section-3-text {
+        margin-bottom: 5%;
+    }
+
+    .video-container {
+        height: 211.57px;
+    }
+
+}
