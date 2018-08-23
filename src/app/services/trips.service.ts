@@ -191,8 +191,10 @@ export class TripsService {
       });
     });
     const newTrip = this.currentTrip;
-    newTrip.places = placesAll;
-    this.setCurrentTrip(newTrip);
+    if (newTrip) {
+      newTrip.places = placesAll;
+      this.setCurrentTrip(newTrip);
+    }
     this.setShowingAllTripsTrue();
   }
 

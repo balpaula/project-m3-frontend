@@ -76,7 +76,7 @@ export class MapComponent implements OnInit, OnDestroy {
 
     this.subscriptionStar = this.statusService.starChange$.subscribe((boolean) => {
       this.showStar = boolean;
-    })
+    });
     this.statusService.showStar();
 
     // Initialization of the map
@@ -123,7 +123,7 @@ export class MapComponent implements OnInit, OnDestroy {
           }
         })
         .catch(error => {
-          console.log('Could not set the map with markers');
+          console.log('Waiting to set map with markers');
         });
   }
 
@@ -152,10 +152,12 @@ export class MapComponent implements OnInit, OnDestroy {
     const favoritesId = this.favorites.map(element => {
       return element._id;
     });
-    if (favoritesId.includes(this.currentTrip._id)) {
-      this.isFavorite = true;
-    } else {
-      this.isFavorite = false;
+    if (this.currentTrip) {
+      if (favoritesId.includes(this.currentTrip._id)) {
+        this.isFavorite = true;
+      } else {
+        this.isFavorite = false;
+      }
     }
   }
 
