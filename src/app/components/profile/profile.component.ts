@@ -62,7 +62,6 @@ export class ProfileComponent implements OnInit {
     this.route.params.subscribe((value) => {
       this.profileService.getOne(value.username)
         .then(profile => {
-          console.log(profile)
           this.statusService.changeProfile(profile);
         })
         .catch(error => {
