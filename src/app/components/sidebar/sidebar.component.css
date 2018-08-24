@@ -102,6 +102,10 @@
     width: 100%;
 }
 
+#div-my-trips {
+    border-top: 0;
+}
+
 .icon-title-div img {
     width: 2.2em;
     padding-left: 5%;

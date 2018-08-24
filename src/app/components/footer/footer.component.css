@@ -9,6 +9,12 @@
     padding-top: 0.2%;
 }
 
+a {
+    text-decoration: none;
+    color: white;
+    cursor: default;
+}
+
 .footer-text {
     margin: 0;
     font-size: 0.8rem;

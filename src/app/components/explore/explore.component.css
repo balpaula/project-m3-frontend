@@ -22,8 +22,7 @@
   border-radius: 10px;
 }
 
-.card-div h3,
-h5 {
+.card-div h3, h5 {
   margin: 1%;
   cursor: pointer;
 }
